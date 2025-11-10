@@ -103,6 +103,7 @@ print("y is", y)
 print("a:", a)
 print("b:", b)
 
+
 #Exercise 4 : How many characters in a sentence ?
 
 my_text = ("Lorem ipsum dolor sit amet, consectetur adipiscing elit, "
@@ -121,7 +122,7 @@ longest_sentence = ""
 
 while True:
     sentence = input("Enter a sentence without the letter 'A': ")
-    
+
     if "a" in sentence.lower():
         print("Oops! Your sentence contains 'A'. Try again.")
         continue  
