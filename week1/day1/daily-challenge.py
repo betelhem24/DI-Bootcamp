@@ -8,7 +8,6 @@ elif len(user_string) > 10:
 else:
     print("Perfect string!")
 
-
     print("First character:", user_string[0])
     print("Last character:", user_string[-1])
 
