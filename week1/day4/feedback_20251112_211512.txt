@@ -1,0 +1,7 @@
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week1/day4/daily-challenge-day4.py
+Brief justification:
+- correctness: The code fully implements all the required functions (show_menu, add_item, update_price, delete_item, show_options, run_coffee_shop) and follows the specified program flow. The data structure used (dictionary) is also correct.  The starting menu is initialized correctly inside the run_coffee_shop function. The code also properly handles user input and error conditions, like existing items and invalid prices.The matrix code is not part of the original problem and is ignored during scoring.
+- readability: The code is well-structured with clear function definitions and comments. Variable names are descriptive, making the code easy to understand.
+- performance: The code's performance is efficient for the given problem size.  Input validation (e.g., checking for existing items, handling invalid prices) enhances the user experience without significantly impacting performance. Using strip() is good practice.
+- security: The code uses `strip()` on the user inputs which is a good way to sanitize user inputs. It also handles errors appropriately.
+
