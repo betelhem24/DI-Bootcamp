@@ -1,0 +1,11 @@
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week1/day2/exerice-day-2.py
+suggestions for improvement:
+- Consider adding comments to explain more complex logic, especially in the bonus section of Exercise 9, to improve readability for others.
+- While the code is functionally correct, aim for more descriptive variable names to enhance readability. For example, in Exercise 4, 'i' could be renamed to 'multiplier' or similar.
+- In exercise 2 where you are not able to add to the tuple, a more elaborative explanation on immutability could be added instead of just the error message.
+Brief justification:
+- correctness: The code accurately addresses all exercises, demonstrating understanding of sets, tuples, lists, loops, and conditional statements. Each exercise's requirements are met with correct implementations, as outlined in the chapter content.
+- readability: The code is generally well-structured and easy to follow. Variable names are mostly intuitive, and the code is adequately commented. The exercises are divided and well-labeled with the exercise title.
+- performance: The code is efficient and uses appropriate methods for each task. For example, using `set.union()` for set concatenation and list methods for list manipulation are performant choices.
+- security: The code uses `input()` to gather user input, and appropriately sanitizes it, for instance, by using `isdigit()` in Exercise 6 to check for proper name input. There are no obvious security vulnerabilities.
+
