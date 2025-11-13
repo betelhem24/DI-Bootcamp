@@ -294,3 +294,37 @@ sorted_companies = sorted(unique_companies)
 reversed_names = [name[::-1] for name in sorted_companies] 
 print("Manufacturers A–Z with reversed names:", reversed_names)
 
+# Timed Challenge #1
+
+# Ask the user to enter a sentence
+sentence = input("Enter your sentence: ")
+
+words = sentence.split()
+
+reversed_words = words[::-1]
+
+reversed_sentence = ' '.join(reversed_words)
+
+print(reversed_sentence)
+
+# Timed Challenge #2
+
+# Ask the user for a number and store it in variable 'x'
+x = int(input('Enter the Number: '))
+
+# Initialize a variable to store the sum of divisors
+sum_of_divisors = 0
+
+for i in range(1, x):
+    
+    if x % i == 0:
+        
+        sum_of_divisors += i
+
+# After the loop, check if the sum of divisors equals the number itself
+if sum_of_divisors == x:
+    print(True)  
+else:
+    print(False) 
+
+    
