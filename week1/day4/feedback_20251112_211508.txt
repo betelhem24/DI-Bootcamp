@@ -1,0 +1,10 @@
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week1/day4/exericises-day-4.py
+suggestions for improvement:
+- Consider adding more comments to explain complex logic, especially in the `can_retire` function.
+- Ensure consistent naming conventions throughout the code (e.g., using snake_case for all variable and function names).
+Brief justification:
+- correctness: All exercises are correctly implemented, addressing the specified goals and requirements in the chapter content.  Each function performs as expected, and the bonus sections (where applicable) are also handled well.  The logic and output match the expected behavior described in each exercise.
+- readability: The code is generally well-formatted and easy to understand. Function names are descriptive, and the code is organized logically.  Using f-strings enhances readability. However, more comments could be added to explain complex logic, and snake_case should be the convention.
+- performance: The code demonstrates good performance for the given tasks.  The algorithms used are efficient for the problem sizes involved. The random number generation is also performant.
+- security: The code is generally secure. User inputs are taken and used without introducing vulnerabilities like code injection or format string bugs.  However, input validation could be improved to handle unexpected input types.
+
