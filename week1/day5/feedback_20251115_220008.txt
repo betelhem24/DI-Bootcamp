@@ -1,0 +1,11 @@
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week1/day5/Mini-Project-day-5.py
+suggestions for improvement:
+- The code successfully implements a playable Tic Tac Toe game according to the instructions. Consider adding more robust input validation to handle non-integer inputs or inputs outside the expected range, improving user experience.
+- The code could benefit from comments explaining the purpose of each conditional statement or loop within the `check_win` function, enhancing readability.
+- The `check_win` function can be made more concise by combining row, column, and diagonal checks into a single loop or using more Pythonic ways to iterate through the board.
+Brief justification:
+- correctness: The code covers all the required steps: board representation, display, player input, win checking, tie checking, and the main game loop. It accurately implements the game logic as described in the instructions, though input validation could be improved. Therefore, it gets a score of 80%.
+- readability: The code is reasonably well-structured and includes comments, making it generally easy to understand.  Function and variable names are descriptive. However, additional comments within the `check_win` function would further improve readability. Therefore, it gets a score of 85%.
+- performance: The code's performance is adequate for a simple Tic Tac Toe game. There are no major performance bottlenecks. The `check_win` function could be slightly optimized, but the impact would be minimal for a game of this size. Therefore, it gets a score of 90%.
+- security: The code doesn't involve any external resources or sensitive operations, reducing potential security risks. Input validation is present, preventing out-of-bounds errors, but could be strengthened to handle unexpected input types. Therefore, it gets a score of 95%.
+
