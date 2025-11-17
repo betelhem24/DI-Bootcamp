@@ -105,7 +105,7 @@ $a
 #  Convert the string to a 2D list (matrix)
 matrix = [list(line) for line in MATRIX_STR.splitlines() if line]
 
-#  Read the matrix column by column
+#  Read the matrix column by columnAdd coffee shop menu manager and matrix decoder
 columns = []
 for col_index in range(len(matrix[0])): 
     column_chars = []
