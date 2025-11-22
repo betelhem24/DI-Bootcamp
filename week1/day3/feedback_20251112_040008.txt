@@ -1,0 +1,10 @@
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week1/day3/exercise-day-3.py
+suggestions for improvement:
+- Consider adding more comments to explain complex logic, even though the code is mostly clear.
+- The code could benefit from more whitespace to improve readability in some areas, particularly within loops and conditional statements.
+Brief justification:
+- correctness: All exercises are correctly implemented, addressing the instructions and expected outputs as described in the chapter content. The code demonstrates good understanding of dictionaries, loops, and conditionals. Bonus parts are also implemented correctly.
+- readability: The code is generally well-structured and uses meaningful variable names, enhancing readability. The inclusion of comments further aids in understanding the code's purpose and functionality.
+- performance: The code is efficient for the given tasks. The use of list comprehensions and dictionary methods contributes to good performance. There are no unnecessary loops or computations.
+- security: The code uses safe coding practices and doesn't appear to have any major security vulnerabilities. The bonus exercise with user input sanitizes the input to some extent (casting to int), reducing the risk of injection attacks.
+
