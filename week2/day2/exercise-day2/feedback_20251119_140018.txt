@@ -1,0 +1,30 @@
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week2/day2/exercise-day2/exercise-xp-ninija.py
+suggestions for improvement:
+- This code is unrelated to the chapter content.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week2/day2/exercise-day2/exercise-xp/dog.py
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week2/day2/exercise-day2/exercise-xp/exercise-1.py
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week2/day2/exercise-day2/exercise-xp/exercise-4.py
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week2/day2/exercise-day2/exercise-xp/petdog.py
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week2/day2/exercise-day2/exercises-xp-gold.py
+suggestions for improvement:
+- The provided code is completely unrelated to the exercises described in the chapter content. It implements a Bank Account and ATM simulation, which is not part of the specified tasks.
+Correctness: 0%
+-----
