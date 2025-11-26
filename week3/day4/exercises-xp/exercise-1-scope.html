@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise 1 - Scope</title>
+</head>
+<body>
+    <h1>Exercise 1 – Scope</h1>
+    <p>Click the buttons below to run each function and see the results.</p>
+
+    <button onclick="funcOne()">Run funcOne()</button>
+    <button onclick="funcThree()">Run funcThree()</button>
+    <button onclick="funcTwo()">Run funcTwo()</button>
+    <button onclick="funcFive()">Run funcFive()</button>
+    <button onclick="funcSix()">Run funcSix()</button>
+    <button onclick="runBlockExample()">Run Block Example (#5)</button>
+
+    <script src="exercise-1-scope.js"></script>
+
+    <script>
+        // Helper function to run #5 block example
+        function runBlockExample() {
+            let a3 = 2; // outer variable
+
+            if (true) {
+                let a3 = 5; // block-scoped
+                alert(`in the if block ${a3}`);
+            }
+
+            alert(`outside of the if block ${a3}`);
+        }
+    </script>
+</body>
+</html>
