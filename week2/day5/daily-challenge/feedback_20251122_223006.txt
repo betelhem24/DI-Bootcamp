@@ -1,0 +1,10 @@
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week2/day5/daily-challenge/daily-challenge-oop-quizz.txt
+suggestions for improvement:
+- Skipping file (too many comments or blank lines).
+Correctness: N/A%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week2/day5/daily-challenge/daily-challenge.py
+suggestions for improvement:
+- Skipping file (too many comments or blank lines).
+Correctness: N/A%
+-----

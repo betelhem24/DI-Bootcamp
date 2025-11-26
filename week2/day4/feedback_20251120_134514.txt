@@ -1,0 +1,10 @@
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week2/day4/exercises-day4.py
+suggestions for improvement:
+- Consider adding more comments to the advanced exercises to improve clarity.
+- Ensure proper error handling and input validation in real-world applications, particularly when dealing with external APIs.
+Brief justification:
+- correctness: The code accurately implements both Exercise 1 (Random Sentence Generator) and Exercise 2 (Working with JSON) as described in the chapter content.  All steps are correctly followed, including file handling, data manipulation, and JSON operations. The additional exercises also implemented according to their requirements.
+- readability: The code is well-structured and easy to understand. Variable names are descriptive, and functions are used effectively to break down the problem into smaller, manageable parts.  The use of comments is appropriate. The only minor improvement would be the addition of some comments in the advanced exercises to give a summary of what is happening.
+- performance: The code is reasonably efficient for the given tasks.  The operations performed are not computationally intensive, and the code is well-organized. There are no immediately obvious performance bottlenecks.
+- security: The code does not appear to have any major security vulnerabilities. It uses file handling and JSON parsing, which can be potential sources of vulnerabilities if not handled carefully. However, in this case, the file operations and JSON parsing are done in a straightforward manner and do not introduce any obvious risks.  API keys should ideally be stored in environment variables instead of being hardcoded.
+
