@@ -1,0 +1,22 @@
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day3/daily-challenge/daily-challenge-show-only-the-letters/index.html
+suggestions for improvement:
+- The provided code has nothing to do with the Mad Libs exercise. It creates an HTML input field for letters only, which is irrelevant to the task of getting values from a form, creating a story, and implementing the bonus shuffle functionality as outlined in the instructions.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day3/daily-challenge/daily-challenge-show-only-the-letters/script.js
+suggestions for improvement:
+- Skipping file (too many comments or blank lines).
+Correctness: N/A%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day3/daily-challenge/daily-challenge-tell-the-story/index.html
+suggestions for improvement:
+- The HTML file only defines the structure of the Mad Libs game, including the form with input fields and a button. It doesn't implement any of the required JavaScript functionality such as getting input values, creating the story, or handling the shuffle button click. A separate JavaScript file (script.js) is linked but the provided code snippet doesn't contain its content.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day3/daily-challenge/daily-challenge-tell-the-story/script.js
+suggestions for improvement:
+- Consider creating the 'shuffleBtn' in the HTML, as it is not currently included.
+- The code would benefit from being split into more functions, increasing readability, although the comments help with this.
+- Consider input sanitization to enhance security, although it is not explicitly required.
+Correctness: 100%
+-----
