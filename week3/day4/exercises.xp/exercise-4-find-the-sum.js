@@ -1,7 +1,14 @@
-// Exercise 4 : Find the sum
-// Instructions: Create a one line function (ie. an arrow function) that receives two numbers as parameters and returns the sum.
+// Exercise 4: Create a one-line arrow function that returns the sum of two numbers
 
-const sum = (a, b) => a + b; // Arrow function that adds two numbers
+// Step 1: Arrow function
+const sum = (a, b) => a + b;
 
-// Example to test:
-console.log(sum(3, 5)); // Output: 8
+// Step 2: Test the function
+console.log(sum(5, 3)); // 8
+console.log(sum(10, 20)); // 30
+console.log(sum(-2, 7)); // 5
+
+// Explanation:
+// - The arrow function takes two parameters (a and b)
+// - Returns their sum in one line
+// - console.log outputs the result to the console

@@ -1,27 +1,34 @@
-// Step 2: Self-invoking function taking 1 argument (user name)
+// Exercise 7: Welcome
+
+// Self-invoking function that takes 1 argument: user's name
 (function(userName) {
+    // Select the navbar div
+    const navbar = document.getElementById("navbar");
 
-    // Step 3: Select container where user info will be added
-    const userContainer = document.querySelector('.user-container');
+    // Create a div to show the user's name and profile picture
+    const userDiv = document.createElement("div");
+    userDiv.style.marginLeft = "20px"; // spacing from "Navbar:"
 
-    // Step 4: Create div for user info
-    const userDiv = document.createElement('div');
-    userDiv.classList.add('user-info');
-
-    // Step 5: Create span for user name
-    const nameSpan = document.createElement('span');
+    // Create a span for the name
+    const nameSpan = document.createElement("span");
     nameSpan.textContent = userName;
 
-    // Step 6: Create image for profile picture
-    const profilePic = document.createElement('img');
-    profilePic.src = 'https://via.placeholder.com/40';
-    profilePic.alt = userName + ' profile picture';
+    // Create an image element for the profile picture
+    const profileImg = document.createElement("img");
+    profileImg.src = "https://via.placeholder.com/40"; // placeholder image
+    profileImg.alt = "Profile Picture";
 
-    // Step 7: Add name and image to user div
+    // Append name and image to the user div
     userDiv.appendChild(nameSpan);
-    userDiv.appendChild(profilePic);
+    userDiv.appendChild(profileImg);
 
-    // Step 8: Add user div to navbar
-    userContainer.appendChild(userDiv);
+    // Append the user div to the navbar
+    navbar.appendChild(userDiv);
 
-})('John'); // Immediately call function with 'John'
+})("John"); // Example username
+
+// Explanation:
+// - This is a self-invoking function (IIFE) that runs immediately
+// - It takes the user's name as an argument
+// - Creates a div containing the user's name and profile picture
+// - Appends the div to the navbar

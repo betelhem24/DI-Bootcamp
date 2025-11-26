@@ -1,78 +1,57 @@
-// Exercise 1 : Scope
+// Exercise 1: Scope
 
 // #1
 function funcOne() {
     let a = 5;
-    if (a > 1) {
+    if(a > 1) {
         a = 3;
     }
-    alert(`inside the funcOne function ${a}`);
+    console.log(`inside funcOne: ${a}`); // Prediction: 3
 }
-
-// #1.1
+// #1.1 Test
 funcOne();
-
-// #1.2
-// if i Use const here it would cause an error because const cannot be changed.
+// #1.2 If 'const' instead of 'let', error occurs because const cannot be reassigned.
 
 // #2
 let a = 0;
-
 function funcTwo() {
-    a = 5;
+    a = 5; // modifies outer 'a'
 }
-
 function funcThree() {
-    alert(`inside the funcThree function ${a}`);
+    console.log(`inside funcThree: ${a}`); 
 }
-
-// #2.1
-funcThree();
+// #2.1 Test
+funcThree(); // 0
 funcTwo();
-funcThree();
-
-// #2.2
-// Using const would cause an error because const cannot be changed.
-
+funcThree(); // 5
+// #2.2 If 'const a = 0', funcTwo() would throw an error when trying to assign 5.
 
 // #3
 function funcFour() {
-    window.a = "hello";
+    window.aGlobal = "hello"; // creates global variable
 }
-
 function funcFive() {
-    alert(`inside the funcFive function ${a}`);
+    console.log(`inside funcFive: ${aGlobal}`); 
 }
-
-// #3.1
+// #3.1 Test
 funcFour();
-funcFive();
-
+funcFive(); // hello
 
 // #4
-let a = 1;
-
+let aLocal = 1;
 function funcSix() {
-    let a = "test";
-    alert(`inside the funcSix function ${a}`);
+    let aLocal = "test"; // local variable shadows outer
+    console.log(`inside funcSix: ${aLocal}`); // test
 }
-
-// #4.1
+// #4.1 Test
 funcSix();
-
-// #4.2
-// Using const still works because this a is not changed.
-
+// #4.2 If 'const aLocal = "test"', works the same, cannot reassign inside function.
 
 // #5
-let a = 2;
-
+let aBlock = 2;
 if (true) {
-    let a = 5;
-    alert(`in the if block ${a}`);
+    let aBlock = 5;
+    console.log(`inside if block: ${aBlock}`); // 5
 }
-
-alert(`outside of the if block ${a}`);
-
-// #5.2
-// Using const works the same because each const is in its own block.
+console.log(`outside if block: ${aBlock}`); // 2
+// #5.2 If 'const aBlock = 5' inside block, works the same; outer 'aBlock' remains 2.

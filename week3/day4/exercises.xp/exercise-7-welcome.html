@@ -1,28 +1,18 @@
-<!-- Exercise 7: Welcome -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercise 7: Welcome</title>
+    <title>Exercise 7 - Welcome</title>
     <style>
-        /* Navbar styling */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #f2f2f2;
-            padding: 10px 20px;
-        }
-
-        /* User info styling */
-        .user-info {
+        /* Simple navbar styling */
+        #navbar {
+            background-color: #333;
+            color: white;
+            padding: 10px;
             display: flex;
             align-items: center;
         }
-
-        .user-info img {
+        #navbar img {
             width: 40px;
             height: 40px;
             border-radius: 50%;
@@ -31,15 +21,12 @@
     </style>
 </head>
 <body>
+    <h1>Exercise 7 – Welcome</h1>
 
-    <!-- Step 1: Create a Navbar in HTML -->
-    <div class="navbar">
-        <div class="logo">My Website</div>
-        <!-- User info will be added here by JS -->
-        <div class="user-container"></div>
+    <div id="navbar">
+        <span>Navbar:</span>
     </div>
 
-    <!-- Link to JS file -->
     <script src="exercise-7-welcome.js"></script>
 </body>
 </html>
