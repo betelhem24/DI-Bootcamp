@@ -1,0 +1,12 @@
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day2/daily-challenge/daily-challenge-Planets/daily-challenge-Planets.js
+suggestions for improvement:
+- Consider adding more descriptive class names for the planet color variations, instead of relying solely on inline styles, which can improve maintainability.
+- While the random moon placement works, you could refine the positioning logic to prevent moons from overlapping or being clipped by the planet's boundary, potentially using trigonometric functions for more uniform distribution.
+Correctness: 100%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day2/daily-challenge/daily-challenge-Planets/planets.html
+suggestions for improvement:
+- The provided code only includes the HTML structure and CSS styling, but it's missing the JavaScript file (daily-challenge-Planets.js) that's responsible for creating the planets and moons. To be complete, the JavaScript code should be included to create planets and moons inside section element with class 'listPlanets'.
+- The HTML sets up the basic structure, which is good, but the core logic for creating the planets and moons within the specified HTML structure is absent.
+Correctness: 0%
+-----
