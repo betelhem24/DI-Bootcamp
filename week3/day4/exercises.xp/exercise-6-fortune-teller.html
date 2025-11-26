@@ -1,0 +1,27 @@
+<!-- Exercise 6 : Fortune teller -->
+<!-- Instructions: Create a self-invoking function that takes 4 arguments and displays a fortune in the DOM -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fortune Teller</title>
+</head>
+<body>
+
+<div id="fortune"></div> <!-- Where the fortune will appear -->
+
+<script>
+    // Step 1: Self-invoking function (IIFE) that takes 4 arguments
+    (function(numberOfChildren, partnerName, location, jobTitle) {
+        // Step 2: Create the fortune sentence
+        var fortune = "You will be a " + jobTitle + " in " + location + ", and married to " + partnerName + " with " + numberOfChildren + " kids.";
+        
+        // Step 3: Display the fortune in the DOM
+        document.getElementById("fortune").innerText = fortune;
+    })(2, "John", "Paris", "Web Developer"); 
+    // Step 4: Pass 4 arguments: number of children, partner's name, location, job title
+
+</script>
+
+</body>
+</html>
