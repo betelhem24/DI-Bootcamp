@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coloring Game</title>
+  <link rel="stylesheet" href="mini-project-coloring-game.css">
+</head>
+<body>
+
+  <h1>Welcome To Coloring Game</h1>
+
+  <!-- ONE BIG BOX AROUND PALETTE + GRID -->
+  <div id="main-box">
+
+    <!-- PALETTE SECTION -->
+    <div id="palette-section">
+
+      <!-- Clear button at top -->
+      <button id="clearGridButton">Clear Grid</button>
+
+      <!-- Colors palette -->
+      <div id="palette-container">
+
+        <!-- Original bright colors -->
+        <div class="color" data-color="brown" style="background: brown;" title="Brown"></div>
+        <div class="color" data-color="blueviolet" style="background: blueviolet;" title="Blue Violet"></div>
+        <div class="color" data-color="green" style="background: green;" title="Green"></div>
+        <div class="color" data-color="black" style="background: black;" title="Black"></div>
+        <div class="color" data-color="yellow" style="background: yellow;" title="Yellow"></div>
+        <div class="color" data-color="red" style="background: red;" title="Red"></div>
+        <div class="color" data-color="orange" style="background: orange;" title="Orange"></div>
+        <div class="color" data-color="purple" style="background: purple;" title="Purple"></div>
+
+        <!-- Soft / cream colors -->
+        <div class="color" data-color="#FDF5E6" style="background: #FDF5E6;" title="Old Lace"></div>
+        <div class="color" data-color="#FFE4C4" style="background: #FFE4C4;" title="Bisque"></div>
+        <div class="color" data-color="#FFDAB9" style="background: #FFDAB9;" title="Peach Puff"></div>
+        <div class="color" data-color="#E6E6FA" style="background: #E6E6FA;" title="Lavender"></div>
+        <div class="color" data-color="#F0FFF0" style="background: #F0FFF0;" title="Honeydew"></div>
+        <div class="color" data-color="#FAFAD2" style="background: #FAFAD2;" title="Light Goldenrod"></div>
+        <div class="color" data-color="#FFFACD" style="background: #FFFACD;" title="Lemon Chiffon"></div>
+        <div class="color" data-color="#FFEFD5" style="background: #FFEFD5;" title="Papaya Whip"></div>
+        <div class="color" data-color="#F5F5DC" style="background: #F5F5DC;" title="Beige"></div>
+        <div class="color" data-color="#F0E68C" style="background: #F0E68C;" title="Khaki"></div>
+
+      </div>
+    </div>
+
+    <!-- DRAWING GRID SECTION -->
+    <div id="grid-section">
+      <div id="drawing-grid"></div>
+    </div>
+
+  </div>
+  <!-- END OF BIG BOX -->
+
+  <script src="mini-project-coloring-game.js"></script>
+</body>
+</html>

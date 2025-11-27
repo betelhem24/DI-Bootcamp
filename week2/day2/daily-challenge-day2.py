@@ -18,7 +18,10 @@ class pagination:
     def get_visible_items(self):
         start = self.current_idx * self.page_size
         end = start + self.page_size
-        return self.items[start:end]    # Slice the list to get current page
+        # return = self.items[start:end]     # #Slice the list to get current page
+        visible = self.items[start:end]    # Slice the list to get current page
+        print(visible)
+
 
     # step 4. implement navigation methods
     def go_to_page(self, page_num):                
@@ -46,7 +49,7 @@ class pagination:
             self.current_idx -= 1
         return self
 
-
+p.next_page().next_page().get
 #Bonus
 #step 5: Add a custom __str__() method
 

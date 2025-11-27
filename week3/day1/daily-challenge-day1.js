@@ -18,6 +18,7 @@ if (wordNot !== -1 && wordBad !== -1 && wordBad > wordNot) {
 }
 
 
+
 // Daily challenge: Stars
 
 // Using One Loop

@@ -1,4 +1,4 @@
-#Daily challenge: OOP Quizz
+# Daily challenge: OOP Quizz
 
 #  Exercise 1: Quiz
 

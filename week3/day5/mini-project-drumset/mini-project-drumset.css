@@ -1,0 +1,43 @@
+/* PAGE STYLING */
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  color: white;
+
+  /* BACKGROUND IMAGE */
+  background-image: url('drum.jpg'); /* path to your image */
+  background-size: cover;       /* fill screen */
+  background-position: center;  /* center image */
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 20px;
+}
+
+/* DRUM BUTTON CONTAINER */
+#drum-container {
+  display: flex;             /* arrange buttons in a row */
+  justify-content: center;   /* center horizontally */
+  flex-wrap: wrap;           /* wrap to next line if needed */
+  gap: 15px;                 /* space between buttons */
+  margin-top: 30px;
+}
+
+/* DRUM BUTTON STYLE */
+.drum {
+  width: 80px;
+  height: 80px;
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 10px;
+  border: 2px solid white;
+  cursor: pointer;
+  background: rgba(0,0,0,0.5); /* semi-transparent so background shows */
+  color: white;
+  transition: transform 0.1s, background 0.1s;
+}
+
+/* BUTTON ANIMATION WHEN CLICKED */
+.drum.active {
+  transform: scale(1.1);
+  background: #ff5722;  /* highlight color */
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drumset Game</title>
+  <link rel="stylesheet" href="mini-project-drumset.css">
+</head>
+<body>
+
+  <h1>Drumset Game</h1>
+  <p>Click the buttons or press the keys to play drums!</p>
+
+  <!-- MAIN CONTAINER FOR DRUMS -->
+  <div id="drum-container">
+
+    <!-- DRUM BUTTONS -->
+    <button class="drum" data-key="w">W</button>
+    <button class="drum" data-key="a">A</button>
+    <button class="drum" data-key="s">S</button>
+    <button class="drum" data-key="d">D</button>
+    <button class="drum" data-key="j">J</button>
+    <button class="drum" data-key="k">K</button>
+    <button class="drum" data-key="l">L</button>
+
+  </div>
+
+  <!-- AUDIO ELEMENTS -->
+  <audio id="w" src="sounds/crash.mp3"></audio>
+  <audio id="a" src="sounds/kick-bass.mp3"></audio>
+  <audio id="s" src="sounds/snare.mp3"></audio>
+  <audio id="d" src="sounds/tom-1.mp3"></audio>
+  <audio id="j" src="sounds/tom-2.mp3"></audio>
+  <audio id="k" src="sounds/tom-3.mp3"></audio>
+  <audio id="l" src="sounds/tom-4.mp3"></audio>
+
+  <script src="mini-project-drumset.js"></script>
+</body>
+</html>

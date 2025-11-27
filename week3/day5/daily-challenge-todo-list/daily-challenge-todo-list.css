@@ -1,0 +1,114 @@
+/* Body and page layout */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: antiquewhite;
+    margin: 0;
+}
+
+/* Todo container */
+.todo-container {
+    background-color: beige;
+    padding: 30px;
+    border-radius: 10px;
+    width: 350px;
+    max-width: 90%; /* Responsive for small screens */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Heading */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Form styling */
+form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+form input {
+    flex: 1;
+    padding: 8px;
+}
+
+form button {
+    padding: 8px 12px;
+    cursor: pointer;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* Task list container */
+.listTasks {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Each task div (small box) */
+.task {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Delete button on right */
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.task:hover {
+    background-color: #e0e0e0;
+}
+
+/* Task text styling with smooth transition */
+.task .text {
+    flex: 1;
+    transition: color 0.3s, text-decoration 0.3s;
+}
+
+/* Completed tasks */
+.task.completed .text {
+    text-decoration: line-through;
+    color: #a0a0a0; /* Softer gray for readability */
+}
+
+/* Checkbox styling */
+.task input[type="checkbox"] {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+/* Emoji styling */
+.task .emoji {
+    margin-left: 5px; /* Space between text and emoji */
+}
+
+/* Delete button styling */
+.task button {
+    background: none;
+    border: none;
+    color: red; /* Red X */
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 10px;
+    font-size: 16px;
+    transition: color 0.2s;
+}
+
+.task button:hover {
+    color: darkred;
+}
