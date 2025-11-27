@@ -1,0 +1,48 @@
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day3/exercises-xp/exercise-1-change-the-article.html
+suggestions for improvement:
+- The HTML code provided is only a part of the solution,specifically the HTML structure for Exercise 1. It doesn't include the JavaScript code required to manipulate the DOM, add event listeners, and implement the functionalities described in the exercise instructions. Therefore, it doesn't address the problems outlined in the chapter content.
+- To fully address the exercises, you need to include the JavaScript code that interacts with the DOM to perform the requested operations (e.g., retrieving elements, removing paragraphs, adding event listeners, changing styles).
+- Since this is only the HTML file, it only satisfies the HTML requirements of the exercise. The JavaScript part is missing, making it an incomplete solution. The provided HTML is syntactically correct, but without the corresponding JavaScript to manipulate it, it doesn't achieve the exercise goals.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day3/exercises-xp/exercise-1-change-the-article.js
+suggestions for improvement:
+- Consider extracting repetitive code into reusable functions for better maintainability.
+- Add a check for the existence of elements before adding event listeners to prevent errors if the element is not found.
+Correctness: 100%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day3/exercises-xp/exercise-2-work-with-forms.html
+suggestions for improvement:
+- The provided HTML file is incomplete without the Javascript file (exercise-2-work-with-forms.js) where the solutions for the problems are implemented.
+- Include javascript file content so that the solution can be reviewed.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day3/exercises-xp/exercise-2-work-with-forms.js
+suggestions for improvement:
+- Consider adding more descriptive variable names (e.g., `firstNameInput` to `firstNameInputElement`).
+- The code is well-structured but could benefit from additional comments to explain the purpose of each block, especially the form submission logic.
+Correctness: 100%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day3/exercises-xp/exercise-3-transform-the-sentence.html
+suggestions for improvement:
+- The code only provides the HTML structure and a reference to a JavaScript file. The actual JavaScript logic, which is crucial for completing the exercise, is missing. Therefore, none of the instructions in Exercise 3 are implemented.
+- The missing implementation includes declaring a global variable, creating functions to collect bold items, highlight them in blue, return them to default, and attaching mouseover/mouseout event listeners.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day3/exercises-xp/exercise-3-transform-the-sentence.js
+suggestions for improvement:
+- Consider wrapping the code in an immediately invoked function expression (IIFE) to avoid polluting the global scope.
+- Using `Array.from(allBoldItems)` to convert the HTMLCollection to an array would allow using array methods like `forEach` and might be slightly more readable for some.
+Correctness: 100%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day3/exercises-xp/exercise-4-volume-of-sphere.html
+suggestions for improvement:
+- The code only includes HTML.  The javascript logic is missing. The javascript code is required to calculate the volume of a sphere based on the provided radius and is missing, leading to a score of 0%.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day3/exercises-xp/exercise-4-volume-of-sphere.js
+suggestions for improvement:
+- Consider adding more robust input validation to handle non-numeric input more gracefully.
+- The code could be made more readable by adding comments to explain each step of the calculation.
+Correctness: 100%
+-----
