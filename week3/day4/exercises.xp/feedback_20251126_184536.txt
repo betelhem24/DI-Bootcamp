@@ -1,0 +1,88 @@
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day4/exercises.xp/exercise-1-scope.html
+suggestions for improvement:
+- This HTML file serves as a container to load the JavaScript file related to exercise 1.  However, it doesn't contain any JavaScript code itself. The core logic is expected to be inside `exercise-1-scope.js` which is not present in the provided response.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day4/exercises.xp/exercise-1-scope.js
+suggestions for improvement:
+- In exercise #3, the code creates a global variable `aGlobal` instead of modifying the existing `a` if it existed. While it works, it's better to stick to modifying the global `a` as the problem intended.
+- The explanations for what would happen if `const` was used instead of `let` could be included as comments within the code block for better context.
+Correctness: 80%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day4/exercises.xp/exercise-2-ternary-operator.html
+suggestions for improvement:
+- The HTML code only sets up a basic webpage but doesn't contain any JavaScript code related to the exercises. The javascript file specified in the HTML is missing.
+- The HTML file should contain the solution code inside `<script>` tags or it should be in an external .js file linked to the HTML.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day4/exercises.xp/exercise-2-ternary-operator.js
+suggestions for improvement:
+- Skipping file (too many comments or blank lines).
+Correctness: N/A%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day4/exercises.xp/exercise-3-is-it-a-string.html
+suggestions for improvement:
+- The provided code is an HTML structure and does not implement any of the functionalities described in the chapter content (JS scope, ternary operator, template strings, advanced functions, arrow functions).
+- The HTML file only sets up a basic page to display the results of a script, but the actual JavaScript code that would perform the exercises is missing from the HTML file itself. The exercise asks for JavaScript implementations.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day4/exercises.xp/exercise-3-is-it-a-string.js
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day4/exercises.xp/exercise-4-find-the-sum.html
+suggestions for improvement:
+- The HTML file provided does not include the javascript code that solves the problem in 'Exercise 4 : Find the sum'.
+- The javascript should include an arrow function that receives two numbers as parameters and returns the sum.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day4/exercises.xp/exercise-4-find-the-sum.js
+suggestions for improvement:
+- Skipping file (too many comments or blank lines).
+Correctness: N/A%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day4/exercises.xp/exercise-5-kg-and-grams.html
+suggestions for improvement:
+- The HTML file is a basic setup for the exercise but it doesn't contain any of the JavaScript code to actually solve the problems presented in the prompt. To fulfill the exercise, include JavaScript code to address the scope, ternary operator, string checking, sum calculation, kg to grams conversion, fortune teller, welcome message, and juice bar problems. Create separate functions or code blocks within the script tag to address each specific exercise requirement.
+- Add the JavaScript code directly in the `exercise-5-kg-and-grams.js` file or within `<script>` tags inside the HTML file to make it a complete, runnable solution.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day4/exercises.xp/exercise-5-kg-and-grams.js
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day4/exercises.xp/exercise-6-fortune-teller.html
+suggestions for improvement:
+- This HTML file does not contain any JavaScript code related to the exercises. It only provides the structure for displaying the results of the exercises, but it does not implement any of the logic described in the chapter content/questions. The instructions are to create JS functions to solve these problems.
+- Since this is only the HTML, there is no way to evaluate correctness without the corresponding JavaScript file.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day4/exercises.xp/exercise-6-fortune-teller.js
+suggestions for improvement:
+- The provided code addresses only exercise 6. You should provide complete solutions for all exercises.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day4/exercises.xp/exercise-7-welcome.html
+suggestions for improvement:
+- This HTML file provides the structure for Exercise 7, which is good. However, the core logic for manipulating the DOM (adding the user's name and profile picture to the navbar) should be implemented in the associated JavaScript file (exercise-7-welcome.js).
+- The HTML file itself doesn't directly address any of the exercises from the chapter content, which focuses on JavaScript concepts (scope, ternary operator, functions, etc.). It only serves as the starting point for Exercise 7.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day4/exercises.xp/exercise-7-welcome.js
+suggestions for improvement:
+- Consider adding error handling to check if the navbar element exists before attempting to modify it.
+- Instead of directly manipulating the DOM, using a template literal and innerHTML can sometimes be cleaner for constructing larger HTML snippets.
+Correctness: 100%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day4/exercises.xp/exercise-8-juice-bar.html
+suggestions for improvement:
+- The HTML code provides the basic structure for the Juice Bar exercise, but it lacks the Javascript code which is the main component of this exercise.  The provided code only sets up the HTML structure and links to an external JavaScript file (exercise-8-juice-bar.js). The core logic involving nested functions, DOM manipulation, and juice preparation needs to be implemented in the Javascript file to fulfill the exercise requirements. Without the Javascript, this HTML page is incomplete.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day4/exercises.xp/exercise-8-juice-bar.js
+suggestions for improvement:
+- Consider using template literals for constructing the message strings for better readability.
+Correctness: 100%
+-----
