@@ -1,0 +1,56 @@
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day2/exercises-day2/exercises.xp.gold/exercise-5-red-table/red-table.html
+suggestions for improvement:
+- This code is unrelated to the Chapter Content/Questions provided.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day2/exercises-day2/exercises.xp.gold/exercises.xp.gold.js
+suggestions for improvement:
+- The provided code addresses different string manipulation and array problems that are not present in the original exercises. Therefore the response is not correct
+- The code provided has good readability and uses efficient methods.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day2/exercises-day2/exercises.xp.ninja/exercises.xp.ninja.js
+suggestions for improvement:
+- The code addresses totally different questions than those defined in the chapter content.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day2/exercises-day2/exercises.xp/exercise-5-users/index.html
+suggestions for improvement:
+- The provided code is only the HTML structure and does not implement any of the JavaScript instructions given in Exercise 5. The Javascript code needs to be added to the script.js file in order to properly evaluate this.
+- The HTML structure is correctly represented.
+- The code is missing the javascript implementations for exercise 1, 2, 3, 4, 6, and 7.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day2/exercises-day2/exercises.xp/exercise-5-users/script.js
+suggestions for improvement:
+- Consider using more descriptive variable names for better readability, especially in larger projects.
+- Instead of looping through all list items multiple times, combine some operations within a single loop to improve performance.
+Correctness: 100%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day2/exercises-day2/exercises.xp/exercise-6-change-the-navbar/index.html
+suggestions for improvement:
+- The submitted code only contains the HTML structure for Exercise 6. It's missing the JavaScript implementation that addresses the instructions in the prompt, such as changing the 'id' attribute, adding a new list item, and retrieving the text of the first and last list elements.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day2/exercises-day2/exercises.xp/exercise-6-change-the-navbar/script.js
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day2/exercises-day2/exercises.xp/exercise-7-my-book-list/index.html
+suggestions for improvement:
+- The provided HTML code only sets up the basic structure for Exercise 7, creating an empty section element where the book list should be rendered and linking to an external Javascript file named `script.js`. It does not include any Javascript code to actually populate the section with content based on the `allBooks` array, nor does it satisfy the remaining requirements related to displaying book titles, authors, images, and conditional styling.  Therefore, the code is incomplete and does not address the core functionality of the problem.
+- The exercise requirements specifically state that "All the instructions below need to be coded in the js file". The HTML code provided does not fulfill these requirements, as it only sets up the basic structure and links to an external javascript file. The Javascript file would need to include the allBooks array, DOM manipulation, rendering logic, and conditional styling.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day2/exercises-day2/exercises.xp/exercise-7-my-book-list/script.js
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day2/exercises-day2/exercises.xp/exercise.xp.js
+suggestions for improvement:
+- Consider using more descriptive variable names in the `changeEnough` function to improve readability.
+- For the Vacation Costs exercise, you could refactor the input validation loops to be more concise.
+Correctness: 100%
+-----
