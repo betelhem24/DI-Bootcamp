@@ -1,15 +1,13 @@
 // Daily Challenge: Todo list
 
-
-// Array to store tasks as objects (BONUS I)
+// Array to store tasks as objects
 const tasks = [];
-let taskId = 0;
+let taskId = 0; // Unique ID for each task
 
 // Select DOM elements
 const form = document.getElementById("todoForm");
 const input = document.getElementById("taskInput");
 const taskContainer = document.querySelector(".listTasks");
-
 
 // Add a new task
 function addTask(taskText) {
@@ -38,7 +36,7 @@ function addTask(taskText) {
     textSpan.textContent = task.text;
 
     const deleteBtn = document.createElement("button");
-    deleteBtn.innerHTML = `<i class="fas fa-times"></i>`;
+    deleteBtn.innerHTML = `<i class="fas fa-times"></i>`; // X icon
 
     // Check/uncheck task
     checkbox.addEventListener("change", () => {
@@ -57,9 +55,8 @@ function addTask(taskText) {
 
     taskContainer.appendChild(taskDiv);
 
-    input.value = ""; // Clear the input field
+    input.value = ""; // Clear input field
 }
-
 
 // Mark a task as completed
 function doneTask(id, taskDiv, isChecked) {
@@ -70,7 +67,6 @@ function doneTask(id, taskDiv, isChecked) {
     taskDiv.classList.toggle("completed", task.done);
 }
 
-
 // Delete a task
 function deleteTask(id, taskDiv) {
     taskContainer.removeChild(taskDiv);
@@ -78,7 +74,6 @@ function deleteTask(id, taskDiv) {
     const index = tasks.findIndex(t => t.task_id === id);
     if (index !== -1) tasks.splice(index, 1);
 }
-
 
 // Handle form submit
 form.addEventListener("submit", (event) => {
