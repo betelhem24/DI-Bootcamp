@@ -1,0 +1,12 @@
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day3/daily-challenge/daily-challenge-tell-the-story/index.html
+suggestions for improvement:
+- The HTML code provided is a good starting point, but it needs to be integrated with JavaScript to fulfill the instructions in the prompt, which includes form submission handling, story generation, and the shuffle functionality.
+- A JavaScript file (script.js) needs to be created and linked to the HTML file to handle form submission, retrieve input values, generate the Mad Libs story, and implement the shuffle button functionality.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day3/daily-challenge/daily-challenge-tell-the-story/script.js
+suggestions for improvement:
+- Consider adding more diverse story options to enhance the user experience.
+- For better performance, especially with more complex stories, you could use a template literal approach for story generation to avoid string concatenation.
+Correctness: 100%
+-----
