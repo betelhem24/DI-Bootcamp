@@ -1,0 +1,60 @@
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day4/exercises_xp/exercise-1-scope.js
+suggestions for improvement:
+- This submission only contains comments predicting the output of the scope exercise and doesn't provide any code that addresses the other exercises related to ternary operators, arrow functions, or the juice bar problem.
+- The submission should include functional code to receive a higher score.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day4/exercises_xp/exercise-2-ternary-operator.js
+suggestions for improvement:
+- Skipping file (too many comments or blank lines).
+Correctness: N/A%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day4/exercises_xp/exercise-3-is-it-a-string.js
+suggestions for improvement:
+- Skipping file (too many comments or blank lines).
+Correctness: N/A%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day4/exercises_xp/exercise-4-find-the-sum.js
+suggestions for improvement:
+- Skipping file (too many comments or blank lines).
+Correctness: N/A%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day4/exercises_xp/exercise-5-kg-and-grams.js
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day4/exercises_xp/exercise-6-fortune-teller.html
+suggestions for improvement:
+- The HTML file lacks content directly related to the exercises, particularly concerning the JavaScript exercises focusing on scope, ternary operators, functions, and DOM manipulation.
+- The HTML only sets up a basic structure. Ensure the JavaScript file is correctly linked and any expected HTML elements for exercises 6, 7 and 8 (fortune teller, welcome and juice bar) are present.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day4/exercises_xp/exercise-6-fortune-teller.js
+suggestions for improvement:
+- Consider adding a check to ensure the target element for appending the paragraph exists before attempting to append to it.  For example, check if `document.body` exists.
+- While not strictly necessary here, using `const` for `sentence` and `p` is good practice as these variables are not reassigned.
+Correctness: 100%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day4/exercises_xp/exercise-7-welcome.html
+suggestions for improvement:
+- The HTML file should contain the javascript code inside <script> tag to fulfill the requirement of exercise 7 which says to create a self-invoking function that takes 1 argument (user name) and add the user name and profile picture in navbar.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day4/exercises_xp/exercise-7-welcome.js
+suggestions for improvement:
+- Consider adding a default navbar in the HTML to ensure the script always has an element to append to.
+- Adding error handling (e.g., try-catch) could improve robustness.
+Correctness: 100%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day4/exercises_xp/exercise-8-juice-bar.html
+suggestions for improvement:
+- The HTML file should contain the JavaScript code to solve the exercise. It should not be a separate file.
+- The HTML file only contains the basic structure and a reference to an external JavaScript file, but it doesn't implement any of the logic required by the exercises.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day4/exercises_xp/exercise-8-juice-bar.js
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
