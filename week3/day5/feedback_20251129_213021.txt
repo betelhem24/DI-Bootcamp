@@ -1,0 +1,52 @@
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day5/daily-challenge-todo-list/daily-challenge-todo-list.css
+suggestions for improvement:
+- The CSS code provided is for styling the To-Do List application, but it does not contain any JavaScript logic to make the application functional. To fulfill the prompt, you must also provide HTML and JavaScript code.
+- Missing JavaScript logic for addTask(), doneTask(), and deleteTask() functions.
+- Missing HTML code to define the form and the div with class 'listTasks'.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day5/daily-challenge-todo-list/daily-challenge-todo-list.html
+suggestions for improvement:
+- The provided code represents the HTML structure for a to-do list application. While it sets up the basic layout with a form for adding tasks and a div to display them, it doesn't include the JavaScript functionality to handle user input, update the task list, or implement the bonus features (task IDs, done status, delete functionality).
+- To make this code fully functional according to the prompt requirements, you'll need to implement the JavaScript logic in the daily-challenge-todo-list.js file.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day5/daily-challenge-todo-list/daily-challenge-todo-list.js
+suggestions for improvement:
+- Consider adding comments to explain more complex logic within the doneTask and deleteTask functions.
+- Use more descriptive variable names in some places for enhanced readability. For example, rename 't' to 'task' in find and findIndex methods.
+Correctness: 100%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day5/mini-project-coloring-game/mini-project-coloring-game.css
+suggestions for improvement:
+- The provided code is CSS, not Javascript, and therefore does not address the requirements of the mini-project.
+- The mini-project explicitly requires the creation of a to-do list application with specific functionalities implemented in JavaScript, involving DOM manipulation and event handling.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day5/mini-project-coloring-game/mini-project-coloring-game.html
+suggestions for improvement:
+- The provided code is for a coloring game, which is completely unrelated to the chapter content on DOM events and creating a to-do list. The code doesn't address any of the specific requirements outlined in the instructions, such as creating a form, adding tasks to an array, or implementing the bonus features.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day5/mini-project-coloring-game/mini-project-coloring-game.js
+suggestions for improvement:
+- The provided code implements a drawing grid, which is completely unrelated to the to-do list application described in the chapter content. Therefore, it does not address any of the requirements outlined in the instructions.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day5/mini-project-drumset/mini-project-drumset.css
+suggestions for improvement:
+- The provided code is for styling a webpage, specifically focusing on styling drum buttons. This is entirely unrelated to the chapter content which outlines the creation of a to-do list with JavaScript DOM manipulation.
+- No JavaScript code is provided to handle the DOM events, task creation, or array manipulation as described in the chapter content.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day5/mini-project-drumset/mini-project-drumset.html
+suggestions for improvement:
+- The code provided is for a drumset game, which is unrelated to the 'To Do' list project described in the chapter content. It doesn't address any of the requirements like creating a form, adding tasks to a list, or implementing bonus features such as marking tasks as done or deleting them.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day5/mini-project-drumset/mini-project-drumset.js
+suggestions for improvement:
+- The provided code is completely unrelated to the todo list application described in the prompt. It appears to be code for a drum machine or similar sound-playing application.
+- The code does not address any of the requirements of the problem, such as creating a form, adding tasks to a list, or implementing the bonus functionalities.
+Correctness: 0%
+-----
