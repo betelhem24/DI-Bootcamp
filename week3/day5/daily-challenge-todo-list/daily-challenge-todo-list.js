@@ -26,10 +26,12 @@ function addTask(taskText) {
 
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
+    checkbox.id = `task-${task.task_id}`;
 
-    const textSpan = document.createElement("span");
-    textSpan.className = "text";
-    textSpan.textContent = task.text;
+    const label = document.createElement("label");
+    label.className = "text";
+    label.htmlFor = checkbox.id;
+    label.textContent = task.text;
 
     const deleteBtn = document.createElement("button");
     deleteBtn.innerHTML = `<i class="fas fa-times"></i>`;
@@ -43,7 +45,7 @@ function addTask(taskText) {
     });
 
     taskDiv.appendChild(checkbox);
-    taskDiv.appendChild(textSpan);
+    taskDiv.appendChild(label);
     taskDiv.appendChild(deleteBtn);
 
     taskContainer.appendChild(taskDiv);

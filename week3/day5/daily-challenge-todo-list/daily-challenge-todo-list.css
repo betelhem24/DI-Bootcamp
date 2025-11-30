@@ -61,7 +61,7 @@ form button:hover {
 
 .task.completed .text {
     text-decoration: line-through;
-    color: #a0a0a0;
+    color: red;
 }
 
 .task input[type="checkbox"] {
