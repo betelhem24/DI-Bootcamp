@@ -1,0 +1,19 @@
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week2/day2/daily-challenge-day2.py
+suggestions for improvement:
+- The provided code is for a 'Daily Challenge' involving pagination and DNA mutation simulation, which is entirely unrelated to the chapter content on inheritance, polymorphism, exceptions, and the `super()` function. Therefore, it does not address any of the exercises or topics presented in the chapter.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week2/day2/exericises-day-2.py
+suggestions for improvement:
+- Consider extracting common logic into helper functions to improve code organization, especially within methods like `fight()` in the `Dog` class, or the game logic in `GameOfLife`.
+- For the ATM exercise, consider adding input validation to prevent non-integer inputs, enhancing the user experience and preventing errors.
+Correctness: 100%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week2/day2/oop-inheritance.py
+suggestions for improvement:
+- The code attempts to demonstrate inheritance with `Animal`, `Dog`, and `Cat` classes, but it does not align with any of the specific exercises or instructions provided in the chapter content. The chapter covers inheritance, polymorphism, class methods, exceptions and the `super()` function, but the submitted code doesn't directly address these elements in a way that corresponds to the given exercises. The chapter content focuses on creating classes with specific methods and interactions (e.g., `walk()`, `bark()`, `fight()`, `train()`, `play()`, `do_a_trick()`, `is_18()`, `born()`, `check_majority()`, `family_presentation()`), which are absent in the submitted code. The original Chapter Content/Questions present four very distinct exercises. The submission does not attempt to implement any of them.
+- The `__inti__` method in the `Animal` class has a typo; it should be `__init__`. This will prevent the class from being properly initialized.
+- There are commented-out code snippets that are not part of the final working code.  Clean up the file so it only includes the relevant code.
+- In the `Dog` class, the `legs` parameter is passed to the superclass but not used in the superclass's `__init__` method. This is unnecessary and could be confusing.
+Correctness: 0.0%
+-----

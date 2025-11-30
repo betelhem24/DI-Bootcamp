@@ -1,0 +1,12 @@
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week2/day4/daily-challenge-day4.py
+suggestions for improvement:
+- The `remove_special_characters` method in the `TextModification` class is defined outside the class. Move it inside the class definition and correct the indentation.
+- Consider using a more comprehensive list of stop words for `remove_stop_words`
+- Ensure proper error handling, especially in file operations.
+- The `remove_special_characters` function uses a regular expression. Consider compiling the regular expression for performance if it's used multiple times.
+Brief justification:
+- correctness: The code correctly implements most of the requirements outlined in the chapter content. It defines the `Text` class with `word_frequency`, `most_common_word`, and `unique_words` methods. It also correctly implements the `from_file` class method. The `TextModification` class inherits from `Text` and includes the `remove_punctuation` and `remove_stop_words` methods. However, `remove_special_characters` is outside the class. This causes a minor deviation, but the core functionality is there.
+- readability: The code is generally well-readable, with clear class and method names.  Comments could be added to explain more complex logic, such as the regular expression in `remove_special_characters`. Consistent indentation and spacing enhance readability.
+- performance: Performance is generally good. String splitting and dictionary lookups are relatively efficient. For `remove_stop_words`, using a set for stop words lookup could slightly improve performance.  For the `remove_special_characters` using a compiled regex will increase the preformance if the function is called many times.
+- security: The code appears secure, with no immediately obvious vulnerabilities.  File handling in `from_file` should ideally include more robust error handling to prevent issues like denial-of-service attacks if very large files are processed.
+
