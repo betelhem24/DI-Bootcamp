@@ -1,0 +1,30 @@
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/exercise-xp/exercise-1.html
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/exercise-xp/exercise-2.js
+suggestions for improvement:
+- Skipping file (too many comments or blank lines).
+Correctness: N/A%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/exercise-xp/exercise-3.js
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/exercise-xp/exercise-4.js
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/exercise-xp/exercise-5.js
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/exercise-xp/exercise-6.js
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
