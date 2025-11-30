@@ -1,0 +1,59 @@
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day2/exercises.xp/exercise-1-divisible-numbers.js
+suggestions for improvement:
+- The code is already well-structured and easy to understand.
+- Consider adding comments to explain the purpose of each function, even though it's relatively straightforward.
+Correctness: 100%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day2/exercises.xp/exercise-2-shopping-list.js
+suggestions for improvement:
+- Consider using more descriptive variable names (e.g., `item` could be `fruit`).
+- You could potentially use `Object.keys(stock).includes(item)` instead of `stock[item] > 0` for checking if the item exists in stock, though in this specific case it doesn't add much value.
+Correctness: 100%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day2/exercises.xp/exercise-3-wallet.js
+suggestions for improvement:
+- The code is well-structured and easy to understand.
+- Consider adding comments to explain the purpose of the function and the different variables.
+Correctness: 100%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day2/exercises.xp/exercise-4-vacation-costs.js
+suggestions for improvement:
+- Implement input validation to ensure that user input for nights and days are indeed numbers before passing them to the cost functions. The prompt returns a string, which is converted into a number using `parseInt`. It is good practice to check if the result of parseInt is NaN. If so, inform the user to enter a number and repeat the prompt.
+- Ensure the prompt for destination accepts a string before passing it to the `planeRideCost` function. If the prompt result is empty, inform the user and repeat the prompt.
+- Consider handling non-numeric inputs in a more robust manner, potentially using a loop to continuously prompt the user until valid input is received. This directly addresses the instruction to 'ask again' if the answer is not a number/string. Right now, non numeric values will produce a NaN value, but that is not ideal user experience
+- Consider using template literals for the console log in `totalVacationCost` for improved readability.
+Correctness: 75%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day2/exercises.xp/exercise-5-user.html
+suggestions for improvement:
+- No specific feedback.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day2/exercises.xp/exercise-5-user.js
+suggestions for improvement:
+- Use more descriptive variable names to improve readability (e.g., `userLists` instead of `lists`).
+- For the bonus alert, it's more reliable to compare against the computed style rather than the directly set style, as CSS might override the inline style. However, for this specific exercise, directly comparing is acceptable.
+- Consider using more specific selectors for DOM elements instead of relying on the order of elements, to make the code more robust to HTML changes.
+Correctness: 90%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day2/exercises.xp/exercise-6-change-navbar.html
+suggestions for improvement:
+- No specific feedback.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day2/exercises.xp/exercise-6-change-navbar.js
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day2/exercises.xp/exercise-7-my-book-list.html
+suggestions for improvement:
+- No specific feedback.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day2/exercises.xp/exercise-7-my-book-list.js
+suggestions for improvement:
+- Consider adding alt text to the images for accessibility.
+- While the code is functional, for larger datasets, consider using document fragments or other optimization techniques to improve rendering performance, although it is not necessary for this small dataset.
+Correctness: 100%
+-----

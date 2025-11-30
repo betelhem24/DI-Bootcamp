@@ -1,0 +1,17 @@
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day5/daily-challenge-todo-list/daily-challenge-todo-list.css
+suggestions for improvement:
+- No specific feedback.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day5/daily-challenge-todo-list/daily-challenge-todo-list.html
+suggestions for improvement:
+- The HTML structure is a good start, but the functionality described in the JavaScript file is missing.
+- The provided HTML serves only as a basic framework. It needs to be augmented with JavaScript to fulfill the task's interactive requirements, such as adding tasks to the DOM dynamically and implementing the button functionalities.
+Correctness: 10.0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day5/daily-challenge-todo-list/daily-challenge-todo-list.js
+suggestions for improvement:
+- Consider using more descriptive variable names (e.g., 'taskElement' instead of 'taskDiv').
+- You could store the task objects in local storage to persist data between sessions.
+Correctness: 100%
+-----

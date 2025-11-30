@@ -1,0 +1,19 @@
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day1/exercises-day1/exercises-xp-gold.js
+suggestions for improvement:
+- The code addresses completely different exercises than the ones provided in the prompt.
+- Make sure the code relates to the exercises provided.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day1/exercises-day1/exercises-xp-ninja.js
+suggestions for improvement:
+- The submitted code addresses exercises related to calculating BMI and grade averages, which are not present in the provided chapter content. The chapter content focuses on variables, conditionals, loops, and objects, with exercises specifically targeting arrays, objects, and loop usage.
+- The code is entirely unrelated to the chapter content; therefore, it does not demonstrate any understanding or application of the material covered in the exercises.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day1/exercises-day1/exercises-xp.js
+suggestions for improvement:
+- The code is generally well-structured and addresses each part of the exercises correctly. Comments are helpful, but could be slightly more concise.
+- Consider using `const` for variables that do not need to be reassigned (e.g., `MaryIndex`, `FooIndex`, `secondTenant`, `roomsOfSecondTenant`, `sarahRent`, `davidRent`, `danRent` in Exercise 4).
+- In Exercise 3, the prompt is loaded with `require('prompt-sync')()`. While it works, it is not ideal for browser-based JavaScript execution. If targeting a browser environment, consider using the built-in `prompt()` function directly, and if targeting Node.js, this is an acceptable solution.
+Correctness: 100%
+-----
