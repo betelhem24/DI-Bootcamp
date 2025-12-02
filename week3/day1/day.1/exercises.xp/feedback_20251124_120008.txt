@@ -1,0 +1,6 @@
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day1/day.1/exercises.xp/exercise.xp.js
+suggestions for improvement:
+- Consider adding more comments to explain the purpose of each section of code, especially in more complex exercises.
+- In Exercise 3, instead of directly assigning the prompt value to userNumber, you could validate the input to ensure it's a number before proceeding. This would enhance the robustness of the code.
+Correctness: 100%
+-----

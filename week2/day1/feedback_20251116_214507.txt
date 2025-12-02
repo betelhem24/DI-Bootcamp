@@ -1,0 +1,10 @@
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week2/day1/exercise-day-1.py
+suggestions for improvement:
+- The code is well-structured and addresses each exercise comprehensively.
+- Consider adding comments to further clarify the purpose of each step, especially in the more complex Zoo class.
+Brief justification:
+- correctness: The code accurately implements all the requirements of each exercise, including creating classes, instantiating objects, using methods, and implementing the specified logic for each problem. The Cat, Dog, Song, and Zoo classes are all correctly implemented according to the instructions.
+- readability: The code is generally well-formatted and easy to understand. Using more descriptive variable names could slightly improve readability, but overall it is well-organized.
+- performance: The code's performance is efficient for the given problem sizes. The algorithms used are straightforward and suitable for the scale of the exercises.
+- security: The code does not involve any external input or operations that could pose security risks, making it secure.
+
