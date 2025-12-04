@@ -1,0 +1,18 @@
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week2/day5/mini-project-anagram-checker/__pycache__/anagram_checker.py
+suggestions for improvement:
+- Consider adding error handling for the case where the 'sowpods.txt' file is not found.
+- Using a set `self.words_set` for `is_valid_word` improves performance.
+- The code is well-structured and follows the steps outlined in the instructions.
+Correctness: 100%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week2/day5/mini-project-anagram-checker/anagrams.py
+suggestions for improvement:
+- The code in `anagrams.py` does not handle invalid input (more than one word or non-alphabetic characters).  The instructions specify this should be validated.
+- The code does not display the word, validity, and anagrams in a single formatted message as requested in the instructions.
+Correctness: 70%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week2/day5/mini-project-anagram-checker/sowpods.txt
+suggestions for improvement:
+- Skipping file (too many comments or blank lines).
+Correctness: N/A%
+-----
