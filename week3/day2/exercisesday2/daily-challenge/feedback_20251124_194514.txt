@@ -1,0 +1,22 @@
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day2/exercisesday2/daily-challenge/daily-challenge-Planets/daily-challenge-Planets.js
+suggestions for improvement:
+- Consider adding comments to explain more complex logic, such as the random moon positioning.
+- The code is generally well-structured, but you could explore using CSS variables to manage planet colors for better maintainability.
+Correctness: 100%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day2/exercisesday2/daily-challenge/daily-challenge-Planets/planets.html
+suggestions for improvement:
+- The provided HTML code does not contain any JavaScript, so it does not address the problem or implement the functionality described in the Chapter Content/Questions.
+- The problem requires working with a JS file and manipulating the DOM, but this HTML file only sets up the basic structure and styling. There is no JavaScript code to evaluate.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day2/exercisesday2/daily-challenge/daily-challenge-words-in-the-stars/daily-challenge-words-in-the-stars.js
+suggestions for improvement:
+- The provided code is completely unrelated to the chapter content and instructions. It does not create a solar system webpage with planets and moons, nor does it manipulate the DOM to achieve this.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day2/exercisesday2/daily-challenge/daily-challenge-words-in-the-stars/index.html
+suggestions for improvement:
+- The provided code addresses a different problem than the one described in the chapter content. The chapter is about manipulating the DOM to create a solar system visualization, while the submitted code takes comma-separated words as input, finds the longest word, and prints the words in a star-bordered frame.
+Correctness: 0%
+-----

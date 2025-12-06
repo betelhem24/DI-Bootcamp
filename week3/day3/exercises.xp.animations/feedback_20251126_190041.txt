@@ -1,0 +1,24 @@
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day3/exercises.xp.animations/exercise-1-timer.html
+suggestions for improvement:
+- The HTML code provided is incomplete without the accompanying JavaScript file (exercise-1-timer.js) to fulfill the requirements of Exercise 1. A full assessment is impossible without this JavaScript code.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day3/exercises.xp.animations/exercise-1-timer.js
+suggestions for improvement:
+- Consider adding comments to each part of the exercise to improve readability further, especially if submitting as a single file.
+- For performance, if the number of paragraphs gets very large, consider a more efficient way to add elements to the DOM, although this is not an issue with only 5 paragraphs.
+Correctness: 100%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day3/exercises.xp.animations/exercise-2-move-the-box.html
+suggestions for improvement:
+- The provided code is only the HTML structure, and it doesn't contain any Javascript code related to the first exercise involving timers and DOM manipulation, making it irrelevant to part of the chapter content. Therefore, correctness is scored as 0 for Exercise 1.
+- The code only contains the HTML structure of the second exercise but no JavaScript to actually move the box. The JavaScript part of the second exercise should be in a separate JavaScript file linked to the HTML, which is mentioned in the HTML part.
+- The exercise asks to implement functionality using `setInterval` to move the box, which is missing in the given code. It also requires linking an external javascript file.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day3/exercises.xp.animations/exercise-2-move-the-box.js
+suggestions for improvement:
+- Consider adding comments to explain the purpose of each variable and the overall logic of the function, especially the interval function.
+- While the animation speed is good, you might want to explore using `requestAnimationFrame` for smoother and potentially more performant animations, though this is not strictly required.
+Correctness: 100%
+-----
