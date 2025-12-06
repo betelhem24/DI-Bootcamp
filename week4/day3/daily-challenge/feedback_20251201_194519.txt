@@ -1,0 +1,13 @@
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/day3/daily-challenge/daily-challenge.html
+suggestions for improvement:
+- The HTML structure is fine, but the JavaScript logic is missing.  You need a 'daily-challenge.js' file that handles the form submission, retrieves the data, converts it to JSON, and appends it to the DOM.
+- Consider using an event listener on the form's submit event to prevent the default form submission behavior.
+- Ensure proper escaping of user input to prevent potential XSS vulnerabilities when appending to the DOM.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/day3/daily-challenge/daily-challenge.js
+suggestions for improvement:
+- Consider adding basic input validation to ensure that the user provides the data in the expected format.
+- You could create a specific element in the HTML to display the JSON string instead of appending to the body, providing better structure and control over the output.
+Correctness: 100%
+-----

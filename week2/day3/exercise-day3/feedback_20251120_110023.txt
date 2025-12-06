@@ -1,0 +1,58 @@
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week2/day3/exercise-day3/exercises-xp-gold.py
+suggestions for improvement:
+- The provided code does not address any of the exercises in the chapter content.  It covers different topics like finding the upcoming holiday, calculating age on different planets, using regular expressions, and creating a password generator, none of which directly align with the dunder methods, modules, `string`, `datetime`, and `faker` modules as outlined in the chapter.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week2/day3/exercise-day3/exercises-xp/exercise3.py
+suggestions for improvement:
+- The solution only addresses Exercise 3. Implement the rest of the exercises.
+- The instructions for Exercise 3 are correctly followed.
+Correctness: 20%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week2/day3/exercise-day3/exercises-xp/exercise4.py
+suggestions for improvement:
+- The provided code only addresses Exercise 4 and neglects the rest of the exercises. To fully address the prompt, implement solutions for Exercises 1, 2, 3, 5, 6, and 7.
+- For Exercise 1 (Currencies), implement the dunder methods `__str__`, `__int__`, `__repr__`, `__add__`, and `__iadd__` in the `Currency` class to handle string representation, integer conversion, addition, and in-place addition.
+- For Exercise 2 (Import), create a `func.py` file with a function that sums two numbers and prints the result. Then, import and call the function from the main script.
+- For Exercise 3 (String module), use the `string` module to generate a random string of length 5, consisting of uppercase and lowercase letters only.
+- For Exercise 5 (Amount of time left until January 1st), use the `datetime` module to calculate and display the time left until January 1st.
+- For Exercise 6 (Birthday and minutes), create a function that accepts a birthdate as an argument, then displays a message stating how many minutes the user lived in his life.
+- For Exercise 7 (Faker Module), install the `faker` module and use it to create a list of dictionaries, where each dictionary represents a user with fake data.
+Correctness: 20%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week2/day3/exercise-day3/exercises-xp/exercise5.py
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week2/day3/exercise-day3/exercises-xp/exercise6.py
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week2/day3/exercise-day3/exercises-xp/exercise7.py
+suggestions for improvement:
+- Consider adding type hints for better readability and maintainability.
+- You could improve the performance slightly by using a list comprehension instead of a loop when creating the list of users, although for small numbers of users, the difference is negligible.
+Correctness: 100%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week2/day3/exercise-day3/exercises-xp/exercise_one.py
+suggestions for improvement:
+- Skipping file (too many comments or blank lines).
+Correctness: N/A%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week2/day3/exercise-day3/exercises-xp/exercises1-currencies.py
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week2/day3/exercise-day3/exercises-xp/func.py
+suggestions for improvement:
+- Skipping file (too many comments or blank lines).
+Correctness: N/A%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week2/day3/exercise-day3/exerices-xp-ninja.py
+suggestions for improvement:
+- The provided code is completely unrelated to the exercises described in the chapter content. It covers topics like temperature conversion and quantum physics, which are not mentioned in the chapter at all.
+Correctness: 0%
+-----
