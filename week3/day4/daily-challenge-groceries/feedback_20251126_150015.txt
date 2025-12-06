@@ -1,0 +1,11 @@
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day4/daily-challenge-groceries/groceries.html
+suggestions for improvement:
+- The provided HTML code only sets up the environment to run the JavaScript code. It does not contain any JavaScript code to solve the problem.
+- The javascript code should be in 'groceries.js' and should contain the solutions for the outlined problems.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day4/daily-challenge-groceries/groceries.js
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----

@@ -1,0 +1,16 @@
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day5/daily-challenge-todo-list/daily-challenge-todo-list.css
+suggestions for improvement:
+- The provided code is CSS, and the task requires HTML and JavaScript to fulfill the intended functionality.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day5/daily-challenge-todo-list/daily-challenge-todo-list.html
+suggestions for improvement:
+- The provided code snippet is the HTML structure and not the JavaScript functionality, which is the core requirement of the problem description.
+- Need to review the JavaScript code to accurately assess its correctness, readability, performance, and security.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day5/daily-challenge-todo-list/daily-challenge-todo-list.js
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
