@@ -1,0 +1,97 @@
+/*  Body Styles  */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%; 
+}
+
+body {
+    font-family: 'Arial', sans-serif; 
+    color: white; 
+    text-align: center; 
+    background-image: url('https://images.pexels.com/photos/1169754/pexels-photo-1169754.jpeg');
+   
+    /* Full-page starry background image */
+    background-size: cover;        
+    background-position: center;   
+    background-repeat: no-repeat;  
+    min-height: 100vh;             
+    position: relative;            
+}
+
+/*  Heading */
+h1 {
+    margin-top: 40px;               
+    font-size: 2.5rem;              
+    color: lavenderblush;          
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.7); 
+}
+
+/*  Character Info Box*/
+#character-info {
+    margin: 50px auto 20px;        /* Center box with spacing */
+    background-color: rgba(0,0,0,0); 
+    border: 3px solid rosybrown;    
+    border-radius: 15px;           
+    padding: 25px 40px;            /* Inner spacing */
+    width: 300px;                  
+    min-height: 150px;            
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); 
+    color: aquamarine;             
+    position: relative;            
+    z-index: 1;                    
+}
+
+/* Text inside Character Info Box  */
+#character-info h2 {
+    font-size: 28px; 
+    margin-bottom: 15px; 
+}
+
+#character-info p {
+    font-size: 20px; 
+    margin: 5px 0;    /
+}
+
+/* Link inside Character Info Box */
+#character-info a {
+    color: gold;          
+    text-decoration: underline; 
+    font-weight: bold;     
+    transition: color 0.3s; 
+}
+
+#character-info a:hover {
+    color: orange;         
+}
+
+/*  Loading Message  */
+.loading {
+    font-size: 22px;
+    color: #ffeb3b;      
+}
+
+/*  Error Message  */
+.error {
+    color: red;
+    font-weight: bold;
+}
+
+/* Button  */
+#get-character-btn {
+    margin: 0 auto 60px;    
+    padding: 12px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    background-color: blueviolet;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: block;
+}
+
+#get-character-btn:hover {
+    background-color: blueviolet;
+    transform: scale(1.05); 
+}
