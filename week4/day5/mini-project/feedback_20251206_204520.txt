@@ -1,0 +1,18 @@
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/day5/mini-project/index.html
+suggestions for improvement:
+- The provided HTML code sets up the basic structure for the Star Wars web app, but it doesn't include the JavaScript logic necessary to fetch and display data from the API. The prompt explicitly requires using async/await and the Fetch API to retrieve and display character information, including name, height, gender, birth year, and homeworld.
+- The HTML provides the basic structure, including the button and character info box, but without the JavaScript implementation, it does not fulfill the project requirements.
+- The code needs to include the script.js content that utilizes async/await and the Fetch API to interact with the Star Wars API and dynamically update the page.
+Correctness: 0%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/day5/mini-project/script.js
+suggestions for improvement:
+- Consider adding comments to improve the clarity of the different sections of the code. E.g., a comment above the cache declaration explaining its purpose.
+- The retries logic could be refactored into a separate, reusable function for better organization, although it is functional as is.
+Correctness: 100%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/day5/mini-project/style.css
+suggestions for improvement:
+- The provided code is CSS.  It needs to include Javascript logic to fetch data from the API and display it, along with HTML to structure the page.
+Correctness: 0%
+-----
