@@ -1,3 +1,7 @@
+// Daily Challenge: Currency Converter
+
+
+
 // === CONFIGURATION ===
 const API_KEY = "4376b0a080c37a7476d2f58d";
 const BASE_URL = `https://v6.exchangerate-api.com/v6/${API_KEY}`;
