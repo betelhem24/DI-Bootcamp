@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currency Converter</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>Currency Converter</h1>
+
+    <label for="amount">Amount:</label>
+    <input type="number" id="amount" placeholder="Enter amount">
+
+    <label for="fromCurrency">From:</label>
+    <input list="fromCurrencies" id="fromCurrency" placeholder="Type or select currency">
+    <datalist id="fromCurrencies"></datalist>
+
+    <label for="toCurrency">To:</label>
+    <input list="toCurrencies" id="toCurrency" placeholder="Type or select currency">
+    <datalist id="toCurrencies"></datalist>
+
+    <div class="buttons">
+      <button id="convertBtn">Convert</button>
+      <button id="switchBtn">Switch</button>
+    </div>
+
+    <p id="result">Converted amount will appear here</p>
+  </div>
+
+  <script>
+    const API_KEY = "4376b0a080c37a7476d2f58d";
+    const baseURL = "https://v6.exchangerate-api.com/v6/" + API_KEY;
+
+    async function fetchCurrencies() {
+      try {
+        const res = await fetch(`${baseURL}/codes`);
+        const data = await res.json();
+        const fromDatalist = document.getElementById("fromCurrencies");
+        const toDatalist = document.getElementById("toCurrencies");
+
+        data.supported_codes.forEach(([code, name]) => {
+          const optionFrom = document.createElement("option");
+          optionFrom.value = code;
+          optionFrom.textContent = `${code} - ${name}`;
+          fromDatalist.appendChild(optionFrom);
+
+          const optionTo = document.createElement("option");
+          optionTo.value = code;
+          optionTo.textContent = `${code} - ${name}`;
+          toDatalist.appendChild(optionTo);
+        });
+
+        document.getElementById("fromCurrency").value = "USD";
+        document.getElementById("toCurrency").value = "EUR";
+      } catch (err) {
+        console.error("Error fetching currencies:", err);
+      }
+    }
+
+    async function convertCurrency() {
+      const amount = parseFloat(document.getElementById("amount").value);
+      const fromCurrency = document.getElementById("fromCurrency").value.toUpperCase();
+      const toCurrency = document.getElementById("toCurrency").value.toUpperCase();
+
+      if (!amount) {
+        document.getElementById("result").textContent = "Please enter a valid amount.";
+        return;
+      }
+
+      try {
+        const res = await fetch(`${baseURL}/pair/${fromCurrency}/${toCurrency}/${amount}`);
+        const data = await res.json();
+        if (data.result === "success") {
+          document.getElementById("result").textContent = `${amount} ${fromCurrency} = ${data.conversion_result.toFixed(2)} ${toCurrency}`;
+        } else {
+          document.getElementById("result").textContent = "Conversion failed. Please check your currencies.";
+        }
+      } catch (err) {
+        document.getElementById("result").textContent = "Error fetching conversion rate.";
+        console.error(err);
+      }
+    }
+
+    function switchCurrencies() {
+      const fromInput = document.getElementById("fromCurrency");
+      const toInput = document.getElementById("toCurrency");
+      [fromInput.value, toInput.value] = [toInput.value, fromInput.value];
+      convertCurrency();
+    }
+
+    document.getElementById("convertBtn").addEventListener("click", convertCurrency);
+    document.getElementById("switchBtn").addEventListener("click", switchCurrencies);
+
+    fetchCurrencies();
+  </script>
+
+</body>
+</html>
