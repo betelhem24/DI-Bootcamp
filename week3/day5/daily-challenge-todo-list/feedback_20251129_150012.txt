@@ -1,0 +1,18 @@
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day5/daily-challenge-todo-list/daily-challenge-todo-list.css
+suggestions for improvement:
+- The provided CSS styles the to-do list application, but does not implement any of the required JavaScript functionalities (addTask, doneTask, deleteTask) or data structures (tasks array).
+- Since the prompt requests JavaScript functionality, provide JavaScript code.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day5/daily-challenge-todo-list/daily-challenge-todo-list.html
+suggestions for improvement:
+- The provided code is just the HTML structure and does not contain the Javascript functionality as required by the prompt, so no points can be awarded.
+- The Javascript functionality needs to be added to the javascript file.
+- Consider splitting the code into logical functions for better organization.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day5/daily-challenge-todo-list/daily-challenge-todo-list.js
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----

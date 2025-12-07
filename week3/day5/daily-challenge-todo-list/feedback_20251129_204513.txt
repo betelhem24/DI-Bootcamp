@@ -1,0 +1,19 @@
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day5/daily-challenge-todo-list/daily-challenge-todo-list.css
+suggestions for improvement:
+- This code only provides the CSS styling for the to-do list application, and it does not address the JavaScript functionality required by the Chapter Content/Questions. The provided CSS file focuses on the visual aspects of the to-do list such as layout, colors, and styling of form elements and tasks.
+- There is no attempt to implement the core JavaScript features such as adding tasks to an array, dynamically adding tasks to the DOM, creating 'X' buttons, or handling task completion. This results in a score of 0 for correctness, as the code does not align with the problem description.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day5/daily-challenge-todo-list/daily-challenge-todo-list.html
+suggestions for improvement:
+- Implement the JavaScript functionalities required for the todo list application as described in the prompt, specifically adding tasks to an array and displaying them in the DOM.
+- Ensure the included JavaScript file (daily-challenge-todo-list.js) contains the necessary logic to handle form submissions, add tasks to the `tasks` array, and update the DOM with the new tasks, including the 'X' button and checkbox.
+- Implement the bonus features (I and II) if possible, focusing on creating task objects with properties like `task_id`, `text`, and `done`, and implementing the `doneTask()` and `deleteTask()` functions for managing task completion and deletion.
+Correctness: 10.0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day5/daily-challenge-todo-list/daily-challenge-todo-list.js
+suggestions for improvement:
+- Consider using a more robust method for generating unique IDs to prevent potential collisions in larger applications. A library like UUID could be used.
+- While not strictly necessary for this example, consider using event delegation for handling checkbox and delete button clicks, especially if you expect a very large number of tasks. This can improve performance.
+Correctness: 100%
+-----

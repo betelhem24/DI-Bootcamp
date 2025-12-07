@@ -1,0 +1,27 @@
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/day4/exercises-xp/exercise1.js
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/day4/exercises-xp/exercise2.html
+suggestions for improvement:
+- The HTML provided is only a container for JavaScript, and it doesn't contain any JavaScript code to address the exercises. The exercises require using the Fetch API and Async/Await.
+- To address the problem, include JavaScript code within a `<script>` tag or in a linked `.js` file that uses the Fetch API to retrieve data from the Giphy API, handles potential errors, and logs the data as required by the exercises.
+Correctness: 0%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/day4/exercises-xp/exercise2.js
+suggestions for improvement:
+- In exercise 2, you're asked to use the Fetch API to retrieve 10 gifs about the sun and log the Javascript Object that you receive. It is fine for exercise 2 but the instructions for exercise 1 are not in here.
+- Ensure that your actual API key replaces the placeholder. This is crucial for the program to function correctly.
+Correctness: 50%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/day4/exercises-xp/exercise3.js
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/day4/exercises-xp/exercise4.js
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----

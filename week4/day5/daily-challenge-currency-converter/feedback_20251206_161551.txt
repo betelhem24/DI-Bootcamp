@@ -1,0 +1,21 @@
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/day5/daily-challenge-currency-converter/index.html
+suggestions for improvement:
+- The provided code only sets up the HTML structure for the currency converter. It does not include any JavaScript code to fetch data from the ExchangeRate API, populate the currency options, perform the conversion, or implement the switch button functionality. The instructions in the prompt are specifically asking for the use of Fetch API and async/await to interact with the ExchangeRate API based on the documentation.
+- The Javascript file ('script.js') is empty, so there is no implementation of the core functionality related to Fetch API and async await.
+Correctness: 0%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/day5/daily-challenge-currency-converter/script.js
+suggestions for improvement:
+- The code uses mock data instead of fetching data from the provided API. It should use `fetch` and `async/await` to get the currencies and conversion rates from the exchangerate-api.com. This is crucial for fulfilling the core requirement of the chapter content.
+- Error handling could be improved to provide more informative messages to the user. For instance, indicating when the API request fails.
+- Input validation can be enhanced to prevent potential issues such as cross-site scripting (XSS) attacks, although the current implementation doesn't directly handle user input in a dangerous way.
+Correctness: 50%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/day5/daily-challenge-currency-converter/style.css
+suggestions for improvement:
+- The provided code only includes CSS styling. To fulfill the challenge's requirements, JavaScript code is needed to interact with the ExchangeRate API, fetch currency data, handle user input, and perform currency conversions.
+- Missing HTML structure for the currency converter interface. This would include input fields for amount, dropdowns for currency selection, a button for conversion, and a display area for the result.
+- Implement the async/await pattern to handle the asynchronous nature of API calls.
+- Include error handling for API requests and invalid user inputs.
+Correctness: 0%
+-----
