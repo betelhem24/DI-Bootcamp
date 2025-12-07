@@ -1,0 +1,12 @@
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day1/daily-challenge-day1/daily-challenge-not-bad.js
+suggestions for improvement:
+- The code addresses a different problem than the one described in the instructions. The instructions ask for a program that uses for loops to generate a specific pattern of asterisks. The provided code attempts to replace 'not bad' with 'good' in a sentence. This is completely unrelated to the for loop exercises.
+- The code could be improved with more descriptive variable names (e.g., 'notIndex' instead of 'wordNot').
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day1/daily-challenge-day1/daily-challenge-stars-and-gold.js
+suggestions for improvement:
+- The bubble sort section is not part of the initial requirements and should be separated or removed if focusing solely on the star pattern.
+- Consider adding comments to the nested loop version to explain the purpose of the inner loop.
+Correctness: 100%
+-----
