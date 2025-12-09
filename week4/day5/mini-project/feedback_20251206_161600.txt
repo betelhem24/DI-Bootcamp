@@ -1,0 +1,20 @@
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/day5/mini-project/index.html
+suggestions for improvement:
+- The provided HTML sets up the basic structure for the Star Wars web application but is incomplete.
+- It lacks the elements required to display character information (name, height, gender, birth year, homeworld).
+- The `character-info` div is a placeholder, but it needs to be populated with the right HTML elements.
+- Consider adding placeholders for a loading message and error message.
+Correctness: 0%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/day5/mini-project/script.js
+suggestions for improvement:
+- Consider adding more comprehensive error handling, such as retries with exponential backoff, for network requests.
+- Improve performance by caching homeworld data to avoid redundant API calls for the same homeworld.
+Correctness: 100%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/day5/mini-project/style.css
+suggestions for improvement:
+- The provided code is CSS, but the instructions explicitly request JavaScript code to interact with the Star Wars API, display loading messages, handle errors, and update the DOM. Therefore, the code does not address the problem described in the chapter content.
+- The submission needs to include JavaScript code to fetch data from the API and dynamically update the HTML elements.
+Correctness: 0%
+-----

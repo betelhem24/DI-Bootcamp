@@ -1,0 +1,12 @@
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/day5/mini-project/index.html
+suggestions for improvement:
+- Consider moving the CSS to the separate style.css file.
+- The retry mechanism is good, but you could add a maximum number of retries to prevent indefinite looping in case of persistent errors.
+Correctness: 100%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/day5/mini-project/style.css
+suggestions for improvement:
+- This CSS code does not fulfill any of the instructions outlined in the prompt. The prompt requests an interactive web application utilizing JavaScript, AJAX, and the Star Wars API, including specific functionalities like fetching and displaying character data, loading messages, and error handling.
+- This CSS provides styling but no actual functionality.
+Correctness: 0%
+-----

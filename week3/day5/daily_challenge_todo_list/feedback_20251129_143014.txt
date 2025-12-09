@@ -1,0 +1,19 @@
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day5/daily_challenge_todo_list/daily-challenge-todo-list.css
+suggestions for improvement:
+- The provided code snippet is CSS styling, which, while helpful for the visual presentation of the to-do list, does not implement any of the JavaScript functionalities requested in the prompt, such as adding tasks to an array, dynamically creating HTML elements, or implementing the bonus features.
+- Since no javascript code was provided, the javascript functionality to implement this To Do List is missing.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day5/daily_challenge_todo_list/daily-challenge-todo-list.html
+suggestions for improvement:
+- The HTML file provided only sets up the basic structure for the to-do list application. It includes the necessary elements like the form, input field, submit button, and the div to display tasks, but it does not include any JavaScript code to implement the actual functionality or any CSS for styling.
+- To make this HTML file functional, it needs to be connected to a JavaScript file that will handle the user interactions, such as adding new tasks, marking tasks as complete, and deleting tasks.
+- CSS should be added to match the image
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day5/daily_challenge_todo_list/daily-challenge-todo-list.js
+suggestions for improvement:
+- Consider adding comments to explain more complex logic, especially within the event listeners.
+- For slightly improved performance, especially with larger lists, consider using `DocumentFragment` to build the task elements before appending to the DOM.
+Correctness: 100%
+-----

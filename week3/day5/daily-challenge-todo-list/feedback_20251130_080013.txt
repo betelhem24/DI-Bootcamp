@@ -1,0 +1,19 @@
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day5/daily-challenge-todo-list/daily-challenge-todo-list.css
+suggestions for improvement:
+- The provided code is CSS, not JavaScript, and therefore does not address the required functionality described in the prompt (DOM events, DOM tree manipulation, adding tasks to an array and the DOM, creating interactive elements, and implementing bonus features like task completion and deletion).
+- A complete JavaScript implementation is needed to address the prompt's requirements.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day5/daily-challenge-todo-list/daily-challenge-todo-list.html
+suggestions for improvement:
+- Consider using more semantic HTML elements for better accessibility.
+- The structure and comments are helpful, good job!
+Correctness: 100%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day5/daily-challenge-todo-list/daily-challenge-todo-list.js
+suggestions for improvement:
+- Consider adding comments to explain the purpose of each section in your code.
+- Using more descriptive variable names could improve readability.
+- Error handling can be improved to provide better feedback to the user.
+Correctness: 100%
+-----
