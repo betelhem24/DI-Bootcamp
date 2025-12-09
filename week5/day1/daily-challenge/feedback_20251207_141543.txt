@@ -1,0 +1,10 @@
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day1/daily-challenge/union-type-validator.js
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day1/daily-challenge/union-type-validator.ts
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----

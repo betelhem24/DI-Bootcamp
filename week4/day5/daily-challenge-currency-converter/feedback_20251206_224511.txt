@@ -1,0 +1,15 @@
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/day5/daily-challenge-currency-converter/index.html
+suggestions for improvement:
+- The HTML provides the basic structure for the currency converter but lacks the JavaScript logic to implement the fetch API calls, async/await functionality, and the actual conversion logic as required by the instructions. The instructions cover fetching currency codes and conversion rates, this HTML setup alone does not address any of those requirements.
+Correctness: 0%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/day5/daily-challenge-currency-converter/script.js
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/day5/daily-challenge-currency-converter/style.css
+suggestions for improvement:
+- This code only includes CSS styling, but the challenge requires fetching data from APIs using `fetch` and `async/await` to create a currency converter.  The CSS code is irrelevant to the core requirements of the problem.
+Correctness: 0%
+-----
