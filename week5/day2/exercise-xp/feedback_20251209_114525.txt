@@ -1,0 +1,57 @@
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day2/exercise-xp/exercise1.js
+suggestions for improvement:
+- The provided code does not address the instructions given in Exercise 1 of the chapter content. It creates a `Person` class with `name`, `age`, and `ssn` properties, and methods to get and set the age and get the SSN. However, it does not create an `Employee` class with private, protected, and public properties as specified in the exercise.
+Correctness: 0%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day2/exercise-xp/exercise1.ts
+suggestions for improvement:
+- The code does not implement the class `Employee` as instructed in Exercise 1.
+- The properties names do not match the exercise instructions. It should have `name`, `salary`, `position` and `department`.
+- The code does not create a method `getEmployeeInfo` that returns the employee's name and position as in the instructions.
+- The code doesn't relate to any other exercise.
+Correctness: 0%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day2/exercise-xp/exercise2.js
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day2/exercise-xp/exercise2.ts
+suggestions for improvement:
+- The code is good; consider adding a check to ensure the price is non-negative.
+Correctness: 100%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day2/exercise-xp/exercise3.js
+suggestions for improvement:
+- The code demonstrates class inheritance, but it does not align with Exercise 3's specific instructions. Exercise 3 asks for an Animal base class and a Dog subclass with an overridden makeSound method. This example implements a Person and Student class.
+- The code uses JavaScript syntax (var, function) instead of TypeScript syntax (class, constructor).
+- Consider using TypeScript syntax and adhering to the prompt's instructions.
+Correctness: 20%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day2/exercise-xp/exercise3.ts
+suggestions for improvement:
+- The provided code addresses inheritance with a `Person` and `Student` class, but Exercise 3 explicitly asks for an `Animal` and `Dog` class. It does not follow instructions.
+Correctness: 0%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day2/exercise-xp/exercise4.js
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day2/exercise-xp/exercise4.ts
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day2/exercise-xp/exercise5.js
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day2/exercise-xp/exercise5.ts
+suggestions for improvement:
+- The code only addresses Exercise 5, while the prompt contains 5 exercises.  Implement the classes and functions as described in Exercises 1-4.
+- Provide more comprehensive examples and test cases, covering various scenarios and edge cases for each exercise.
+- Add comments to clarify the purpose and functionality of each class, interface, and method, especially regarding access modifiers and readonly properties.
+Correctness: 20%
+-----

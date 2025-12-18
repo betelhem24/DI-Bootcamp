@@ -1,0 +1,11 @@
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/day4/daily-challenge-gifs/daily-challenge.html
+suggestions for improvement:
+- The code only includes the HTML structure, but the actual JavaScript code is missing, therefore it cannot fulfill any of the requirements from the Chapter Content/Questions.
+Correctness: 0%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/day4/daily-challenge-gifs/daily-challenge.js
+suggestions for improvement:
+- Consider adding a loading indicator while fetching the GIF to improve the user experience.
+- The error handling could be more user-friendly by displaying the error message on the page instead of just in an alert or the console.
+Correctness: 100%
+-----
