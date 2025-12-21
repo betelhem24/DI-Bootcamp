@@ -1,0 +1,18 @@
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day5/daily-challenge-todo-list/daily-challenge-todo-list.css
+suggestions for improvement:
+- The CSS code provided does not implement any of the required functionalities from the javascript file like addTask(), deleteTask(), or doneTask().
+- The CSS is only styling the page.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day5/daily-challenge-todo-list/daily-challenge-todo-list.html
+suggestions for improvement:
+- The provided HTML code snippet is related to the 'To Do' list project described in the instructions but it's not a complete and runnable solution, it only fulfills a small portion of the requirements (the basic HTML structure and form creation).
+- The code needs to be supplemented with the corresponding CSS and JavaScript files to fully implement the desired functionality.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day5/daily-challenge-todo-list/daily-challenge-todo-list.js
+suggestions for improvement:
+- Consider using more descriptive variable names for better readability.
+- The code could benefit from more comments explaining the purpose of different sections, especially the event listeners.
+Correctness: 100%
+-----

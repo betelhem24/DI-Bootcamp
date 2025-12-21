@@ -1,0 +1,18 @@
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/day5/daily-challenge-currency-converter/index.html
+suggestions for improvement:
+- The HTML structure is present, but the core logic of fetching data using Fetch API and async/await is missing. The provided HTML sets up the basic user interface for a currency converter, which aligns with the problem description. However, it lacks the JavaScript code to actually interact with the ExchangeRate API and perform the currency conversion.
+- To address this, you need to add a `<script>` tag linking to a JavaScript file (script.js) containing the implementation for fetching supported currencies, handling user input, calling the Pair Conversion API, and updating the result on the page. You should also implement the switch button functionality within the Javascript file.
+Correctness: 0%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/day5/daily-challenge-currency-converter/script.js
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/day5/daily-challenge-currency-converter/style.css
+suggestions for improvement:
+- The provided code only contains CSS styling. It needs to include JavaScript code to fetch currency data using the Fetch API and async/await as described in the problem statement.
+- Implement the logic to fetch supported currencies and conversion rates from the ExchangeRate API.
+- Add event listeners to the input fields and buttons to trigger the currency conversion and display the result.
+Correctness: 0%
+-----

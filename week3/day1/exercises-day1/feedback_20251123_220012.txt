@@ -1,0 +1,17 @@
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day1/exercises-day1/exercises-xp-gold.js
+suggestions for improvement:
+- The submitted code does not relate to the chapter content provided.
+- The chapter content focused on variables, conditionals, loops and objects and provided specific exercises to complete related to these topics. The submitted code does not address any of these exercises.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day1/exercises-day1/exercises-xp-ninja.js
+suggestions for improvement:
+- The code provided is unrelated to the chapter's content which focuses on variables, conditionals, loops and objects, and array methods. The code calculates BMI and grade averages, which are not covered in the chapter.
+Correctness: 0%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week3/day1/exercises-day1/exercises-xp.js
+suggestions for improvement:
+- The code is well-organized and easy to follow.
+- Consider adding comments to explain more complex logic within loops or conditional statements to further enhance readability.
+Correctness: 100%
+-----

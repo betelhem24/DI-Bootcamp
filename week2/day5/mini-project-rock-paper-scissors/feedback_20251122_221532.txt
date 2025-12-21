@@ -1,0 +1,11 @@
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week2/day5/mini-project-rock-paper-scissors/game.py
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week2/day5/mini-project-rock-paper-scissors/rock-paper-scissors.py
+suggestions for improvement:
+- Consider using an enum or constants for menu choices instead of strings for improved readability and maintainability.
+- Error handling could be improved to catch potential exceptions, such as when the 'game.py' module is not found.
+Correctness: 100%
+-----
