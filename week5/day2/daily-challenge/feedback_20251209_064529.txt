@@ -1,0 +1,11 @@
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day2/daily-challenge/library-system.js
+suggestions for improvement:
+- Consider adding more descriptive comments, especially at the beginning of each class and method, to explain their purpose and functionality.
+- While the code is functional, exploring more advanced TypeScript features like generics could further enhance the type safety and reusability of the library system.
+Correctness: 100%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day2/daily-challenge/library-system.ts
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----

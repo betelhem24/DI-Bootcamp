@@ -1,0 +1,17 @@
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/day5/daily-challenge-currency-converter/index.html
+suggestions for improvement:
+- The provided HTML code only sets up the basic structure of the currency converter. It lacks the JavaScript logic to fetch data from the ExchangeRate API, populate the currency options, handle the conversion, and implement the switch functionality.  The core functionality related to Fetch API and async/await is missing.
+Correctness: 0%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/day5/daily-challenge-currency-converter/script.js
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/day5/daily-challenge-currency-converter/style.css
+suggestions for improvement:
+- The provided code only contains CSS styling, while the challenge requires implementing the currency converter functionality using Fetch API and async/await.
+- The code should include JavaScript to fetch data from the ExchangeRate API, handle user input, perform currency conversion, and display the results.
+- The code should also implement the bonus feature of switching the currencies and displaying the new amount converted.
+Correctness: 0%
+-----
