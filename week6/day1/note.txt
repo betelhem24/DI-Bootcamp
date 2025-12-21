@@ -1,0 +1,10 @@
+Data Bases Terminology
+SQL = Structured Query Language (Siquel)
+pgAdmin = Management System
+PostgreSQL = RDBMS (Relational Database Management System)
+other relational database types: SQLite, MySQL
+Relational Database = the tables can have connections between them (parent tables, child table)
+Non Relational Database = MongoDB
+- HOW TO CREATE A TABLE
+- HOW TO ADD DATA INTO A TABLE
+- HOW TO UPDATE, DELETE AND ALTER A TABLE 
