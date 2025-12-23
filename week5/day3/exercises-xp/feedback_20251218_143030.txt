@@ -1,0 +1,63 @@
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day3/exercises-xp/exercise1.js
+suggestions for improvement:
+- The code does not define the Person and Address types as requested in Exercise 1, it directly creates a variable. Define the types first, then the intersection type.
+- The subsequent exercises are also missing. Add code to address each exercise individually.
+Correctness: 0%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day3/exercises-xp/exercise1.ts
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day3/exercises-xp/exercise2.js
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day3/exercises-xp/exercise2.ts
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day3/exercises-xp/exercise3.js
+suggestions for improvement:
+- Skipping file (too many comments or blank lines).
+Correctness: N/A%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day3/exercises-xp/exercise3.ts
+suggestions for improvement:
+- Skipping file (too many comments or blank lines).
+Correctness: N/A%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day3/exercises-xp/exercise4.js
+suggestions for improvement:
+- The type assertion `as string` is missing within the `getFirstElement` function's return statement. Add the type assertion to correctly cast the returned value to a string.
+- The function should explicitly return a string, so adding a default return statement like `return '';` can help with type safety if the array is empty.
+Correctness: 50%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day3/exercises-xp/exercise4.ts
+suggestions for improvement:
+- The code is correct but could benefit from a comment explaining the potential risks of using type assertions, especially when the underlying type might not be what's expected.
+- Consider adding a check to ensure the array is not empty before attempting to access the first element to prevent potential errors.
+Correctness: 100%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day3/exercises-xp/exercise5.js
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day3/exercises-xp/exercise5.ts
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day3/exercises-xp/exercise6.ts
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day3/exercises-xp/exercise7.ts
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----

@@ -1,0 +1,97 @@
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day1/exercise-xp/exercise1.js
+suggestions for improvement:
+- Skipping file (too many comments or blank lines).
+Correctness: N/A%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day1/exercise-xp/exercise1.ts
+suggestions for improvement:
+- Skipping file (too many comments or blank lines).
+Correctness: N/A%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day1/exercise-xp/exercise2.js
+suggestions for improvement:
+- Skipping file (too many comments or blank lines).
+Correctness: N/A%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day1/exercise-xp/exercise2.ts
+suggestions for improvement:
+- Skipping file (too many comments or blank lines).
+Correctness: N/A%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day1/exercise-xp/exercise3.js
+suggestions for improvement:
+- Skipping file (too many comments or blank lines).
+Correctness: N/A%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day1/exercise-xp/exercise3.ts
+suggestions for improvement:
+- Skipping file (too many comments or blank lines).
+Correctness: N/A%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day1/exercise-xp/exercise4.js
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day1/exercise-xp/exercise4.ts
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day1/exercise-xp/exercise5.js
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day1/exercise-xp/exercise5.ts
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day1/exercise-xp/exercise6.js
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day1/exercise-xp/exercise6.ts
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day1/exercise-xp/exercise7.html
+suggestions for improvement:
+- The HTML only sets up the input element, but the TypeScript code that accesses and manipulates the element is missing. Add the TypeScript code to complete the exercise.
+Correctness: 0%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day1/exercise-xp/exercise7.js
+suggestions for improvement:
+- Skipping file (too many comments or blank lines).
+Correctness: N/A%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day1/exercise-xp/exercise7.ts
+suggestions for improvement:
+- Skipping file (too many comments or blank lines).
+Correctness: N/A%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day1/exercise-xp/exercise8.js
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day1/exercise-xp/exercise8.ts
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day1/exercise-xp/exercise9.js
+suggestions for improvement:
+- The solution attempts to address Exercise 9, but doesn't actually implement function overloading as the exercise requests.
+- The code implements default parameter functionality, but does not demonstrate function overloading. Function overloading would involve having multiple function signatures with different parameter types/numbers and then providing different implementations to handle each signature.
+- Consider explicitly defining the overloaded function signatures before the implementation to meet the exercise requirements fully. For example: `function greet(): string; function greet(name: string): string;`
+Correctness: 60%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day1/exercise-xp/exercise9.ts
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
