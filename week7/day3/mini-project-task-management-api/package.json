@@ -1,17 +1,23 @@
 {
-  "name": "mini-project-task-management-api",
+  "name": "task-management-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "Task Management API with Express.js and JSON File Storage - Full CRUD implementation",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "node server.js"
   },
-  "keywords": [],
+  "keywords": [
+    "express",
+    "api",
+    "task-management",
+    "rest-api",
+    "crud"
+  ],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "dependencies": {
-    "express": "^5.2.1"
+    "express": "^4.18.2",
+    "uuid": "^9.0.0"
   }
 }

@@ -1,62 +1,122 @@
+/**
+ * TASK ROUTES - Complete CRUD Implementation
+ * 
+ * This file implements all required routes for the Task Management API:
+ * - GET /tasks - Retrieve all tasks from JSON file
+ * - GET /tasks/:id - Retrieve specific task by ID from JSON file
+ * - POST /tasks - Create new task and store in JSON file
+ * - PUT /tasks/:id - Update task by ID in JSON file
+ * - DELETE /tasks/:id - Delete task by ID from JSON file
+ * 
+ * All operations include:
+ * - Error handling for file read/write operations
+ * - Input validation
+ * - Proper HTTP status codes
+ * - Consistent JSON responses
+ */
+
 const express = require('express');
 const router = express.Router();
+const { v4: uuidv4 } = require('uuid');
 const { readTasks, writeTasks } = require('../utils/fileHandler');
 const { validateTask } = require('../middleware/validation');
 
-// GET /tasks - Get all tasks
+// Helper function for consistent success responses
+const sendSuccess = (res, statusCode, message, data = null) => {
+  const response = {
+    success: true,
+    message
+  };
+  
+  if (data !== null) {
+    response.data = data;
+    if (Array.isArray(data)) {
+      response.count = data.length;
+    }
+  }
+  
+  res.status(statusCode).json(response);
+};
+
+// Helper function for consistent error responses
+const sendError = (res, statusCode, error, message) => {
+  res.status(statusCode).json({
+    success: false,
+    error,
+    message
+  });
+};
+
+/**
+ * GET /tasks
+ * Retrieve all tasks from the JSON file
+ * 
+ * Response: 200 OK with array of tasks
+ * Error: 500 Internal Server Error if file read fails
+ */
 router.get('/', async (req, res) => {
   try {
+    console.log('📖 Reading all tasks from JSON file...');
     const tasks = await readTasks();
-    res.json({
-      success: true,
-      count: tasks.length,
-      data: tasks
-    });
+    console.log(`✅ Successfully retrieved ${tasks.length} tasks`);
+    
+    sendSuccess(res, 200, 'Tasks retrieved successfully', tasks);
   } catch (error) {
-    res.status(500).json({
-      success: false,
-      error: 'Failed to retrieve tasks',
-      message: error.message
-    });
+    console.error('❌ Error retrieving tasks:', error.message);
+    sendError(res, 500, 'Failed to retrieve tasks', error.message);
   }
 });
 
-// GET /tasks/:id - Get task by ID
+/**
+ * GET /tasks/:id
+ * Retrieve a specific task by ID from the JSON file
+ * 
+ * Params: id - Task identifier (UUID)
+ * Response: 200 OK with task object
+ * Error: 404 Not Found if task doesn't exist
+ * Error: 500 Internal Server Error if file read fails
+ */
 router.get('/:id', async (req, res) => {
   try {
+    const taskId = req.params.id;
+    console.log(`📖 Reading task with ID: ${taskId}...`);
+    
     const tasks = await readTasks();
-    const task = tasks.find(t => t.id === parseInt(req.params.id));
+    const task = tasks.find(t => t.id === taskId);
     
     if (!task) {
-      return res.status(404).json({
-        success: false,
-        error: 'Task not found'
-      });
+      console.log(`❌ Task not found: ${taskId}`);
+      return sendError(res, 404, 'Task not found', `No task exists with ID: ${taskId}`);
     }
     
-    res.json({
-      success: true,
-      data: task
-    });
+    console.log(`✅ Task found: ${task.title}`);
+    sendSuccess(res, 200, 'Task retrieved successfully', task);
   } catch (error) {
-    res.status(500).json({
-      success: false,
-      error: 'Failed to retrieve task',
-      message: error.message
-    });
+    console.error('❌ Error retrieving task:', error.message);
+    sendError(res, 500, 'Failed to retrieve task', error.message);
   }
 });
 
-// POST /tasks - Create new task
+/**
+ * POST /tasks
+ * Create a new task and store it in the JSON file
+ * 
+ * Body: { title, description?, status? }
+ * Validation: title is required and validated by middleware
+ * Response: 201 Created with new task object
+ * Error: 400 Bad Request if validation fails
+ * Error: 500 Internal Server Error if file write fails
+ */
 router.post('/', validateTask, async (req, res) => {
   try {
+    console.log('📝 Creating new task...');
     const tasks = await readTasks();
     
-    // Create new task with auto-increment ID
+    // Create new task with UUID and timestamps
     const newTask = {
-      id: tasks.length > 0 ? Math.max(...tasks.map(t => t.id)) + 1 : 1,
-      title: req.body.title,
-      description: req.body.description || '',
+      id: uuidv4(), // Generate unique UUID instead of auto-increment
+      title: req.body.title.trim(),
+      description: req.body.description ? req.body.description.trim() : '',
       status: req.body.status || 'pending',
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
@@ -65,85 +125,89 @@ router.post('/', validateTask, async (req, res) => {
     tasks.push(newTask);
     await writeTasks(tasks);
     
-    res.status(201).json({
-      success: true,
-      message: 'Task created successfully',
-      data: newTask
-    });
+    console.log(`✅ Task created successfully: ${newTask.title} (ID: ${newTask.id})`);
+    sendSuccess(res, 201, 'Task created successfully', newTask);
   } catch (error) {
-    res.status(500).json({
-      success: false,
-      error: 'Failed to create task',
-      message: error.message
-    });
+    console.error('❌ Error creating task:', error.message);
+    sendError(res, 500, 'Failed to create task', error.message);
   }
 });
 
-// PUT /tasks/:id - Update task by ID
+/**
+ * PUT /tasks/:id
+ * Update an existing task by ID in the JSON file
+ * 
+ * Params: id - Task identifier (UUID)
+ * Body: { title, description?, status? }
+ * Validation: title is required and validated by middleware
+ * Response: 200 OK with updated task object
+ * Error: 404 Not Found if task doesn't exist
+ * Error: 400 Bad Request if validation fails
+ * Error: 500 Internal Server Error if file write fails
+ */
 router.put('/:id', validateTask, async (req, res) => {
   try {
+    const taskId = req.params.id;
+    console.log(`📝 Updating task with ID: ${taskId}...`);
+    
     const tasks = await readTasks();
-    const taskIndex = tasks.findIndex(t => t.id === parseInt(req.params.id));
+    const taskIndex = tasks.findIndex(t => t.id === taskId);
     
     if (taskIndex === -1) {
-      return res.status(404).json({
-        success: false,
-        error: 'Task not found'
-      });
+      console.log(`❌ Task not found: ${taskId}`);
+      return sendError(res, 404, 'Task not found', `No task exists with ID: ${taskId}`);
     }
     
-    // Update task
+    // Update task while preserving original ID and createdAt
     tasks[taskIndex] = {
-      ...tasks[taskIndex],
-      title: req.body.title,
-      description: req.body.description || tasks[taskIndex].description,
+      id: tasks[taskIndex].id, // Keep original ID
+      title: req.body.title.trim(),
+      description: req.body.description ? req.body.description.trim() : tasks[taskIndex].description,
       status: req.body.status || tasks[taskIndex].status,
-      updatedAt: new Date().toISOString()
+      createdAt: tasks[taskIndex].createdAt, // Keep original creation time
+      updatedAt: new Date().toISOString() // Update modification time
     };
     
     await writeTasks(tasks);
     
-    res.json({
-      success: true,
-      message: 'Task updated successfully',
-      data: tasks[taskIndex]
-    });
+    console.log(`✅ Task updated successfully: ${tasks[taskIndex].title}`);
+    sendSuccess(res, 200, 'Task updated successfully', tasks[taskIndex]);
   } catch (error) {
-    res.status(500).json({
-      success: false,
-      error: 'Failed to update task',
-      message: error.message
-    });
+    console.error('❌ Error updating task:', error.message);
+    sendError(res, 500, 'Failed to update task', error.message);
   }
 });
 
-// DELETE /tasks/:id - Delete task by ID
+/**
+ * DELETE /tasks/:id
+ * Delete a task by ID from the JSON file
+ * 
+ * Params: id - Task identifier (UUID)
+ * Response: 200 OK with deleted task object
+ * Error: 404 Not Found if task doesn't exist
+ * Error: 500 Internal Server Error if file write fails
+ */
 router.delete('/:id', async (req, res) => {
   try {
+    const taskId = req.params.id;
+    console.log(`🗑️  Deleting task with ID: ${taskId}...`);
+    
     const tasks = await readTasks();
-    const taskIndex = tasks.findIndex(t => t.id === parseInt(req.params.id));
+    const taskIndex = tasks.findIndex(t => t.id === taskId);
     
     if (taskIndex === -1) {
-      return res.status(404).json({
-        success: false,
-        error: 'Task not found'
-      });
+      console.log(`❌ Task not found: ${taskId}`);
+      return sendError(res, 404, 'Task not found', `No task exists with ID: ${taskId}`);
     }
     
     const deletedTask = tasks.splice(taskIndex, 1)[0];
     await writeTasks(tasks);
     
-    res.json({
-      success: true,
-      message: 'Task deleted successfully',
-      data: deletedTask
-    });
+    console.log(`✅ Task deleted successfully: ${deletedTask.title}`);
+    sendSuccess(res, 200, 'Task deleted successfully', deletedTask);
   } catch (error) {
-    res.status(500).json({
-      success: false,
-      error: 'Failed to delete task',
-      message: error.message
-    });
+    console.error('❌ Error deleting task:', error.message);
+    sendError(res, 500, 'Failed to delete task', error.message);
   }
 });
 
