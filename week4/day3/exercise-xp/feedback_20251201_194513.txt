@@ -1,0 +1,17 @@
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/day3/exercise-xp/exercise-1.html
+suggestions for improvement:
+- The HTML is well-structured and follows best practices.
+- Consider adding CSS for styling to improve the visual appearance.
+- For Exercise 2, remember to change the method to POST.
+Correctness: 100%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/day3/exercise-xp/exercise-2.html
+suggestions for improvement:
+- Checker failed to provide a response.
+Correctness: N/A%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/day3/exercise-xp/exercise-3.html
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
