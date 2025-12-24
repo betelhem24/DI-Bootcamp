@@ -1,0 +1,10 @@
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day3/daily-challenge/type-guard.js
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week5/day3/daily-challenge/type-guard.ts
+suggestions for improvement:
+- No specific feedback.
+Correctness: 100%
+-----

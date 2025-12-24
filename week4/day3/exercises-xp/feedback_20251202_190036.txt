@@ -1,0 +1,25 @@
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/day3/exercises-xp/exercise1.js
+suggestions for improvement:
+- Consider using template literals for string concatenation to enhance readability.
+- The code is well-structured and easy to understand.
+Correctness: 100%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/day3/exercises-xp/exercise2.js
+suggestions for improvement:
+- The provided code only implements Exercise 1. It should also include the solutions for Exercises 2 and 3.
+- For Exercise 2, consider using `setTimeout` to resolve the promise after 4 seconds.  Also, explore using `Promise.resolve()` for a more concise solution.
+- For Exercise 3, directly use `Promise.resolve(3)` and `Promise.reject("Boo!")` as instructed.
+Correctness: 50%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/day3/exercises-xp/exercise3.js
+suggestions for improvement:
+- The provided code only addresses Exercise 3. Need to provide solutions for Exercise 1 and 2 to get a complete score.
+- Consider combining the resolve and reject handling into a single block for better organization if applicable.
+Correctness: 33%
+-----
+URL: URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/day3/exercises-xp/exercise4.js
+suggestions for improvement:
+- Consider using template literals for string concatenation to improve readability.
+- The messages in resolve and reject could be more concise.
+Correctness: 100%
+-----

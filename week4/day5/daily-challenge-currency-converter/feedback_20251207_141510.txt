@@ -1,0 +1,12 @@
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/day5/daily-challenge-currency-converter/index.html
+suggestions for improvement:
+- Consider adding input validation to prevent potential issues with very large or malicious input.
+- Error handling could be improved to provide more user-friendly messages.
+Correctness: 100%
+-----
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week4/day5/daily-challenge-currency-converter/style.css
+suggestions for improvement:
+- This code only provides the styling and structure of the currency converter, it doesn't have the javascript logic of using Fetch API and Async await to make a request from the API.
+- This should include fetching currencies from the API, converting currencies based on user input and also displaying the result.
+Correctness: 0%
+-----

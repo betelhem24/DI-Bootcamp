@@ -1,0 +1,10 @@
+URL: https://github.com/betelhem24/DI-Bootcamp/blob/main/week6/day1/exercises-xp.sql
+suggestions for improvement:
+- Consider adding comments to explain the purpose of each query.
+- The use of SERIAL for auto-incrementing IDs is good, but explicitly stating NOT NULL constraints on columns like firstname and lastname in the `customers` table can improve data integrity.
+Brief justification:
+- correctness: The code accurately creates the `items` and `customers` tables as described in Exercise 1. It correctly adds the specified items and customers, and then retrieves the data as requested. The queries address all parts of the exercise.
+- readability: The code is well-formatted and easy to understand. Naming conventions are clear. Indentation and spacing are used consistently. Adding comments could further enhance readability.
+- performance: The queries are straightforward and efficient for the given task and small dataset. Indexing is not explicitly needed at this scale, but could be considered for larger datasets.
+- security: The code uses standard SQL syntax and doesn't appear to have any immediate security vulnerabilities.  SQL injection is not a concern here as the queries don't take user input directly.
+
