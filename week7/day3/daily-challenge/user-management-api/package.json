@@ -1,0 +1,17 @@
+{
+  "name": "user-management-api",
+  "version": "1.0.0",
+  "description": "User Management API with Express.js and Bcrypt",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["express", "api", "bcrypt", "user-management"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "bcrypt": "^5.1.1"
+  }
+}
