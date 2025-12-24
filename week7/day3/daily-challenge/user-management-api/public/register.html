@@ -63,8 +63,15 @@
             border-color: #667eea;
         }
 
-        input:invalid {
-            border-color: #ddd;
+        input.error {
+            border-color: #dc3545;
+        }
+
+        .error-message {
+            color: #dc3545;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
         }
 
         button {
@@ -88,6 +95,7 @@
         button:disabled {
             opacity: 0.5;
             cursor: not-allowed;
+            transform: none;
         }
 
         .message {
@@ -131,30 +139,35 @@
 <body>
     <div class="container">
         <h1>Create Account</h1>
-        <form id="registerForm">
+        <form id="registerForm" novalidate>
             <div class="form-group">
                 <label for="name">First Name *</label>
-                <input type="text" id="name" name="name" required>
+                <input type="text" id="name" name="name" required minlength="2">
+                <span class="error-message" id="nameError">First name is required</span>
             </div>
 
             <div class="form-group">
                 <label for="lastName">Last Name *</label>
-                <input type="text" id="lastName" name="lastName" required>
+                <input type="text" id="lastName" name="lastName" required minlength="2">
+                <span class="error-message" id="lastNameError">Last name is required</span>
             </div>
 
             <div class="form-group">
                 <label for="email">Email *</label>
                 <input type="email" id="email" name="email" required>
+                <span class="error-message" id="emailError">Valid email is required</span>
             </div>
 
             <div class="form-group">
                 <label for="username">Username *</label>
                 <input type="text" id="username" name="username" required minlength="3">
+                <span class="error-message" id="usernameError">Username must be at least 3 characters</span>
             </div>
 
             <div class="form-group">
                 <label for="password">Password *</label>
                 <input type="password" id="password" name="password" required minlength="6">
+                <span class="error-message" id="passwordError">Password must be at least 6 characters</span>
             </div>
 
             <button type="submit" id="submitBtn" disabled>Register</button>
@@ -171,40 +184,96 @@
         const form = document.getElementById('registerForm');
         const submitBtn = document.getElementById('submitBtn');
         const messageDiv = document.getElementById('message');
-        const inputs = form.querySelectorAll('input');
+        
+        const fields = {
+            name: document.getElementById('name'),
+            lastName: document.getElementById('lastName'),
+            email: document.getElementById('email'),
+            username: document.getElementById('username'),
+            password: document.getElementById('password')
+        };
 
-        // Enable/disable submit button based on input validation
-        function validateForm() {
+        // Validation functions
+        function validateField(field) {
+            const value = field.value.trim();
             let isValid = true;
-            inputs.forEach(input => {
-                if (!input.value.trim() || !input.validity.valid) {
-                    isValid = false;
-                }
-            });
-            submitBtn.disabled = !isValid;
+            let errorMsg = '';
+
+            switch(field.id) {
+                case 'name':
+                case 'lastName':
+                    isValid = value.length >= 2;
+                    errorMsg = `${field.id === 'name' ? 'First' : 'Last'} name is required`;
+                    break;
+                case 'email':
+                    isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+                    errorMsg = 'Valid email is required';
+                    break;
+                case 'username':
+                    isValid = value.length >= 3;
+                    errorMsg = 'Username must be at least 3 characters';
+                    break;
+                case 'password':
+                    isValid = value.length >= 6;
+                    errorMsg = 'Password must be at least 6 characters';
+                    break;
+            }
+
+            const errorElement = document.getElementById(`${field.id}Error`);
+            if (!isValid && value.length > 0) {
+                field.classList.add('error');
+                errorElement.textContent = errorMsg;
+                errorElement.style.display = 'block';
+            } else {
+                field.classList.remove('error');
+                errorElement.style.display = 'none';
+            }
+
+            return isValid && value.length > 0;
         }
 
-        // Add event listeners to all inputs
-        inputs.forEach(input => {
-            input.addEventListener('input', validateForm);
-            input.addEventListener('change', validateForm);
-        });
+        // Validate entire form
+        function validateForm() {
+            let isValid = true;
+            
+            for (let key in fields) {
+                if (!validateField(fields[key])) {
+                    isValid = false;
+                }
+            }
+
+            submitBtn.disabled = !isValid;
+            return isValid;
+        }
+
+        // Add event listeners to all fields
+        for (let key in fields) {
+            fields[key].addEventListener('input', validateForm);
+            fields[key].addEventListener('blur', function() {
+                validateField(this);
+            });
+        }
 
         // Handle form submission
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
 
+            if (!validateForm()) {
+                return;
+            }
+
             const formData = {
-                name: document.getElementById('name').value.trim(),
-                lastName: document.getElementById('lastName').value.trim(),
-                email: document.getElementById('email').value.trim(),
-                username: document.getElementById('username').value.trim(),
-                password: document.getElementById('password').value
+                name: fields.name.value.trim(),
+                lastName: fields.lastName.value.trim(),
+                email: fields.email.value.trim(),
+                username: fields.username.value.trim(),
+                password: fields.password.value
             };
 
             try {
                 submitBtn.disabled = true;
                 submitBtn.textContent = 'Registering...';
+                messageDiv.style.display = 'none';
 
                 const response = await fetch('/api/register', {
                     method: 'POST',
@@ -232,15 +301,17 @@
                     messageDiv.textContent = data.message;
                     messageDiv.className = 'message error';
                     messageDiv.style.display = 'block';
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Register';
                 }
 
             } catch (error) {
+                console.error('Registration error:', error);
                 messageDiv.textContent = 'An error occurred. Please try again.';
                 messageDiv.className = 'message error';
                 messageDiv.style.display = 'block';
-            } finally {
+                submitBtn.disabled = false;
                 submitBtn.textContent = 'Register';
-                validateForm();
             }
         });
 

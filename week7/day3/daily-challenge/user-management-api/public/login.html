@@ -63,6 +63,17 @@
             border-color: #667eea;
         }
 
+        input.error {
+            border-color: #dc3545;
+        }
+
+        .error-message {
+            color: #dc3545;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+
         button {
             width: 100%;
             padding: 14px;
@@ -84,6 +95,7 @@
         button:disabled {
             opacity: 0.5;
             cursor: not-allowed;
+            transform: none;
         }
 
         .message {
@@ -127,15 +139,17 @@
 <body>
     <div class="container">
         <h1>Welcome Back</h1>
-        <form id="loginForm">
+        <form id="loginForm" novalidate>
             <div class="form-group">
                 <label for="username">Username *</label>
                 <input type="text" id="username" name="username" required>
+                <span class="error-message" id="usernameError">Username is required</span>
             </div>
 
             <div class="form-group">
                 <label for="password">Password *</label>
                 <input type="password" id="password" name="password" required>
+                <span class="error-message" id="passwordError">Password is required</span>
             </div>
 
             <button type="submit" id="submitBtn" disabled>Login</button>
@@ -152,37 +166,64 @@
         const form = document.getElementById('loginForm');
         const submitBtn = document.getElementById('submitBtn');
         const messageDiv = document.getElementById('message');
-        const inputs = form.querySelectorAll('input');
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
 
-        // Enable/disable submit button based on input validation
-        function validateForm() {
-            let isValid = true;
-            inputs.forEach(input => {
-                if (!input.value.trim()) {
-                    isValid = false;
-                }
-            });
-            submitBtn.disabled = !isValid;
+        // Validation function
+        function validateField(field) {
+            const value = field.value.trim();
+            const errorElement = document.getElementById(`${field.id}Error`);
+            
+            if (value.length === 0) {
+                field.classList.add('error');
+                errorElement.style.display = 'block';
+                return false;
+            } else {
+                field.classList.remove('error');
+                errorElement.style.display = 'none';
+                return true;
+            }
         }
 
-        // Add event listeners to all inputs
-        inputs.forEach(input => {
-            input.addEventListener('input', validateForm);
-            input.addEventListener('change', validateForm);
+        // Validate entire form
+        function validateForm() {
+            const isUsernameValid = usernameInput.value.trim().length > 0;
+            const isPasswordValid = passwordInput.value.length > 0;
+            
+            submitBtn.disabled = !(isUsernameValid && isPasswordValid);
+            
+            return isUsernameValid && isPasswordValid;
+        }
+
+        // Add event listeners
+        usernameInput.addEventListener('input', validateForm);
+        passwordInput.addEventListener('input', validateForm);
+        
+        usernameInput.addEventListener('blur', function() {
+            validateField(this);
+        });
+        
+        passwordInput.addEventListener('blur', function() {
+            validateField(this);
         });
 
         // Handle form submission
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
 
+            if (!validateForm()) {
+                return;
+            }
+
             const formData = {
-                username: document.getElementById('username').value.trim(),
-                password: document.getElementById('password').value
+                username: usernameInput.value.trim(),
+                password: passwordInput.value
             };
 
             try {
                 submitBtn.disabled = true;
                 submitBtn.textContent = 'Logging in...';
+                messageDiv.style.display = 'none';
 
                 const response = await fetch('/api/login', {
                     method: 'POST',
@@ -200,23 +241,31 @@
                     messageDiv.className = 'message success';
                     messageDiv.style.display = 'block';
                     form.reset();
+                    submitBtn.disabled = true;
                     
-                    // Optional: Store user info or redirect to dashboard
+                    // Store user info if needed
                     console.log('Logged in user:', data.user);
+                    
+                    // Optional: Redirect to dashboard after 2 seconds
+                    // setTimeout(() => {
+                    //     window.location.href = '/dashboard';
+                    // }, 2000);
                 } else {
                     // Error
                     messageDiv.textContent = data.message;
                     messageDiv.className = 'message error';
                     messageDiv.style.display = 'block';
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Login';
                 }
 
             } catch (error) {
+                console.error('Login error:', error);
                 messageDiv.textContent = 'An error occurred. Please try again.';
                 messageDiv.className = 'message error';
                 messageDiv.style.display = 'block';
-            } finally {
+                submitBtn.disabled = false;
                 submitBtn.textContent = 'Login';
-                validateForm();
             }
         });
 
