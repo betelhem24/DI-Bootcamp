@@ -1,20 +1,13 @@
 const bcrypt = require('bcrypt');
 const UserModel = require('../models/userModel');
 
-const SALT_ROUNDS = 10;
+const SALT_ROUNDS = parseInt(process.env.SALT_ROUNDS) || 10;
 
 class UserController {
   // Register a new user
   static async register(req, res) {
     try {
       const { email, username, password, first_name, last_name } = req.body;
-
-      // Validation
-      if (!email || !username || !password || !first_name || !last_name) {
-        return res.status(400).json({ 
-          error: 'All fields are required: email, username, password, first_name, last_name' 
-        });
-      }
 
       // Check if username already exists
       const usernameExists = await UserModel.checkUsernameExists(username);
@@ -28,7 +21,7 @@ class UserController {
         return res.status(400).json({ error: 'Email already exists' });
       }
 
-      // Hash password
+      // Hash password using SALT_ROUNDS from environment variable
       const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS);
 
       // Create user using transaction
@@ -43,7 +36,10 @@ class UserController {
       });
     } catch (error) {
       console.error('Registration error:', error);
-      res.status(500).json({ error: 'Internal server error' });
+      res.status(500).json({ 
+        error: 'Internal server error',
+        details: process.env.NODE_ENV === 'development' ? error.message : undefined
+      });
     }
   }
 
@@ -52,26 +48,26 @@ class UserController {
     try {
       const { username, password } = req.body;
 
-      // Validation
-      if (!username || !password) {
-        return res.status(400).json({ error: 'Username and password are required' });
-      }
-
-      // Get user with password
+      // Get user with password for verification
       const user = await UserModel.getUserByUsername(username);
 
       if (!user) {
         return res.status(401).json({ error: 'Invalid username or password' });
       }
 
-      // Compare passwords
+      // Verify password exists
+      if (!user.password) {
+        return res.status(500).json({ error: 'Password data not found' });
+      }
+
+      // Compare passwords using bcrypt
       const isPasswordValid = await bcrypt.compare(password, user.password);
 
       if (!isPasswordValid) {
         return res.status(401).json({ error: 'Invalid username or password' });
       }
 
-      // Remove password from response
+      // Remove password from response for security
       delete user.password;
 
       res.status(200).json({
@@ -80,7 +76,10 @@ class UserController {
       });
     } catch (error) {
       console.error('Login error:', error);
-      res.status(500).json({ error: 'Internal server error' });
+      res.status(500).json({ 
+        error: 'Internal server error',
+        details: process.env.NODE_ENV === 'development' ? error.message : undefined
+      });
     }
   }
 
@@ -88,10 +87,17 @@ class UserController {
   static async getAllUsers(req, res) {
     try {
       const users = await UserModel.getAllUsers();
-      res.status(200).json({ users });
+      res.status(200).json({ 
+        message: 'Users retrieved successfully',
+        count: users.length,
+        users 
+      });
     } catch (error) {
       console.error('Get all users error:', error);
-      res.status(500).json({ error: 'Internal server error' });
+      res.status(500).json({ 
+        error: 'Internal server error',
+        details: process.env.NODE_ENV === 'development' ? error.message : undefined
+      });
     }
   }
 
@@ -105,10 +111,16 @@ class UserController {
         return res.status(404).json({ error: 'User not found' });
       }
 
-      res.status(200).json({ user });
+      res.status(200).json({ 
+        message: 'User retrieved successfully',
+        user 
+      });
     } catch (error) {
       console.error('Get user by ID error:', error);
-      res.status(500).json({ error: 'Internal server error' });
+      res.status(500).json({ 
+        error: 'Internal server error',
+        details: process.env.NODE_ENV === 'development' ? error.message : undefined
+      });
     }
   }
 
@@ -130,10 +142,6 @@ class UserController {
       if (username) updateData.username = username;
       if (first_name) updateData.first_name = first_name;
       if (last_name) updateData.last_name = last_name;
-
-      if (Object.keys(updateData).length === 0) {
-        return res.status(400).json({ error: 'No fields to update' });
-      }
 
       // Check if new username already exists (if username is being updated)
       if (username && username !== existingUser.username) {
@@ -160,7 +168,10 @@ class UserController {
       });
     } catch (error) {
       console.error('Update user error:', error);
-      res.status(500).json({ error: 'Internal server error' });
+      res.status(500).json({ 
+        error: 'Internal server error',
+        details: process.env.NODE_ENV === 'development' ? error.message : undefined
+      });
     }
   }
 }

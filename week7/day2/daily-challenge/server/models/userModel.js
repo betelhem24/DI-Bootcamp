@@ -24,12 +24,19 @@ class UserModel {
     }
   }
 
-  // Get user by username
+  // Get user by username (includes password for login verification)
   static async getUserByUsername(username) {
     try {
       const user = await db('users')
-        .select('users.id', 'users.email', 'users.username', 'users.first_name', 'users.last_name', 'hashpwd.password')
-        .leftJoin('hashpwd', 'users.username', 'hashpwd.username')
+        .select(
+          'users.id', 
+          'users.email', 
+          'users.username', 
+          'users.first_name', 
+          'users.last_name', 
+          'hashpwd.password'
+        )
+        .leftJoin('hashpwd', 'users.id', 'hashpwd.user_id')
         .where('users.username', username)
         .first();
       return user;
@@ -58,7 +65,7 @@ class UserModel {
     }
   }
 
-  // Create new user with transaction
+  // Create new user with transaction (FIXED - now uses user_id foreign key)
   static async createUser(userData, hashedPassword) {
     const trx = await db.transaction();
     try {
@@ -72,8 +79,9 @@ class UserModel {
         })
         .returning(['id', 'email', 'username', 'first_name', 'last_name']);
 
-      // Insert into hashpwd table
+      // Insert into hashpwd table with user_id foreign key
       await trx('hashpwd').insert({
+        user_id: user.id,
         username: userData.username,
         password: hashedPassword
       });
