@@ -63,11 +63,11 @@
             border-color: #667eea;
         }
 
-        input.error {
+        input.invalid {
             border-color: #dc3545;
         }
 
-        .error-message {
+        .error-text {
             color: #dc3545;
             font-size: 12px;
             margin-top: 5px;
@@ -142,32 +142,32 @@
         <form id="registerForm" novalidate>
             <div class="form-group">
                 <label for="name">First Name *</label>
-                <input type="text" id="name" name="name" required minlength="2">
-                <span class="error-message" id="nameError">First name is required</span>
+                <input type="text" id="name" name="name" required>
+                <div class="error-text" id="nameError">First name is required</div>
             </div>
 
             <div class="form-group">
                 <label for="lastName">Last Name *</label>
-                <input type="text" id="lastName" name="lastName" required minlength="2">
-                <span class="error-message" id="lastNameError">Last name is required</span>
+                <input type="text" id="lastName" name="lastName" required>
+                <div class="error-text" id="lastNameError">Last name is required</div>
             </div>
 
             <div class="form-group">
                 <label for="email">Email *</label>
                 <input type="email" id="email" name="email" required>
-                <span class="error-message" id="emailError">Valid email is required</span>
+                <div class="error-text" id="emailError">Valid email is required</div>
             </div>
 
             <div class="form-group">
                 <label for="username">Username *</label>
-                <input type="text" id="username" name="username" required minlength="3">
-                <span class="error-message" id="usernameError">Username must be at least 3 characters</span>
+                <input type="text" id="username" name="username" required>
+                <div class="error-text" id="usernameError">Username must be at least 3 characters</div>
             </div>
 
             <div class="form-group">
                 <label for="password">Password *</label>
-                <input type="password" id="password" name="password" required minlength="6">
-                <span class="error-message" id="passwordError">Password must be at least 6 characters</span>
+                <input type="password" id="password" name="password" required>
+                <div class="error-text" id="passwordError">Password must be at least 6 characters</div>
             </div>
 
             <button type="submit" id="submitBtn" disabled>Register</button>
@@ -181,29 +181,28 @@
     </div>
 
     <script>
+        // Get form elements
         const form = document.getElementById('registerForm');
         const submitBtn = document.getElementById('submitBtn');
         const messageDiv = document.getElementById('message');
         
-        const fields = {
-            name: document.getElementById('name'),
-            lastName: document.getElementById('lastName'),
-            email: document.getElementById('email'),
-            username: document.getElementById('username'),
-            password: document.getElementById('password')
-        };
+        const nameInput = document.getElementById('name');
+        const lastNameInput = document.getElementById('lastName');
+        const emailInput = document.getElementById('email');
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
 
-        // Validation functions
-        function validateField(field) {
-            const value = field.value.trim();
-            let isValid = true;
+        // Validation function for each field
+        function validateField(input) {
+            const value = input.value.trim();
+            let isValid = false;
             let errorMsg = '';
 
-            switch(field.id) {
+            switch(input.id) {
                 case 'name':
                 case 'lastName':
-                    isValid = value.length >= 2;
-                    errorMsg = `${field.id === 'name' ? 'First' : 'Last'} name is required`;
+                    isValid = value.length > 0;
+                    errorMsg = `${input.id === 'name' ? 'First' : 'Last'} name is required`;
                     break;
                 case 'email':
                     isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
@@ -214,60 +213,62 @@
                     errorMsg = 'Username must be at least 3 characters';
                     break;
                 case 'password':
-                    isValid = value.length >= 6;
+                    isValid = input.value.length >= 6;
                     errorMsg = 'Password must be at least 6 characters';
                     break;
             }
 
-            const errorElement = document.getElementById(`${field.id}Error`);
+            const errorElement = document.getElementById(`${input.id}Error`);
+            
             if (!isValid && value.length > 0) {
-                field.classList.add('error');
+                input.classList.add('invalid');
                 errorElement.textContent = errorMsg;
                 errorElement.style.display = 'block';
             } else {
-                field.classList.remove('error');
+                input.classList.remove('invalid');
                 errorElement.style.display = 'none';
             }
 
             return isValid && value.length > 0;
         }
 
-        // Validate entire form
-        function validateForm() {
-            let isValid = true;
-            
-            for (let key in fields) {
-                if (!validateField(fields[key])) {
-                    isValid = false;
-                }
-            }
+        // Check if all fields are valid
+        function checkFormValidity() {
+            const isNameValid = nameInput.value.trim().length > 0;
+            const isLastNameValid = lastNameInput.value.trim().length > 0;
+            const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim());
+            const isUsernameValid = usernameInput.value.trim().length >= 3;
+            const isPasswordValid = passwordInput.value.length >= 6;
 
-            submitBtn.disabled = !isValid;
-            return isValid;
+            const allValid = isNameValid && isLastNameValid && isEmailValid && isUsernameValid && isPasswordValid;
+            
+            submitBtn.disabled = !allValid;
+            
+            return allValid;
         }
 
-        // Add event listeners to all fields
-        for (let key in fields) {
-            fields[key].addEventListener('input', validateForm);
-            fields[key].addEventListener('blur', function() {
+        // Add input event listeners to all fields
+        [nameInput, lastNameInput, emailInput, usernameInput, passwordInput].forEach(input => {
+            input.addEventListener('input', checkFormValidity);
+            input.addEventListener('blur', function() {
                 validateField(this);
             });
-        }
+        });
 
-        // Handle form submission
+        // Form submission
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            if (!validateForm()) {
+            if (!checkFormValidity()) {
                 return;
             }
 
             const formData = {
-                name: fields.name.value.trim(),
-                lastName: fields.lastName.value.trim(),
-                email: fields.email.value.trim(),
-                username: fields.username.value.trim(),
-                password: fields.password.value
+                name: nameInput.value.trim(),
+                lastName: lastNameInput.value.trim(),
+                email: emailInput.value.trim(),
+                username: usernameInput.value.trim(),
+                password: passwordInput.value
             };
 
             try {
@@ -286,23 +287,18 @@
                 const data = await response.json();
 
                 if (response.ok) {
-                    // Success
                     messageDiv.textContent = data.message;
                     messageDiv.className = 'message success';
                     messageDiv.style.display = 'block';
                     form.reset();
                     
-                    // Redirect to login after 2 seconds
                     setTimeout(() => {
                         window.location.href = '/login';
                     }, 2000);
                 } else {
-                    // Error
                     messageDiv.textContent = data.message;
                     messageDiv.className = 'message error';
                     messageDiv.style.display = 'block';
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Register';
                 }
 
             } catch (error) {
@@ -310,13 +306,14 @@
                 messageDiv.textContent = 'An error occurred. Please try again.';
                 messageDiv.className = 'message error';
                 messageDiv.style.display = 'block';
-                submitBtn.disabled = false;
+            } finally {
                 submitBtn.textContent = 'Register';
+                checkFormValidity();
             }
         });
 
-        // Initial validation
-        validateForm();
+        // Initial check
+        checkFormValidity();
     </script>
 </body>
 </html>

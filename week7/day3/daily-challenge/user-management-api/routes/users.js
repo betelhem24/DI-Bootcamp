@@ -7,14 +7,13 @@ const path = require('path');
 const USERS_FILE = path.join(__dirname, '../data/users.json');
 const SALT_ROUNDS = 10;
 
-// Helper function to read users from file with error handling
+// Helper function to read users from file
 async function readUsers() {
     try {
         const data = await fs.readFile(USERS_FILE, 'utf8');
         return JSON.parse(data);
     } catch (error) {
         if (error.code === 'ENOENT') {
-            // File doesn't exist, create it with empty array
             await fs.writeFile(USERS_FILE, JSON.stringify([], null, 2), 'utf8');
             return [];
         }
@@ -22,7 +21,7 @@ async function readUsers() {
     }
 }
 
-// Helper function to write users to file with error handling
+// Helper function to write users to file
 async function writeUsers(users) {
     try {
         await fs.writeFile(USERS_FILE, JSON.stringify(users, null, 2), 'utf8');
@@ -31,7 +30,7 @@ async function writeUsers(users) {
     }
 }
 
-// Input validation helper
+// Validation helper
 function validateRegistrationInput(data) {
     const { name, lastName, email, username, password } = data;
     const errors = [];
@@ -57,7 +56,7 @@ function validateRegistrationInput(data) {
     return errors;
 }
 
-// POST /register - Register a new user with bcrypt hashing
+// POST /register - Register new user
 router.post('/register', async (req, res) => {
     try {
         const { name, lastName, email, username, password } = req.body;
@@ -70,12 +69,11 @@ router.post('/register', async (req, res) => {
             });
         }
 
-        // Read existing users
         const users = await readUsers();
 
-        // Check if username already exists
-        const usernameExists = users.find(user => 
-            user.username.toLowerCase() === username.toLowerCase()
+        // Check if username exists
+        const usernameExists = users.find(u => 
+            u.username.toLowerCase() === username.toLowerCase()
         );
         if (usernameExists) {
             return res.status(400).json({ 
@@ -83,9 +81,9 @@ router.post('/register', async (req, res) => {
             });
         }
 
-        // Check if email already exists
-        const emailExists = users.find(user => 
-            user.email.toLowerCase() === email.toLowerCase()
+        // Check if email exists
+        const emailExists = users.find(u => 
+            u.email.toLowerCase() === email.toLowerCase()
         );
         if (emailExists) {
             return res.status(400).json({ 
@@ -93,27 +91,23 @@ router.post('/register', async (req, res) => {
             });
         }
 
-        // Hash password using bcrypt
+        // Hash password with bcrypt
         const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS);
 
-        // Create new user with hashed password
+        // Create new user
         const newUser = {
             id: users.length > 0 ? Math.max(...users.map(u => u.id)) + 1 : 1,
             name: name.trim(),
             lastName: lastName.trim(),
             email: email.trim().toLowerCase(),
             username: username.trim(),
-            password: hashedPassword, // Store hashed password
+            password: hashedPassword,
             createdAt: new Date().toISOString()
         };
 
-        // Add user to array
         users.push(newUser);
-
-        // Write to file
         await writeUsers(users);
 
-        // Return success response (without password)
         const { password: _, ...userWithoutPassword } = newUser;
         res.status(201).json({
             message: `User ${username} registered successfully`,
@@ -129,12 +123,11 @@ router.post('/register', async (req, res) => {
     }
 });
 
-// POST /login - Login user with bcrypt password comparison
+// POST /login - User login
 router.post('/login', async (req, res) => {
     try {
         const { username, password } = req.body;
 
-        // Validate input
         if (!username || username.trim().length === 0) {
             return res.status(400).json({ 
                 message: 'Username is required' 
@@ -146,10 +139,7 @@ router.post('/login', async (req, res) => {
             });
         }
 
-        // Read users
         const users = await readUsers();
-
-        // Find user by username
         const user = users.find(u => 
             u.username.toLowerCase() === username.toLowerCase()
         );
@@ -160,7 +150,7 @@ router.post('/login', async (req, res) => {
             });
         }
 
-        // Compare password using bcrypt
+        // Compare password with bcrypt
         const isPasswordValid = await bcrypt.compare(password, user.password);
         
         if (!isPasswordValid) {
@@ -169,7 +159,6 @@ router.post('/login', async (req, res) => {
             });
         }
 
-        // Login successful
         const { password: _, ...userWithoutPassword } = user;
         res.status(200).json({
             message: `Hi ${user.name}, welcome back!`,
@@ -185,12 +174,10 @@ router.post('/login', async (req, res) => {
     }
 });
 
-// GET /users - Get all users (without passwords)
+// GET /users - Get all users
 router.get('/users', async (req, res) => {
     try {
         const users = await readUsers();
-        
-        // Remove passwords from response
         const usersWithoutPasswords = users.map(({ password, ...user }) => user);
         
         res.status(200).json({
@@ -206,7 +193,7 @@ router.get('/users', async (req, res) => {
     }
 });
 
-// GET /users/:id - Get user by ID (without password)
+// GET /users/:id - Get user by ID
 router.get('/users/:id', async (req, res) => {
     try {
         const userId = parseInt(req.params.id);
@@ -226,7 +213,6 @@ router.get('/users/:id', async (req, res) => {
             });
         }
 
-        // Remove password from response
         const { password, ...userWithoutPassword } = user;
         res.status(200).json(userWithoutPassword);
         
@@ -239,7 +225,7 @@ router.get('/users/:id', async (req, res) => {
     }
 });
 
-// PUT /users/:id - Update user by ID with optional password hashing
+// PUT /users/:id - Update user
 router.put('/users/:id', async (req, res) => {
     try {
         const userId = parseInt(req.params.id);
@@ -252,7 +238,6 @@ router.put('/users/:id', async (req, res) => {
 
         const { name, lastName, email, username, password } = req.body;
         
-        // Check if at least one field is provided
         if (!name && !lastName && !email && !username && !password) {
             return res.status(400).json({ 
                 message: 'At least one field must be provided for update' 
@@ -268,14 +253,14 @@ router.put('/users/:id', async (req, res) => {
             });
         }
 
-        // Validate email format if provided
+        // Validate email if provided
         if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
             return res.status(400).json({ 
                 message: 'Invalid email format' 
             });
         }
 
-        // Check if new username is taken by another user
+        // Check username uniqueness
         if (username && username !== users[userIndex].username) {
             const usernameExists = users.find(u => 
                 u.username.toLowerCase() === username.toLowerCase() && u.id !== userId
@@ -287,7 +272,7 @@ router.put('/users/:id', async (req, res) => {
             }
         }
 
-        // Check if new email is taken by another user
+        // Check email uniqueness
         if (email && email !== users[userIndex].email) {
             const emailExists = users.find(u => 
                 u.email.toLowerCase() === email.toLowerCase() && u.id !== userId
@@ -299,13 +284,13 @@ router.put('/users/:id', async (req, res) => {
             }
         }
 
-        // Update user fields
+        // Update fields
         if (name) users[userIndex].name = name.trim();
         if (lastName) users[userIndex].lastName = lastName.trim();
         if (email) users[userIndex].email = email.trim().toLowerCase();
         if (username) users[userIndex].username = username.trim();
         
-        // Hash new password if provided using bcrypt
+        // Hash new password if provided
         if (password) {
             if (password.length < 6) {
                 return res.status(400).json({ 
@@ -319,7 +304,6 @@ router.put('/users/:id', async (req, res) => {
 
         await writeUsers(users);
 
-        // Remove password from response
         const { password: _, ...userWithoutPassword } = users[userIndex];
         res.status(200).json({
             message: 'User updated successfully',

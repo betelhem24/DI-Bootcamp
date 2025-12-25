@@ -63,11 +63,11 @@
             border-color: #667eea;
         }
 
-        input.error {
+        input.invalid {
             border-color: #dc3545;
         }
 
-        .error-message {
+        .error-text {
             color: #dc3545;
             font-size: 12px;
             margin-top: 5px;
@@ -142,14 +142,14 @@
         <form id="loginForm" novalidate>
             <div class="form-group">
                 <label for="username">Username *</label>
-                <input type="text" id="username" name="username" required>
-                <span class="error-message" id="usernameError">Username is required</span>
+                <input type="text" id="username" name="username" required autocomplete="username">
+                <div class="error-text" id="usernameError">Username is required</div>
             </div>
 
             <div class="form-group">
                 <label for="password">Password *</label>
-                <input type="password" id="password" name="password" required>
-                <span class="error-message" id="passwordError">Password is required</span>
+                <input type="password" id="password" name="password" required autocomplete="current-password">
+                <div class="error-text" id="passwordError">Password is required</div>
             </div>
 
             <button type="submit" id="submitBtn" disabled>Login</button>
@@ -163,41 +163,43 @@
     </div>
 
     <script>
+        // Get form elements
         const form = document.getElementById('loginForm');
         const submitBtn = document.getElementById('submitBtn');
         const messageDiv = document.getElementById('message');
         const usernameInput = document.getElementById('username');
         const passwordInput = document.getElementById('password');
 
-        // Validation function
-        function validateField(field) {
-            const value = field.value.trim();
-            const errorElement = document.getElementById(`${field.id}Error`);
+        // Validate individual field
+        function validateField(input) {
+            const value = input.value.trim();
+            const errorElement = document.getElementById(`${input.id}Error`);
             
             if (value.length === 0) {
-                field.classList.add('error');
+                input.classList.add('invalid');
                 errorElement.style.display = 'block';
                 return false;
             } else {
-                field.classList.remove('error');
+                input.classList.remove('invalid');
                 errorElement.style.display = 'none';
                 return true;
             }
         }
 
-        // Validate entire form
-        function validateForm() {
+        // Check form validity and enable/disable submit button
+        function checkFormValidity() {
             const isUsernameValid = usernameInput.value.trim().length > 0;
             const isPasswordValid = passwordInput.value.length > 0;
             
-            submitBtn.disabled = !(isUsernameValid && isPasswordValid);
+            const allValid = isUsernameValid && isPasswordValid;
+            submitBtn.disabled = !allValid;
             
-            return isUsernameValid && isPasswordValid;
+            return allValid;
         }
 
-        // Add event listeners
-        usernameInput.addEventListener('input', validateForm);
-        passwordInput.addEventListener('input', validateForm);
+        // Add event listeners to inputs
+        usernameInput.addEventListener('input', checkFormValidity);
+        passwordInput.addEventListener('input', checkFormValidity);
         
         usernameInput.addEventListener('blur', function() {
             validateField(this);
@@ -211,7 +213,8 @@
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            if (!validateForm()) {
+            // Double check validation before submitting
+            if (!checkFormValidity()) {
                 return;
             }
 
@@ -221,10 +224,12 @@
             };
 
             try {
+                // Disable button and show loading state
                 submitBtn.disabled = true;
                 submitBtn.textContent = 'Logging in...';
                 messageDiv.style.display = 'none';
 
+                // Make API call
                 const response = await fetch('/api/login', {
                     method: 'POST',
                     headers: {
@@ -236,14 +241,14 @@
                 const data = await response.json();
 
                 if (response.ok) {
-                    // Success
+                    // Login successful
                     messageDiv.textContent = data.message;
                     messageDiv.className = 'message success';
                     messageDiv.style.display = 'block';
                     form.reset();
                     submitBtn.disabled = true;
                     
-                    // Store user info if needed
+                    // Log user data to console
                     console.log('Logged in user:', data.user);
                     
                     // Optional: Redirect to dashboard after 2 seconds
@@ -251,26 +256,27 @@
                     //     window.location.href = '/dashboard';
                     // }, 2000);
                 } else {
-                    // Error
+                    // Login failed
                     messageDiv.textContent = data.message;
                     messageDiv.className = 'message error';
                     messageDiv.style.display = 'block';
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Login';
                 }
 
             } catch (error) {
+                // Network or other error
                 console.error('Login error:', error);
                 messageDiv.textContent = 'An error occurred. Please try again.';
                 messageDiv.className = 'message error';
                 messageDiv.style.display = 'block';
-                submitBtn.disabled = false;
+            } finally {
+                // Reset button text and re-validate form
                 submitBtn.textContent = 'Login';
+                checkFormValidity();
             }
         });
 
-        // Initial validation
-        validateForm();
+        // Run initial validation check on page load
+        checkFormValidity();
     </script>
 </body>
 </html>
