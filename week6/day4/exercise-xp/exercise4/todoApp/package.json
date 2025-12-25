@@ -1,0 +1,6 @@
+{
+  "name": "todoapp",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Todo List Application"
+}
