@@ -1,0 +1,4 @@
+echo "Hello from the file!
+This is line 2.
+Node.js file operations are powerful.
+Learning Node.js is fun!" > files/file-data.txt
