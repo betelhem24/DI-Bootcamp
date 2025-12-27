@@ -1,8 +1,5 @@
-// Exercise 3: Data Service Module - data/dataService.js
-
 const axios = require('axios');
 
-// Function to fetch all posts from JSONPlaceholder API
 const fetchPosts = async () => {
   try {
     const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
@@ -13,7 +10,6 @@ const fetchPosts = async () => {
   }
 };
 
-// Export the function
 module.exports = {
   fetchPosts
 };
