@@ -1,1 +1,0 @@
-Today we will learn how to create server with NodeJS + Express
