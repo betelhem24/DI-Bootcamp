@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emoji Guessing Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎮 Emoji Guessing Game</h1>
+            <p>Guess the name of the emoji!</p>
+        </header>
+
+        <!-- Player Name Section -->
+        <div id="nameSection" class="section">
+            <h2>Enter Your Name</h2>
+            <input type="text" id="playerName" placeholder="Your Name" maxlength="20">
+            <button onclick="startGame()" class="btn btn-primary">Start Game</button>
+        </div>
+
+        <!-- Game Section -->
+        <div id="gameSection" class="section hidden">
+            <div class="score-board">
+                <div class="score-item">
+                    <span class="label">Player:</span>
+                    <span id="displayName" class="value">-</span>
+                </div>
+                <div class="score-item">
+                    <span class="label">Score:</span>
+                    <span id="score" class="value">0</span>
+                </div>
+                <div class="score-item">
+                    <span class="label">Round:</span>
+                    <span id="round" class="value">0</span>
+                </div>
+            </div>
+
+            <div class="emoji-display">
+                <div id="emojiContainer" class="emoji-large">🎯</div>
+            </div>
+
+            <form id="guessForm" class="guess-form">
+                <div id="optionsContainer" class="options-container">
+                    <!-- Options will be dynamically added here -->
+                </div>
+                <button type="submit" class="btn btn-primary">Submit Guess</button>
+            </form>
+
+            <div id="feedback" class="feedback hidden"></div>
+
+            <div class="game-controls">
+                <button onclick="nextQuestion()" class="btn btn-secondary">Next Question</button>
+                <button onclick="endGame()" class="btn btn-danger">End Game</button>
+            </div>
+        </div>
+
+        <!-- Leaderboard Section -->
+        <div id="leaderboardSection" class="section">
+            <h2>🏆 Leaderboard</h2>
+            <div id="leaderboardList" class="leaderboard-list">
+                <p class="no-scores">No scores yet. Be the first to play!</p>
+            </div>
+            <button onclick="showNameSection()" class="btn btn-secondary">Play Again</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
