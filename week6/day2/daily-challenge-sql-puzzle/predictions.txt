@@ -1,0 +1,94 @@
+
+##  `predictions.txt`
+```
+SQL PUZZLE PREDICTIONS (Before Execution)
+==========================================
+
+DATA ANALYSIS:
+--------------
+FirstTab:
+ID      Name
+5       Pawan
+6       Sharlee
+7       Krish
+NULL    Avtaar
+
+SecondTab:
+ID
+5
+NULL
+
+
+MY PREDICTIONS:
+===============
+
+Q1: SELECT COUNT(*) FROM FirstTab AS ft 
+    WHERE ft.id NOT IN ( SELECT id FROM SecondTab WHERE id IS NULL )
+    
+    Subquery: SELECT id FROM SecondTab WHERE id IS NULL
+    → Returns: empty set (no rows)
+    
+    Main query: WHERE ft.id NOT IN (empty set)
+    → This means: WHERE ft.id NOT IN ()
+    → Any value NOT IN an empty set is TRUE
+    → Will match all rows with non-NULL id values: 5, 6, 7
+    
+    PREDICTION: 3
+
+
+Q2: SELECT COUNT(*) FROM FirstTab AS ft 
+    WHERE ft.id NOT IN ( SELECT id FROM SecondTab WHERE id = 5 )
+    
+    Subquery: SELECT id FROM SecondTab WHERE id = 5
+    → Returns: (5)
+    
+    Main query: WHERE ft.id NOT IN (5)
+    → Checks: 5 NOT IN (5) = FALSE
+    →         6 NOT IN (5) = TRUE
+    →         7 NOT IN (5) = TRUE
+    →         NULL NOT IN (5) = NULL (NULLs don't match)
+    → Matches: 6, 7
+    
+    PREDICTION: 2
+
+
+Q3: SELECT COUNT(*) FROM FirstTab AS ft 
+    WHERE ft.id NOT IN ( SELECT id FROM SecondTab )
+    
+    Subquery: SELECT id FROM SecondTab
+    → Returns: (5, NULL)
+    
+    Main query: WHERE ft.id NOT IN (5, NULL)
+    → When NULL is in the list, NOT IN becomes problematic
+    → For any value: x NOT IN (5, NULL) 
+      = NOT (x = 5 OR x = NULL)
+      = (x != 5) AND (x != NULL)
+      = (x != 5) AND UNKNOWN
+      = UNKNOWN (never TRUE)
+    → No rows match when NULL is in the subquery
+    
+    PREDICTION: 0
+
+
+Q4: SELECT COUNT(*) FROM FirstTab AS ft 
+    WHERE ft.id NOT IN ( SELECT id FROM SecondTab WHERE id IS NOT NULL )
+    
+    Subquery: SELECT id FROM SecondTab WHERE id IS NOT NULL
+    → Returns: (5)
+    
+    Main query: WHERE ft.id NOT IN (5)
+    → Same as Q2
+    → Checks: 5 NOT IN (5) = FALSE
+    →         6 NOT IN (5) = TRUE
+    →         7 NOT IN (5) = TRUE
+    →         NULL NOT IN (5) = NULL
+    → Matches: 6, 7
+    
+    PREDICTION: 2
+
+
+KEY LEARNING:
+=============
+The tricky part is Q3! When a subquery returns NULL values,
+NOT IN behaves unexpectedly because of three-valued logic (TRUE, FALSE, UNKNOWN).
+If the subquery contains NULL, NOT IN will never return TRUE for any value.
