@@ -1,53 +1,86 @@
+// Game state variables
 let playerName = '';
 let score = 0;
 let round = 0;
+let totalQuestions = 0;
 let currentOptions = [];
 let selectedOption = null;
 
-// Show/Hide sections
+// DOM Helper Functions
+
 function showSection(sectionId) {
-    document.querySelectorAll('.section').forEach(section => {
+    const sections = document.querySelectorAll('.section');
+    sections.forEach(section => {
         section.classList.add('hidden');
     });
-    document.getElementById(sectionId).classList.remove('hidden');
+    const targetSection = document.getElementById(sectionId);
+    if (targetSection) {
+        targetSection.classList.remove('hidden');
+    }
 }
 
 function showNameSection() {
     showSection('nameSection');
     document.getElementById('playerName').value = '';
+    score = 0;
+    round = 0;
+    totalQuestions = 0;
 }
 
-// Start game
+// Game Functions
+
 function startGame() {
-    const nameInput = document.getElementById('playerName').value.trim();
+    const nameInput = document.getElementById('playerName');
+    const name = nameInput.value.trim();
     
-    if (!nameInput) {
-        alert('Please enter your name!');
+    if (!name) {
+        alert('⚠️ Please enter your name to start playing!');
+        nameInput.focus();
         return;
     }
     
-    playerName = nameInput;
+    if (name.length < 2) {
+        alert('⚠️ Please enter a valid name (at least 2 characters)!');
+        nameInput.focus();
+        return;
+    }
+    
+    playerName = name;
     score = 0;
     round = 0;
+    totalQuestions = 0;
     
     document.getElementById('displayName').textContent = playerName;
-    document.getElementById('score').textContent = score;
-    document.getElementById('round').textContent = round;
+    document.getElementById('score').textContent = '0';
+    document.getElementById('round').textContent = '0';
     
     showSection('gameSection');
     loadLeaderboard();
     nextQuestion();
 }
 
-// Load new question
 async function nextQuestion() {
     try {
-        document.getElementById('feedback').classList.add('hidden');
+        // Hide feedback
+        const feedback = document.getElementById('feedback');
+        feedback.classList.add('hidden');
+        
+        // Reset selection
         selectedOption = null;
         
+        // Show loading state
+        document.getElementById('emojiContainer').textContent = '⏳';
+        
+        // Fetch new emoji question
         const response = await fetch('/api/emoji');
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
         const data = await response.json();
         
+        // Display emoji
         document.getElementById('emojiContainer').textContent = data.emoji;
         currentOptions = data.options;
         
@@ -64,19 +97,28 @@ async function nextQuestion() {
             optionsContainer.appendChild(button);
         });
         
+        // Update round counter
         round++;
+        totalQuestions++;
         document.getElementById('round').textContent = round;
+        
+        // Enable submit button
+        const submitBtn = document.querySelector('#guessForm button[type="submit"]');
+        if (submitBtn) {
+            submitBtn.disabled = false;
+        }
         
     } catch (error) {
         console.error('Error loading question:', error);
-        alert('Error loading question. Please try again.');
+        alert('❌ Error loading question. Please try again.');
+        document.getElementById('emojiContainer').textContent = '❌';
     }
 }
 
-// Select option
 function selectOption(button, option) {
     // Remove selection from all buttons
-    document.querySelectorAll('.option-btn').forEach(btn => {
+    const allButtons = document.querySelectorAll('.option-btn');
+    allButtons.forEach(btn => {
         btn.classList.remove('selected');
     });
     
@@ -86,60 +128,87 @@ function selectOption(button, option) {
 }
 
 // Handle form submission
-document.getElementById('guessForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    if (!selectedOption) {
-        alert('Please select an option!');
-        return;
-    }
-    
-    try {
-        const response = await fetch('/api/guess', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                guess: selectedOption,
-                playerName: playerName
-            })
-        });
+const guessForm = document.getElementById('guessForm');
+if (guessForm) {
+    guessForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
         
-        const data = await response.json();
-        
-        // Show feedback
-        const feedback = document.getElementById('feedback');
-        feedback.textContent = data.message;
-        feedback.className = 'feedback ' + (data.correct ? 'correct' : 'wrong');
-        feedback.classList.remove('hidden');
-        
-        // Update score
-        if (data.correct) {
-            score++;
-            document.getElementById('score').textContent = score;
+        if (!selectedOption) {
+            alert('⚠️ Please select an option before submitting!');
+            return;
         }
         
-        // Disable option buttons
-        document.querySelectorAll('.option-btn').forEach(btn => {
-            btn.disabled = true;
-            btn.style.cursor = 'not-allowed';
-        });
-        
-    } catch (error) {
-        console.error('Error submitting guess:', error);
-        alert('Error submitting guess. Please try again.');
-    }
-});
+        try {
+            // Disable submit button to prevent double submission
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            
+            // Submit guess to server
+            const response = await fetch('/api/guess', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    guess: selectedOption,
+                    playerName: playerName
+                })
+            });
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            const data = await response.json();
+            
+            // Show feedback
+            const feedback = document.getElementById('feedback');
+            feedback.textContent = data.message;
+            feedback.className = 'feedback ' + (data.correct ? 'correct' : 'wrong');
+            feedback.classList.remove('hidden');
+            
+            // Update score if correct
+            if (data.correct) {
+                score++;
+                document.getElementById('score').textContent = score;
+            }
+            
+            // Disable all option buttons
+            const allButtons = document.querySelectorAll('.option-btn');
+            allButtons.forEach(btn => {
+                btn.disabled = true;
+                btn.style.opacity = '0.6';
+                btn.style.cursor = 'not-allowed';
+                
+                // Highlight correct answer
+                if (btn.textContent === data.correctAnswer) {
+                    btn.style.background = '#28a745';
+                    btn.style.color = 'white';
+                    btn.style.borderColor = '#28a745';
+                }
+            });
+            
+        } catch (error) {
+            console.error('Error submitting guess:', error);
+            alert('❌ Error submitting guess. Please try again.');
+        }
+    });
+}
 
-// End game
 async function endGame() {
-    if (round === 0) {
-        alert('Play at least one round before ending!');
+    if (totalQuestions === 0) {
+        alert('⚠️ Play at least one round before ending the game!');
+        return;
+    }
+    
+    const confirmEnd = confirm(`Are you sure you want to end the game?\n\nYour Score: ${score}/${totalQuestions}`);
+    
+    if (!confirmEnd) {
         return;
     }
     
     try {
+        // Submit score to leaderboard
         const response = await fetch('/api/leaderboard', {
             method: 'POST',
             headers: {
@@ -151,23 +220,37 @@ async function endGame() {
             })
         });
         
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
         const data = await response.json();
         
-        alert(`Game Over!\n${playerName}, your final score: ${score}/${round}`);
+        // Calculate percentage
+        const percentage = ((score / totalQuestions) * 100).toFixed(1);
         
+        alert(`🎮 Game Over!\n\n👤 Player: ${playerName}\n📊 Final Score: ${score}/${totalQuestions}\n📈 Accuracy: ${percentage}%`);
+        
+        // Display leaderboard
         displayLeaderboard(data.leaderboard);
         showSection('leaderboardSection');
         
     } catch (error) {
         console.error('Error submitting score:', error);
-        alert('Error submitting score. Please try again.');
+        alert('❌ Error submitting score. Showing leaderboard anyway.');
+        await loadLeaderboard();
+        showSection('leaderboardSection');
     }
 }
 
-// Load leaderboard
 async function loadLeaderboard() {
     try {
         const response = await fetch('/api/leaderboard');
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
         const leaderboard = await response.json();
         displayLeaderboard(leaderboard);
     } catch (error) {
@@ -175,12 +258,11 @@ async function loadLeaderboard() {
     }
 }
 
-// Display leaderboard
 function displayLeaderboard(leaderboard) {
     const leaderboardList = document.getElementById('leaderboardList');
     
-    if (leaderboard.length === 0) {
-        leaderboardList.innerHTML = '<p class="no-scores">No scores yet. Be the first to play!</p>';
+    if (!leaderboard || leaderboard.length === 0) {
+        leaderboardList.innerHTML = '<p class="no-scores">🏆 No scores yet. Be the first to play!</p>';
         return;
     }
     
@@ -190,11 +272,14 @@ function displayLeaderboard(leaderboard) {
         const item = document.createElement('div');
         item.className = 'leaderboard-item';
         
-        const medal = index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : '';
+        let medal = '';
+        if (index === 0) medal = '🥇';
+        else if (index === 1) medal = '🥈';
+        else if (index === 2) medal = '🥉';
         
         item.innerHTML = `
             <span class="leaderboard-rank">${medal} #${index + 1}</span>
-            <span class="leaderboard-name">${entry.playerName}</span>
+            <span class="leaderboard-name">${escapeHtml(entry.playerName)}</span>
             <span class="leaderboard-score">${entry.score} pts</span>
         `;
         
@@ -202,7 +287,20 @@ function displayLeaderboard(leaderboard) {
     });
 }
 
-// Load leaderboard on page load
+// Security: Escape HTML to prevent XSS
+function escapeHtml(text) {
+    const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+    };
+    return text.replace(/[&<>"']/g, m => map[m]);
+}
+
+// Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('🎮 Emoji Guessing Game loaded!');
     loadLeaderboard();
 });

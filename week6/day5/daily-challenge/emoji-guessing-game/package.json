@@ -1,13 +1,18 @@
 {
   "name": "emoji-guessing-game",
   "version": "1.0.0",
-  "description": "Emoji guessing game with Express",
+  "description": "A fun emoji guessing game built with Express.js",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js"
   },
-  "keywords": ["emoji", "game", "express"],
+  "keywords": [
+    "emoji",
+    "game",
+    "express",
+    "nodejs"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {

@@ -1,3 +1,4 @@
+// Array of emoji objects with emoji character and name
 const emojis = [
     { emoji: '😀', name: 'Smile' },
     { emoji: '🐶', name: 'Dog' },
@@ -18,7 +19,18 @@ const emojis = [
     { emoji: '🎨', name: 'Art' },
     { emoji: '🏀', name: 'Basketball' },
     { emoji: '🍔', name: 'Burger' },
-    { emoji: '🎭', name: 'Theater' }
+    { emoji: '🎭', name: 'Theater' },
+    { emoji: '🎪', name: 'Circus' },
+    { emoji: '🎬', name: 'Movie' },
+    { emoji: '🎤', name: 'Microphone' },
+    { emoji: '🎧', name: 'Headphones' },
+    { emoji: '🎯', name: 'Target' },
+    { emoji: '🎲', name: 'Dice' },
+    { emoji: '🎰', name: 'Slot Machine' },
+    { emoji: '🏆', name: 'Trophy' },
+    { emoji: '🏅', name: 'Medal' },
+    { emoji: '⚡', name: 'Lightning' }
 ];
 
+// Export the emojis array
 module.exports = emojis;
