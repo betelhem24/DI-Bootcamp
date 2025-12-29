@@ -1,7 +1,13 @@
 const express = require('express');
 const router = express.Router();
+const { JSDOM } = require('jsdom');
+const createDOMPurify = require('dompurify');
 
-// Hard-coded trivia questions
+// Create DOMPurify instance for sanitization
+const window = new JSDOM('').window;
+const DOMPurify = createDOMPurify(window);
+
+// Hard-coded trivia questions (as per requirements)
 const triviaQuestions = [
   {
     question: "What is the capital of France?",
@@ -17,175 +23,334 @@ const triviaQuestions = [
   },
 ];
 
-// In-memory storage for user sessions (in a real app, use sessions or database)
-const userSessions = {};
+// Helper function to sanitize user input
+function sanitizeInput(input) {
+  if (!input) return '';
+  return DOMPurify.sanitize(input.trim());
+}
 
-// Helper function to generate a simple session ID
-function generateSessionId() {
-  return 'user_' + Date.now() + Math.random().toString(36).substr(2, 9);
+// Helper function to check answer (case-insensitive, handles variations)
+function isAnswerCorrect(userAnswer, correctAnswer) {
+  const sanitized = sanitizeInput(userAnswer);
+  return sanitized.toLowerCase() === correctAnswer.toLowerCase();
+}
+
+// Helper function to generate HTML with consistent styling
+function generateQuizHTML(content) {
+  return `
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Trivia Quiz</title>
+      <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          max-width: 700px;
+          margin: 30px auto;
+          padding: 20px;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          min-height: 100vh;
+        }
+        .container {
+          background: white;
+          border-radius: 15px;
+          padding: 40px;
+          box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        h1 { color: #333; margin-bottom: 20px; font-size: 28px; }
+        h2 { color: #555; margin-bottom: 15px; font-size: 20px; }
+        p { margin: 15px 0; line-height: 1.6; }
+        .question { 
+          font-size: 20px; 
+          color: #2c3e50; 
+          margin: 25px 0;
+          font-weight: 500;
+        }
+        input[type="text"] {
+          width: 100%;
+          padding: 15px;
+          font-size: 16px;
+          border: 2px solid #ddd;
+          border-radius: 8px;
+          margin: 15px 0;
+          transition: border-color 0.3s;
+        }
+        input[type="text"]:focus {
+          outline: none;
+          border-color: #667eea;
+        }
+        button {
+          width: 100%;
+          padding: 15px 30px;
+          font-size: 18px;
+          cursor: pointer;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          border: none;
+          border-radius: 8px;
+          transition: transform 0.2s, box-shadow 0.2s;
+          font-weight: 600;
+        }
+        button:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        button:active {
+          transform: translateY(0);
+        }
+        .feedback {
+          padding: 15px;
+          margin: 20px 0;
+          border-radius: 8px;
+          font-weight: 500;
+          font-size: 16px;
+        }
+        .feedback.correct {
+          background-color: #d4edda;
+          color: #155724;
+          border: 2px solid #c3e6cb;
+        }
+        .feedback.incorrect {
+          background-color: #f8d7da;
+          color: #721c24;
+          border: 2px solid #f5c6cb;
+        }
+        .score-info {
+          text-align: center;
+          margin: 20px 0;
+          padding: 15px;
+          background: #f8f9fa;
+          border-radius: 8px;
+          font-size: 18px;
+          color: #495057;
+        }
+        .review-list {
+          list-style: none;
+          padding: 0;
+        }
+        .review-list li {
+          margin: 20px 0;
+          padding: 15px;
+          background: #f8f9fa;
+          border-radius: 8px;
+          border-left: 4px solid #667eea;
+        }
+        .correct-answer { color: #28a745; font-weight: 600; }
+        .incorrect-answer { color: #dc3545; font-weight: 600; }
+        .button-group {
+          display: flex;
+          gap: 10px;
+          margin-top: 20px;
+        }
+        .button-group button {
+          flex: 1;
+        }
+        .secondary-btn {
+          background: #6c757d;
+        }
+        .secondary-btn:hover {
+          box-shadow: 0 5px 20px rgba(108, 117, 125, 0.4);
+        }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        ${content}
+      </div>
+    </body>
+    </html>
+  `;
 }
 
 // GET /quiz - Start the quiz and display the first question
 router.get('/', (req, res) => {
-  // Create a new session
-  const sessionId = generateSessionId();
-  userSessions[sessionId] = {
-    currentQuestion: 0,
-    score: 0,
-    answers: []
-  };
-
-  const question = triviaQuestions[0];
-  
-  res.send(`
-    <h1>Trivia Quiz Game</h1>
-    <h2>Question 1 of ${triviaQuestions.length}</h2>
-    <p><strong>${question.question}</strong></p>
+  try {
+    // Initialize session data
+    req.session.currentQuestion = 0;
+    req.session.score = 0;
+    req.session.answers = [];
     
-    <form action="/quiz?sessionId=${sessionId}" method="POST">
-      <input type="text" name="answer" placeholder="Your answer" required 
-             style="padding: 10px; font-size: 14px; width: 300px;">
-      <br><br>
-      <button type="submit" style="padding: 10px 20px; font-size: 16px; cursor: pointer;">
-        Submit Answer
-      </button>
-    </form>
-  `);
+    const question = triviaQuestions[0];
+    
+    const content = `
+      <h1>🎯 Trivia Quiz Game</h1>
+      <h2>Question 1 of ${triviaQuestions.length}</h2>
+      <p class="question">${question.question}</p>
+      
+      <form action="/quiz" method="POST">
+        <input type="text" 
+               name="answer" 
+               placeholder="Type your answer here..." 
+               required 
+               autocomplete="off"
+               autofocus>
+        <button type="submit">Submit Answer</button>
+      </form>
+    `;
+    
+    res.send(generateQuizHTML(content));
+  } catch (error) {
+    console.error('Error in GET /quiz:', error);
+    res.status(500).send('An error occurred. Please try again.');
+  }
 });
 
 // POST /quiz - Submit an answer and move to next question
 router.post('/', (req, res) => {
-  const sessionId = req.query.sessionId;
-  const userAnswer = req.body.answer;
+  try {
+    // Validate session
+    if (typeof req.session.currentQuestion === 'undefined') {
+      return res.redirect('/quiz');
+    }
 
-  // Check if session exists
-  if (!sessionId || !userSessions[sessionId]) {
-    return res.send(`
-      <h1>Session Error</h1>
-      <p>Your session has expired. Please start a new quiz.</p>
-      <a href="/quiz"><button>Start New Quiz</button></a>
-    `);
-  }
-
-  const session = userSessions[sessionId];
-  const currentQ = triviaQuestions[session.currentQuestion];
-  
-  // Check if answer is correct (case-insensitive)
-  const isCorrect = userAnswer.trim().toLowerCase() === currentQ.answer.toLowerCase();
-  
-  if (isCorrect) {
-    session.score++;
-  }
-  
-  // Store the answer
-  session.answers.push({
-    question: currentQ.question,
-    userAnswer: userAnswer,
-    correctAnswer: currentQ.answer,
-    isCorrect: isCorrect
-  });
-
-  // Move to next question
-  session.currentQuestion++;
-
-  // Check if quiz is complete
-  if (session.currentQuestion >= triviaQuestions.length) {
-    // Quiz completed, redirect to score page
-    return res.redirect(`/quiz/score?sessionId=${sessionId}`);
-  }
-
-  // Display feedback and next question
-  const nextQuestion = triviaQuestions[session.currentQuestion];
-  const feedbackColor = isCorrect ? 'green' : 'red';
-  const feedbackText = isCorrect ? '✓ Correct!' : `✗ Incorrect! The answer was: ${currentQ.answer}`;
-
-  res.send(`
-    <h1>Trivia Quiz Game</h1>
-    <div style="padding: 10px; background-color: ${feedbackColor}; color: white; margin-bottom: 20px;">
-      <strong>${feedbackText}</strong>
-    </div>
+    const userAnswer = sanitizeInput(req.body.answer);
     
-    <h2>Question ${session.currentQuestion + 1} of ${triviaQuestions.length}</h2>
-    <p><strong>${nextQuestion.question}</strong></p>
+    // Validate input
+    if (!userAnswer) {
+      return res.status(400).send(generateQuizHTML(`
+        <h1>Invalid Input</h1>
+        <p>Please provide an answer.</p>
+        <a href="/quiz"><button>Try Again</button></a>
+      `));
+    }
+
+    const currentQ = triviaQuestions[req.session.currentQuestion];
     
-    <form action="/quiz?sessionId=${sessionId}" method="POST">
-      <input type="text" name="answer" placeholder="Your answer" required 
-             style="padding: 10px; font-size: 14px; width: 300px;">
-      <br><br>
-      <button type="submit" style="padding: 10px 20px; font-size: 16px; cursor: pointer;">
-        Submit Answer
-      </button>
-    </form>
+    // Check if answer is correct
+    const isCorrect = isAnswerCorrect(userAnswer, currentQ.answer);
     
-    <p><em>Current Score: ${session.score}/${session.currentQuestion}</em></p>
-  `);
+    if (isCorrect) {
+      req.session.score++;
+    }
+    
+    // Store the answer
+    req.session.answers.push({
+      question: currentQ.question,
+      userAnswer: userAnswer,
+      correctAnswer: currentQ.answer,
+      isCorrect: isCorrect
+    });
+
+    // Move to next question
+    req.session.currentQuestion++;
+
+    // Check if quiz is complete
+    if (req.session.currentQuestion >= triviaQuestions.length) {
+      return res.redirect('/quiz/score');
+    }
+
+    // Display feedback and next question
+    const nextQuestion = triviaQuestions[req.session.currentQuestion];
+    const feedbackClass = isCorrect ? 'correct' : 'incorrect';
+    const feedbackText = isCorrect 
+      ? '✓ Correct! Well done!' 
+      : `✗ Incorrect! The correct answer was: ${currentQ.answer}`;
+
+    const content = `
+      <h1>🎯 Trivia Quiz Game</h1>
+      
+      <div class="feedback ${feedbackClass}">
+        ${feedbackText}
+      </div>
+      
+      <h2>Question ${req.session.currentQuestion + 1} of ${triviaQuestions.length}</h2>
+      <p class="question">${nextQuestion.question}</p>
+      
+      <form action="/quiz" method="POST">
+        <input type="text" 
+               name="answer" 
+               placeholder="Type your answer here..." 
+               required 
+               autocomplete="off"
+               autofocus>
+        <button type="submit">Submit Answer</button>
+      </form>
+      
+      <div class="score-info">
+        Current Score: ${req.session.score}/${req.session.currentQuestion}
+      </div>
+    `;
+
+    res.send(generateQuizHTML(content));
+  } catch (error) {
+    console.error('Error in POST /quiz:', error);
+    res.status(500).send('An error occurred. Please try again.');
+  }
 });
 
 // GET /quiz/score - Display final score
 router.get('/score', (req, res) => {
-  const sessionId = req.query.sessionId;
+  try {
+    // Validate session
+    if (typeof req.session.score === 'undefined' || !req.session.answers) {
+      return res.redirect('/quiz');
+    }
 
-  // Check if session exists
-  if (!sessionId || !userSessions[sessionId]) {
-    return res.send(`
-      <h1>Session Error</h1>
-      <p>No quiz session found. Please start a new quiz.</p>
-      <a href="/quiz"><button>Start New Quiz</button></a>
-    `);
-  }
+    const totalQuestions = triviaQuestions.length;
+    const score = req.session.score;
+    const percentage = Math.round((score / totalQuestions) * 100);
+    
+    let message = '';
+    let emoji = '';
+    
+    if (percentage === 100) {
+      emoji = '🎉';
+      message = 'Perfect score! You\'re a trivia master!';
+    } else if (percentage >= 70) {
+      emoji = '👏';
+      message = 'Great job! You know your stuff!';
+    } else if (percentage >= 50) {
+      emoji = '👍';
+      message = 'Not bad! Keep practicing!';
+    } else {
+      emoji = '📚';
+      message = 'Keep learning! You\'ll do better next time!';
+    }
 
-  const session = userSessions[sessionId];
-  const percentage = Math.round((session.score / triviaQuestions.length) * 100);
-  
-  let message = '';
-  if (percentage === 100) {
-    message = '🎉 Perfect score! You\'re a trivia master!';
-  } else if (percentage >= 70) {
-    message = '👏 Great job! You know your stuff!';
-  } else if (percentage >= 50) {
-    message = '👍 Not bad! Keep practicing!';
-  } else {
-    message = '📚 Keep learning! You\'ll do better next time!';
-  }
+    // Build answer review
+    let reviewHTML = '<h3>📋 Review Your Answers:</h3><ul class="review-list">';
+    req.session.answers.forEach((ans, index) => {
+      const answerClass = ans.isCorrect ? 'correct-answer' : 'incorrect-answer';
+      reviewHTML += `
+        <li>
+          <strong>Q${index + 1}: ${ans.question}</strong><br>
+          Your answer: <span class="${answerClass}">${ans.userAnswer}</span><br>
+          ${!ans.isCorrect ? `Correct answer: <span class="correct-answer">${ans.correctAnswer}</span>` : '✓ Correct!'}
+        </li>
+      `;
+    });
+    reviewHTML += '</ul>';
 
-  // Build answer review
-  let reviewHTML = '<h3>Review Your Answers:</h3><ul>';
-  session.answers.forEach((ans, index) => {
-    const color = ans.isCorrect ? 'green' : 'red';
-    reviewHTML += `
-      <li style="margin-bottom: 15px;">
-        <strong>Q${index + 1}: ${ans.question}</strong><br>
-        Your answer: <span style="color: ${color};">${ans.userAnswer}</span><br>
-        ${!ans.isCorrect ? `Correct answer: <span style="color: green;">${ans.correctAnswer}</span>` : '✓ Correct!'}
-      </li>
+    const content = `
+      <h1>${emoji} Quiz Completed!</h1>
+      <div class="score-info">
+        <h2>Your Final Score: ${score}/${totalQuestions} (${percentage}%)</h2>
+        <p style="font-size: 18px; margin-top: 10px;">${message}</p>
+      </div>
+      
+      ${reviewHTML}
+      
+      <div class="button-group">
+        <button onclick="window.location.href='/quiz'">
+          Play Again
+        </button>
+        <button class="secondary-btn" onclick="window.location.href='/'">
+          Back to Home
+        </button>
+      </div>
     `;
-  });
-  reviewHTML += '</ul>';
 
-  res.send(`
-    <h1>Quiz Completed!</h1>
-    <h2>Your Final Score: ${session.score}/${triviaQuestions.length} (${percentage}%)</h2>
-    <p style="font-size: 20px;">${message}</p>
-    
-    ${reviewHTML}
-    
-    <br>
-    <a href="/quiz">
-      <button style="padding: 10px 20px; font-size: 16px; cursor: pointer;">
-        Play Again
-      </button>
-    </a>
-    <a href="/">
-      <button style="padding: 10px 20px; font-size: 16px; cursor: pointer; margin-left: 10px;">
-        Back to Home
-      </button>
-    </a>
-  `);
+    res.send(generateQuizHTML(content));
 
-  // Clean up session after displaying score
-  setTimeout(() => {
-    delete userSessions[sessionId];
-  }, 60000); // Delete after 1 minute
+    // Clear session data after displaying score
+    req.session.destroy();
+  } catch (error) {
+    console.error('Error in GET /quiz/score:', error);
+    res.status(500).send('An error occurred. Please try again.');
+  }
 });
 
 module.exports = router;
