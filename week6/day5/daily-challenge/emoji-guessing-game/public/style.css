@@ -1,3 +1,5 @@
+/*  GLOBAL STYLES */
+
 * {
     margin: 0;
     padding: 0;
@@ -23,6 +25,7 @@ body {
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
 }
 
+   /* HEADER STYLES */
 header {
     text-align: center;
     margin-bottom: 30px;
@@ -39,6 +42,9 @@ header p {
     font-size: 1.1em;
 }
 
+
+   /* SECTION MANAGEMENT */
+  
 .section {
     animation: fadeIn 0.5s ease-in;
 }
@@ -47,6 +53,9 @@ header p {
     display: none !important;
 }
 
+
+   /* NAME ENTRY SECTION */
+  
 #nameSection {
     text-align: center;
 }
@@ -71,6 +80,9 @@ header p {
     border-color: #667eea;
 }
 
+
+   /* SCORE BOARD (Requirement #9: Display score) */
+  
 .score-board {
     display: flex;
     justify-content: space-around;
@@ -98,6 +110,9 @@ header p {
     font-weight: bold;
 }
 
+
+   /* EMOJI DISPLAY (Requirement #4: Present emoji) */
+  
 .emoji-display {
     text-align: center;
     margin: 30px 0;
@@ -108,6 +123,9 @@ header p {
     animation: bounceIn 0.6s ease-out;
 }
 
+
+   /* MULTIPLE CHOICE OPTIONS (Requirement #4) */
+  
 .options-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -141,6 +159,9 @@ header p {
     cursor: not-allowed;
 }
 
+
+   /* BUTTONS */
+ 
 .btn {
     padding: 15px 30px;
     font-size: 1.1em;
@@ -188,6 +209,8 @@ header p {
     background: #c82333;
 }
 
+   /* FEEDBACK (Requirement #7: Provide feedback) */
+  
 .feedback {
     padding: 20px;
     border-radius: 10px;
@@ -210,10 +233,16 @@ header p {
     border: 2px solid #f5c6cb;
 }
 
+
+   /* GAME CONTROLS */
+ 
 .game-controls {
     margin-top: 20px;
 }
 
+
+   /* LEADERBOARD (Requirement #10: Display top scores) */
+  
 .leaderboard-list {
     margin: 20px 0;
 }
@@ -255,6 +284,9 @@ header p {
     font-size: 1.1em;
 }
 
+
+   /* ANIMATIONS */
+   
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -284,6 +316,8 @@ header p {
         opacity: 1;
     }
 }
+
+/*   RESPONSIVE DESIGN */
 
 @media (max-width: 600px) {
     .container {

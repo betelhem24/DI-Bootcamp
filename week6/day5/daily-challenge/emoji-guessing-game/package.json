@@ -1,7 +1,7 @@
 {
   "name": "emoji-guessing-game",
   "version": "1.0.0",
-  "description": "A fun emoji guessing game built with Express.js",
+  "description": "Emoji Guessing Game - Daily Challenge Implementation. This project fulfills all 10 requirements: Express API server, emoji data module, random emoji generation, form-based interface, Fetch API integration, guess validation, feedback system, continuous gameplay, score tracking, and leaderboard functionality.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -11,11 +11,18 @@
     "emoji",
     "game",
     "express",
-    "nodejs"
+    "nodejs",
+    "api",
+    "guessing-game",
+    "leaderboard",
+    "fetch-api"
   ],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2"
+  },
+  "engines": {
+    "node": ">=14.0.0"
   }
 }
