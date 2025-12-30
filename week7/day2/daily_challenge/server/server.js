@@ -1,88 +1,128 @@
-const express = require('express');
-const dotenv = require('dotenv');
-const userRoutes = require('./routes/userRoutes');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const UserModel = require('../models/userModel');
 
-dotenv.config();
+const SALT_ROUNDS = parseInt(process.env.SALT_ROUNDS) || 10;
+const JWT_SECRET = process.env.JWT_SECRET || 'supersecret';
+const JWT_EXPIRATION = process.env.JWT_EXPIRATION || '1h';
 
-const app = express();
-const PORT = process.env.PORT || 3000;
+class UserController {
+  // Register new user
+  static async register(req, res) {
+    try {
+      const { email, username, password, first_name, last_name } = req.body;
 
-// Middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+      // Check if username/email exists
+      if (await UserModel.checkUsernameExists(username)) return res.status(400).json({ error: 'Username already exists' });
+      if (await UserModel.checkEmailExists(email)) return res.status(400).json({ error: 'Email already exists' });
 
-// Request logging middleware
-app.use((req, res, next) => {
-  console.log(`\n${'='.repeat(50)}`);
-  console.log(`📥 ${new Date().toISOString()}`);
-  console.log(`${req.method} ${req.path}`);
-  console.log(`Body:`, req.body);
-  console.log('='.repeat(50));
-  next();
-});
+      const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS);
 
-// Routes
-app.use('/', userRoutes);
+      const newUser = await UserModel.createUser({ email, username, first_name, last_name }, hashedPassword);
 
-// Root route
-app.get('/', (req, res) => {
-  res.json({ 
-    message: 'User Management API is running!',
-    version: '1.0.0',
-    endpoints: {
-      register: 'POST /register',
-      login: 'POST /login',
-      getAllUsers: 'GET /users',
-      getUserById: 'GET /users/:id',
-      updateUser: 'PUT /users/:id'
+      res.status(201).json({
+        message: 'User registered successfully',
+        user: newUser
+      });
+    } catch (error) {
+      console.error('Registration error:', error);
+      res.status(500).json({ error: 'Internal server error' });
     }
-  });
-});
+  }
 
-// 404 handler
-app.use((req, res) => {
-  res.status(404).json({ 
-    error: 'Route not found',
-    path: req.path,
-    method: req.method
-  });
-});
+  // Login user
+  static async login(req, res) {
+    try {
+      const { username, password } = req.body;
+      const user = await UserModel.getUserByUsername(username);
 
-// ENHANCED Global error handling middleware - SHOWS ALL ERRORS
-app.use((err, req, res, next) => {
-  console.error('\n❌ ERROR CAUGHT:');
-  console.error('Message:', err.message);
-  console.error('Stack:', err.stack);
-  console.error('Full Error:', err);
-  
-  res.status(err.status || 500).json({
-    error: err.message || 'Internal server error',
-    stack: err.stack, // SHOWS FULL ERROR STACK
-    details: err
-  });
-});
+      if (!user || !user.password) return res.status(401).json({ error: 'Invalid username or password' });
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`\n${'='.repeat(50)}`);
-  console.log(`✅ Server is running on port ${PORT}`);
-  console.log(`🌐 API available at http://localhost:${PORT}`);
-  console.log(`📚 Environment: ${process.env.NODE_ENV || 'development'}`);
-  console.log('='.repeat(50));
-  
-  // Test database connection
-  const db = require('./config/db');
-  db.raw('SELECT 1')
-    .then(() => {
-      console.log('✅ Database connection successful');
-    })
-    .catch(err => {
-      console.error('❌ Database connection failed:', err.message);
-    });
-});
+      const isValid = await bcrypt.compare(password, user.password);
+      if (!isValid) return res.status(401).json({ error: 'Invalid username or password' });
 
-// Graceful shutdown
-process.on('SIGINT', () => {
-  console.log('\n🛑 Shutting down gracefully...');
-  process.exit(0);
-});
+      // Generate JWT
+      const token = jwt.sign({ id: user.id, username: user.username }, JWT_SECRET, { expiresIn: JWT_EXPIRATION });
+
+      delete user.password;
+
+      res.status(200).json({
+        message: 'Login successful',
+        user,
+        token
+      });
+    } catch (error) {
+      console.error('Login error:', error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  }
+
+  // Get all users (with pagination)
+  static async getAllUsers(req, res) {
+    try {
+      const page = parseInt(req.query.page) || 1;
+      const limit = parseInt(req.query.limit) || 10;
+      const offset = (page - 1) * limit;
+
+      const users = await UserModel.getAllUsers(offset, limit); // pass pagination params
+      res.status(200).json({
+        message: 'Users retrieved successfully',
+        page,
+        limit,
+        count: users.length,
+        users
+      });
+    } catch (error) {
+      console.error('Get all users error:', error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  }
+
+  // Get user by ID
+  static async getUserById(req, res) {
+    try {
+      const { id } = req.params;
+      const user = await UserModel.getUserById(id);
+      if (!user) return res.status(404).json({ error: 'User not found' });
+
+      res.status(200).json({ message: 'User retrieved successfully', user });
+    } catch (error) {
+      console.error('Get user by ID error:', error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  }
+
+  // Update user
+  static async updateUser(req, res) {
+    try {
+      const { id } = req.params;
+      const { email, username, first_name, last_name } = req.body;
+
+      const existingUser = await UserModel.getUserById(id);
+      if (!existingUser) return res.status(404).json({ error: 'User not found' });
+
+      // Check for duplicates
+      if (username && username !== existingUser.username && await UserModel.checkUsernameExists(username)) {
+        return res.status(400).json({ error: 'Username already exists' });
+      }
+      if (email && email !== existingUser.email && await UserModel.checkEmailExists(email)) {
+        return res.status(400).json({ error: 'Email already exists' });
+      }
+
+      const updateData = {};
+      if (email) updateData.email = email;
+      if (username) updateData.username = username;
+      if (first_name) updateData.first_name = first_name;
+      if (last_name) updateData.last_name = last_name;
+
+      const updatedUser = await UserModel.updateUser(id, updateData);
+
+      res.status(200).json({ message: 'User updated successfully', user: updatedUser });
+    } catch (error) {
+      console.error('Update user error:', error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  }
+}
+
+module.exports = UserController;

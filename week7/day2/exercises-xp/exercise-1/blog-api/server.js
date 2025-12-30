@@ -17,7 +17,7 @@ app.use((req, res, next) => {
 
 // Root route
 app.get('/', (req, res) => {
-    res.json({ 
+    res.json({
         message: 'Welcome to Blog API',
         endpoints: {
             'GET /api/posts': 'Get all posts',
@@ -29,31 +29,26 @@ app.get('/', (req, res) => {
     });
 });
 
-// API Routes
+// API routes
 app.use('/api', postRoutes);
 
-// 404 handler - must be after all other routes
+// 404 handler
 app.use((req, res) => {
-    res.status(404).json({ 
-        error: 'Route not found',
-        path: req.path,
-        method: req.method
+    res.status(404).json({
+        error: 'Route not found'
     });
 });
 
-// Error handling middleware
+// Error handler
 app.use((err, req, res, next) => {
-    console.error('❌ Server Error:', err.stack);
-    res.status(500).json({ 
-        error: 'Something went wrong!',
-        message: err.message 
+    console.error(err);
+    res.status(500).json({
+        error: 'Internal server error'
     });
 });
 
-// Start server
 app.listen(PORT, () => {
-    console.log(`🚀 Server is running on http://localhost:${PORT}`);
-    console.log(`📚 Blog API is ready to accept requests`);
+    console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
 
 module.exports = app;

@@ -1,10 +1,11 @@
-const db = require('../config/db');
-
 class UserModel {
-  // Get all users
-  static async getAllUsers() {
+  // Get all users with pagination
+  static async getAllUsers(offset = 0, limit = 10) {
     try {
-      const users = await db('users').select('id', 'email', 'username', 'first_name', 'last_name');
+      const users = await db('users')
+        .select('id', 'email', 'username', 'first_name', 'last_name')
+        .offset(offset)
+        .limit(limit);
       return users;
     } catch (error) {
       throw error;
@@ -14,32 +15,23 @@ class UserModel {
   // Get user by ID
   static async getUserById(id) {
     try {
-      const user = await db('users')
+      return await db('users')
         .select('id', 'email', 'username', 'first_name', 'last_name')
         .where({ id })
         .first();
-      return user;
     } catch (error) {
       throw error;
     }
   }
 
-  // Get user by username (includes password for login verification)
+  // Get user by username with password
   static async getUserByUsername(username) {
     try {
-      const user = await db('users')
-        .select(
-          'users.id', 
-          'users.email', 
-          'users.username', 
-          'users.first_name', 
-          'users.last_name', 
-          'hashpwd.password'
-        )
+      return await db('users')
+        .select('users.id', 'users.email', 'users.username', 'users.first_name', 'users.last_name', 'hashpwd.password')
         .leftJoin('hashpwd', 'users.id', 'hashpwd.user_id')
         .where('users.username', username)
         .first();
-      return user;
     } catch (error) {
       throw error;
     }
@@ -65,11 +57,10 @@ class UserModel {
     }
   }
 
-  // Create new user with transaction (FIXED - now uses user_id foreign key)
+  // Create new user with transaction
   static async createUser(userData, hashedPassword) {
     const trx = await db.transaction();
     try {
-      // Insert into users table
       const [user] = await trx('users')
         .insert({
           email: userData.email,
@@ -79,26 +70,24 @@ class UserModel {
         })
         .returning(['id', 'email', 'username', 'first_name', 'last_name']);
 
-      // Insert into hashpwd table with user_id foreign key
       await trx('hashpwd').insert({
         user_id: user.id,
         username: userData.username,
         password: hashedPassword
       });
 
-      // Commit transaction
       await trx.commit();
       return user;
     } catch (error) {
-      // Rollback transaction on error
       await trx.rollback();
       throw error;
     }
   }
 
-  // Update user by ID
+  // Update user
   static async updateUser(id, updateData) {
     try {
+      if (!Object.keys(updateData).length) return null;
       const [updatedUser] = await db('users')
         .where({ id })
         .update(updateData)

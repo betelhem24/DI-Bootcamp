@@ -7,20 +7,15 @@ const {
   validateUserId, 
   validateUpdate 
 } = require('../middleware/validation');
+const authenticate = require('../middleware/auth');
 
-// POST /register - Register a new user (with validation)
+// Public routes
 router.post('/register', validateRegistration, UserController.register);
-
-// POST /login - Login user (with validation)
 router.post('/login', validateLogin, UserController.login);
 
-// GET /users - Get all users
-router.get('/users', UserController.getAllUsers);
-
-// GET /users/:id - Get user by ID (with ID validation)
-router.get('/users/:id', validateUserId, UserController.getUserById);
-
-// PUT /users/:id - Update user by ID (with validation)
-router.put('/users/:id', validateUserId, validateUpdate, UserController.updateUser);
+// Protected routes
+router.get('/users', authenticate, UserController.getAllUsers);
+router.get('/users/:id', authenticate, validateUserId, UserController.getUserById);
+router.put('/users/:id', authenticate, validateUserId, validateUpdate, UserController.updateUser);
 
 module.exports = router;
