@@ -1,10 +1,6 @@
--- Create database
 CREATE DATABASE book_db;
-
--- Connect to database
 \c book_db;
 
--- Create books table
 CREATE TABLE books (
     id SERIAL PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
@@ -13,7 +9,6 @@ CREATE TABLE books (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Insert sample data
 INSERT INTO books (title, author, publishedyear) VALUES
 ('To Kill a Mockingbird', 'Harper Lee', 1960),
 ('1984', 'George Orwell', 1949),

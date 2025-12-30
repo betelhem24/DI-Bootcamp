@@ -5,7 +5,6 @@ const bookRoutes = require('./routes/bookRoutes');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -29,31 +28,21 @@ app.get('/', (req, res) => {
     });
 });
 
-// API Routes
 app.use('/api', bookRoutes);
 
-// 404 handler - must be after all other routes
+// 404 handler
 app.use((req, res) => {
-    res.status(404).json({ 
-        error: 'Route not found',
-        path: req.path,
-        method: req.method
-    });
+    res.status(404).json({ error: 'Route not found', path: req.path, method: req.method });
 });
 
-// Error handling middleware
+// Error handler
 app.use((err, req, res, next) => {
-    console.error('❌ Server Error:', err.stack);
-    res.status(500).json({ 
-        error: 'Something went wrong!',
-        message: err.message 
-    });
+    console.error(err.stack);
+    res.status(500).json({ error: 'Something went wrong!', message: err.message });
 });
 
-// Start server
 app.listen(PORT, () => {
-    console.log(`🚀 Server is running on http://localhost:${PORT}`);
-    console.log(`📚 Book API is ready to accept requests`);
+    console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
 
 module.exports = app;
