@@ -1,21 +1,16 @@
-// routes/books.js
 const express = require('express');
 const router = express.Router();
 
-// Sample in-memory database for storing books
 const books = [];
 let nextId = 1;
 
-// Get all books
 router.get('/', (req, res) => {
   res.json(books);
 });
 
-// Add a new book
 router.post('/', (req, res) => {
   const { title, author, publishedYear } = req.body;
   
-  // Validation: Check if required fields are provided
   if (!title || !author) {
     return res.status(400).json({ error: 'Title and author are required' });
   }
@@ -31,19 +26,16 @@ router.post('/', (req, res) => {
   res.status(201).json(newBook);
 });
 
-// Update a book by ID
 router.put('/:id', (req, res) => {
   const { id } = req.params;
   const { title, author, publishedYear } = req.body;
   
   const bookIndex = books.findIndex(book => book.id === parseInt(id));
   
-  // Error handling: Check if book exists
   if (bookIndex === -1) {
     return res.status(404).json({ error: 'Book not found' });
   }
   
-  // Update fields if provided
   if (title !== undefined) {
     books[bookIndex].title = title;
   }
@@ -57,12 +49,10 @@ router.put('/:id', (req, res) => {
   res.json(books[bookIndex]);
 });
 
-// Delete a book by ID
 router.delete('/:id', (req, res) => {
   const { id } = req.params;
   const bookIndex = books.findIndex(book => book.id === parseInt(id));
   
-  // Error handling: Check if book exists
   if (bookIndex === -1) {
     return res.status(404).json({ error: 'Book not found' });
   }
