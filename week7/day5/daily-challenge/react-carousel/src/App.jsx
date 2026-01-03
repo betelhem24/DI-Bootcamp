@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <div className="container">
         <h1 className="text-center my-5">Travel Destinations Carousel</h1>
-        <div className="carousel-wrapper">
+        <div className="carousel-container">
           <Carousel
             showArrows={true}
             showThumbs={true}
@@ -36,7 +36,7 @@ function App() {
             
             <div>
               <img 
-                src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1200&h=630&fit=crop"  
+                src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1200&h=630&fit=crop&q=80" 
                 alt="Japan" 
               />
               <p className="legend">Japan</p>
