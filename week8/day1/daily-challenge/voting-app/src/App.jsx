@@ -1,25 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
 
-// Separate Language Card Component for better reusability
-const LanguageCard = ({ language, onVote }) => {
-  return (
-    <div className="language-card">
-      <div className="language-info">
-        <h2>{language.votes}</h2>
-        <p>{language.name}</p>
-      </div>
-      <button 
-        className="vote-button"
-        onClick={onVote}
-      >
-        Click Here
-      </button>
-    </div>
-  );
-};
-
 function App() {
+  // Step 1: Create state with languages array
   const [languages, setLanguages] = useState([
     { name: "Php", votes: 0 },
     { name: "Python", votes: 0 },
@@ -27,19 +10,10 @@ function App() {
     { name: "Java", votes: 0 }
   ]);
 
-  // Function to increase votes for a specific language
+  // Step 2: Function to increase votes
   const handleVote = (index) => {
-    // Input validation - ensure index is valid
-    if (index < 0 || index >= languages.length) {
-      console.error('Invalid language index');
-      return;
-    }
-
-    // Create a new copy of the languages array
     const newLanguages = [...languages];
-    // Increment the votes for the selected language
     newLanguages[index].votes += 1;
-    // Update state
     setLanguages(newLanguages);
   };
 
@@ -49,11 +23,18 @@ function App() {
         <h1>Vote Your Language!</h1>
         <div className="languages-grid">
           {languages.map((language, index) => (
-            <LanguageCard
-              key={index}
-              language={language}
-              onVote={() => handleVote(index)}
-            />
+            <div key={index} className="language-card">
+              <div className="language-info">
+                <h2>{language.votes}</h2>
+                <p>{language.name}</p>
+              </div>
+              <button 
+                className="vote-button"
+                onClick={() => handleVote(index)}
+              >
+                Click Here
+              </button>
+            </div>
           ))}
         </div>
       </div>
