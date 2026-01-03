@@ -1,0 +1,56 @@
+.App {
+  text-align: center;
+  min-height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.App-header {
+  background-color: #282c34;
+  padding: 30px;
+  color: white;
+  margin-bottom: 30px;
+}
+
+.App-header h1 {
+  margin: 0;
+  font-size: 2.5em;
+}
+
+.content {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.car-container {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+}
+
+.car-container h2 {
+  color: #333;
+  font-size: 1.8em;
+  margin-bottom: 15px;
+}
+
+.car-container h3 {
+  color: #e74c3c;
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+.garage-container {
+  background-color: #ecf0f1;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.garage-container h4 {
+  color: #2c3e50;
+  font-size: 1.2em;
+  margin: 0;
+}
