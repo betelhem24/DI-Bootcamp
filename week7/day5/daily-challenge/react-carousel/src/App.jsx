@@ -2,51 +2,49 @@ import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
+import CarouselItem from './CarouselItem';
 
 function App() {
+  const destinations = [
+    {
+      src: 'https://res.klook.com/image/upload/fl_lossy.progressive,q_65/c_fill,w_480,h_384/cities/jrfyzvgzvhs1iylduuhj.jpg',
+      alt: 'Skyline of Hong Kong at night',
+      label: 'Hong Kong',
+    },
+    {
+      src: 'https://res.klook.com/image/upload/fl_lossy.progressive,q_65/c_fill,w_480,h_384/cities/c1cklkyp6ms02tougufx.webp',
+      alt: 'City view of Macao',
+      label: 'Macao',
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=480&h=384&fit=crop',
+      alt: 'Traditional street in Japan',
+      label: 'Japan',
+    },
+    {
+      src: 'https://res.klook.com/image/upload/fl_lossy.progressive,q_65/c_fill,w_480,h_384/cities/liw377az16sxmp9a6ylg.webp',
+      alt: 'Las Vegas city lights at night',
+      label: 'Las Vegas',
+    },
+  ];
+
   return (
-    <div className="App">
+    <div className="app">
       <div className="container">
         <h1 className="text-center my-5">Travel Destinations</h1>
+
         <Carousel
-          showArrows={true}
-          showThumbs={true}
-          showStatus={true}
-          infiniteLoop={true}
-          autoPlay={true}
+          showArrows
+          showThumbs
+          showStatus
+          infiniteLoop
+          autoPlay
           interval={3000}
         >
-          <div>
-            <img 
-              src="https://res.klook.com/image/upload/fl_lossy.progressive,q_65/c_fill,w_1200,h_630/cities/jrfyzvgzvhs1iylduuhj.jpg" 
-              alt="Hong Kong" 
-            />
-            <p className="legend">Hong Kong</p>
-          </div>
-          
-          <div>
-            <img 
-              src="https://res.klook.com/image/upload/fl_lossy.progressive,q_65/c_fill,w_1200,h_630/cities/c1cklkyp6ms02tougufx.webp" 
-              alt="Macao" 
-            />
-            <p className="legend">Macao</p>
-          </div>
-          
-          <div>
-            <img 
-              src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=1200&h=630&fit=crop" 
-              alt="Japan" 
-            />
-            <p className="legend">Japan</p>
-          </div>
-          
-          <div>
-            <img 
-              src="https://res.klook.com/image/upload/fl_lossy.progressive,q_65/c_fill,w_1200,h_630/cities/liw377az16sxmp9a6ylg.webp" 
-              alt="Las Vegas" 
-            />
-            <p className="legend">Las Vegas</p>
-          </div>
+          {destinations.map((item, index) => (
+            <CarouselItem key={index} {...item} />
+          ))}
         </Carousel>
       </div>
     </div>
