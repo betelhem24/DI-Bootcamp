@@ -3,9 +3,17 @@ import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import CarouselItem from './CarouselItem';
 
 function App() {
+  const carouselConfig = {
+    showArrows: true,
+    showThumbs: true,
+    showStatus: true,
+    infiniteLoop: true,
+    autoPlay: true,
+    interval: 3000,
+  };
+
   const destinations = [
     {
       src: 'https://res.klook.com/image/upload/fl_lossy.progressive,q_65/c_fill,w_480,h_384/cities/jrfyzvgzvhs1iylduuhj.jpg',
@@ -18,8 +26,8 @@ function App() {
       label: 'Macao',
     },
     {
-      src: 'https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=480&h=384&fit=crop',
-      alt: 'Traditional street in Japan',
+      src: 'https://res.klook.com/image/upload/fl_lossy.progressive,q_65/c_fill,w_480,h_384/cities/ctzq6u1kkw6n0htm9pxx.webp',
+      alt: 'Cityscape of Tokyo, Japan',
       label: 'Japan',
     },
     {
@@ -34,16 +42,12 @@ function App() {
       <div className="container">
         <h1 className="text-center my-5">Travel Destinations</h1>
 
-        <Carousel
-          showArrows
-          showThumbs
-          showStatus
-          infiniteLoop
-          autoPlay
-          interval={3000}
-        >
+        <Carousel {...carouselConfig}>
           {destinations.map((item, index) => (
-            <CarouselItem key={index} {...item} />
+            <div key={index}>
+              <img src={item.src} alt={item.alt} />
+              <p className="legend">{item.label}</p>
+            </div>
           ))}
         </Carousel>
       </div>
