@@ -1,3 +1,15 @@
+/* Global styles for the React Carousel application.
+   The carousel component is implemented in App.jsx
+   using react-responsive-carousel.
+*/
+
+/*
+  Global styles only.
+  React components and carousel implementation
+  are intentionally located in App.jsx.
+*/
+
+
 /* Global reset & base typography only */
 
 * {
