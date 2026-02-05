@@ -1,85 +1,41 @@
-# Week 11 Day 3 - Mini Project: Collaborative Storytelling App
+# Week 11 Day 3 Mini-Project - Collaborative Storytelling App
 
 ## Project Overview
 
-Full-stack PERN (PostgreSQL, Express, React, Node.js) application for collaborative storytelling with JWT authentication and Redux state management.
+A Full Stack Collaborative Storytelling application built as a Monorepo.
 
 ## Project Structure
 
-```
-story-app/
-├── backend/          # Express.js + TypeScript backend
-├── frontend/         # React + Redux + TypeScript frontend
-└── types/            # Shared TypeScript types
-```
-
-## Technologies Used
-
-### Backend
-- Node.js
-- Express.js
-- PostgreSQL
-- JWT Authentication
-- TypeScript
-- bcrypt
-
-### Frontend
-- React 18
-- Redux Toolkit
-- TypeScript
-- Vite
-- Axios
-
-## Features
-
-- ✅ User authentication with JWT
-- ✅ Refresh token mechanism
-- ✅ Story creation and collaboration
-- ✅ Redux state management
-- ✅ Full TypeScript support
-- ✅ RESTful API
+- **`backend/`**: Node.js, Express, PostgreSQL API.
+  - Authentication (JWT + Refresh Tokens + Cookies).
+  - Routes, Controllers, Middleware architecture.
+- **`frontend/`**: React, TypeScript, Redux Toolkit (Vite).
+  - Authenticated State Management.
+  - Story viewing and creation.
 
 ## Installation
 
-### Backend Setup
+### Backend
 ```bash
-cd week11/day3/mini-project/story-app/backend
+cd backend
 npm install
-
-# Create .env file with:
-# DATABASE_URL=your_postgresql_connection_string
-# JWT_SECRET=your_secret_key
-# REFRESH_TOKEN_SECRET=your_refresh_secret
-
-npm run dev
+# Set up .env with DATABASE_URL and JWT_SECRET
+node app.js
 ```
 
-### Frontend Setup
+### Frontend
 ```bash
-cd week11/day3/mini-project/story-app/frontend
+cd frontend
 npm install
 npm run dev
 ```
 
-## API Endpoints
+## Features
 
-- `POST /auth/register` - User registration
-- `POST /auth/login` - User login
-- `POST /auth/refresh` - Refresh access token
-- `GET /stories` - Get all stories
-- `POST /stories` - Create new story
-- `PUT /stories/:id` - Update story
-- `DELETE /stories/:id` - Delete story
-
-## Key Concepts
-
-- Full-stack TypeScript development
-- JWT authentication with refresh tokens
-- Redux Toolkit for state management
-- PERN stack architecture
-- RESTful API design
-- Secure password hashing
+- User Registration & Login
+- Secure Token Management
+- Story Management (CRUD)
 
 ## License
 
-Educational project - DI Bootcamp
+Educational Project - DI Bootcamp
