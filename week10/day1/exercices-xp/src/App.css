@@ -1,0 +1,171 @@
+:root {
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+  --bg-dark: #0f172a;
+  --card-bg: #1e293b;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --border: #334155;
+  --success: #22c55e;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+.PromptLab {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(to right, #818cf8, #c084fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tabs {
+  display: flex;
+  overflow-x: auto;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.tab-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.tab-btn.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+}
+
+.exercise-container {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.vague-box {
+  background: #33415544;
+  padding: 1rem;
+  border-left: 4px solid #ef4444;
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+}
+
+.solution-box {
+  background: #33415588;
+  padding: 1.5rem;
+  border-left: 4px solid var(--success);
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+}
+
+code {
+  display: block;
+  white-space: pre-wrap;
+  background: #00000033;
+  padding: 1rem;
+  border-radius: 6px;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+h2 {
+  color: #818cf8;
+  margin-top: 0;
+}
+
+.issues-list {
+  color: var(--text-muted);
+  list-style-type: none;
+  padding: 0;
+}
+
+.issues-list li {
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.issues-list li::before {
+  content: '⚠️';
+  position: absolute;
+  left: 0;
+}
+
+.strategy-list {
+  color: var(--text-muted);
+  list-style-type: none;
+  padding: 0;
+}
+
+.strategy-list li {
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.strategy-list li::before {
+  content: '✅';
+  position: absolute;
+  left: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+}
+
+th {
+  background: #33415544;
+}
+
+.copy-btn {
+  background: var(--primary);
+  border: none;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+.copy-btn:hover {
+  background: var(--primary-hover);
+}
