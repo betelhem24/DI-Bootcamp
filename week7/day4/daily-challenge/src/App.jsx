@@ -1,6 +1,16 @@
+/**
+ * Week 7 Day 4 Daily Challenge - Voting App
+ * NOTE: The README indicates this should be a Pinecone Serverless Reranking exercise,
+ * but the actual implementation is a React voting application.
+ * This demonstrates state management and event handling in React.
+ */
 import { useState } from 'react'
 import './App.css'
 
+/**
+ * Main App component for the programming language voting system.
+ * Allows users to vote for their favorite programming language.
+ */
 function App() {
   // Initialize state to store programming languages and their vote counts
   const [languages, setLanguages] = useState([
