@@ -1,36 +1,29 @@
-# Voting App - Week 8 Day 1 Daily Challenge
+# Week 8 Day 1 - Daily Challenge: Voting App
 
 ## Project Overview
-A React voting application where users can vote for their favorite programming language.
 
-## Main Implementation File
-The core voting logic is implemented in: **`src/App.jsx`** ✅
+Interactive voting application for programming languages built with React.
 
-## File Structure and Scores
+## Technologies Used
 
-| File | Purpose | Contains Voting Logic? |
-|------|---------|----------------------|
-| `src/App.jsx` | Main React component | ✅ YES (100%) |
-| `src/App.css` | Styling for the app | ❌ NO (Styling only) |
-| `src/main.jsx` | React app entry point | ❌ NO (Renders App only) |
-| `src/index.css` | Global CSS styles | ❌ NO (Styling only) |
-| `index.html` | HTML template | ❌ NO (Template only) |
-| `package.json` | Project dependencies | ❌ NO (Config only) |
-| `vite.config.js` | Vite configuration | ❌ NO (Config only) |
-| `eslint.config.js` | ESLint configuration | ❌ NO (Config only) |
+- React 18
+- Vite
+- CSS
 
-## Features Implemented in App.jsx
-✅ State management with `useState`  
-✅ Languages array with vote counts  
-✅ `handleVote()` function to increment votes  
-✅ Dynamic rendering with `.map()`  
-✅ Button click handlers  
+## Features
 
-## How to Run
+- ✅ Vote for programming languages
+- ✅ Real-time vote counting
+- ✅ State management with useState
+
+## Installation
+
 ```bash
+cd week8/day1/daily-challenge/voting-app
 npm install
 npm run dev
 ```
 
-## Note on File Scores
-The automated checker gives 0% to configuration and styling files because it's specifically looking for React voting logic, which only exists in `App.jsx`. This is expected behavior.
+## License
+
+Educational project - DI Bootcamp
