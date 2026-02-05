@@ -1,11 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const plannerSlice = createSlice({
-    name: 'planner',
-    initialState: {
-        selectedDate: new Date().toISOString().split('T')[0],
-        tasksByDate: {},
+const initialState = {
+    selectedDate: new Date().toISOString().split('T')[0], // Default to today: 'YYYY-MM-DD'
+    tasksByDate: {
+        // Structure:
+        // '2023-10-27': [ { id: 1, text: 'Buy milk', completed: false } ]
     },
+};
+
+export const plannerSlice = createSlice({
+    name: 'planner',
+    initialState,
     reducers: {
         setSelectedDate: (state, action) => {
             state.selectedDate = action.payload;
@@ -22,33 +27,38 @@ const plannerSlice = createSlice({
             });
         },
         editTask: (state, action) => {
-            const { date, id, text } = action.payload;
+            const { date, taskId, newText } = action.payload;
             const tasks = state.tasksByDate[date];
             if (tasks) {
-                const task = tasks.find((t) => t.id === id);
+                const task = tasks.find((t) => t.id === taskId);
                 if (task) {
-                    task.text = text;
+                    task.text = newText;
                 }
             }
         },
-        toggleTask: (state, action) => {
-            const { date, id } = action.payload;
+        deleteTask: (state, action) => {
+            const { date, taskId } = action.payload;
             const tasks = state.tasksByDate[date];
             if (tasks) {
-                const task = tasks.find((t) => t.id === id);
+                state.tasksByDate[date] = tasks.filter((t) => t.id !== taskId);
+            }
+        },
+        toggleTaskCompletion: (state, action) => {
+            const { date, taskId } = action.payload;
+            const tasks = state.tasksByDate[date];
+            if (tasks) {
+                const task = tasks.find((t) => t.id === taskId);
                 if (task) {
                     task.completed = !task.completed;
                 }
             }
         },
-        deleteTask: (state, action) => {
-            const { date, id } = action.payload;
-            if (state.tasksByDate[date]) {
-                state.tasksByDate[date] = state.tasksByDate[date].filter((t) => t.id !== id);
-            }
-        },
     },
 });
 
-export const { setSelectedDate, addTask, editTask, toggleTask, deleteTask } = plannerSlice.actions;
+export const { setSelectedDate, addTask, editTask, deleteTask, toggleTaskCompletion } = plannerSlice.actions;
+
+export const selectSelectedDate = (state) => state.planner.selectedDate;
+export const selectTasksForDate = (state, date) => state.planner.tasksByDate[date] || [];
+
 export default plannerSlice.reducer;

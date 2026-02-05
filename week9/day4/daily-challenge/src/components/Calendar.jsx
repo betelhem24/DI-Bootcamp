@@ -1,18 +1,23 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { setSelectedDate } from '../features/planner/plannerSlice';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setSelectedDate, selectSelectedDate } from '../features/planner/plannerSlice';
 
 const Calendar = () => {
     const dispatch = useDispatch();
-    const selectedDate = useSelector((state) => state.planner.selectedDate);
+    const selectedDate = useSelector(selectSelectedDate);
+
+    const handleDateChange = (e) => {
+        dispatch(setSelectedDate(e.target.value));
+    };
 
     return (
-        <div className="calendar">
-            <label htmlFor="date-picker">Select Date: </label>
+        <div className="calendar-container">
+            <h2>Select Day</h2>
             <input
-                id="date-picker"
                 type="date"
                 value={selectedDate}
-                onChange={(e) => dispatch(setSelectedDate(e.target.value))}
+                onChange={handleDateChange}
+                className="date-picker"
             />
         </div>
     );
