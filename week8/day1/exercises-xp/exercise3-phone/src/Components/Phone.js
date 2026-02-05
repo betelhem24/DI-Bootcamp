@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
 
+/**
+ * Phone component demonstrating the use of several state variables.
+ */
 const Phone = () => {
   // Part I: Create state variables using useState hook
+  // State variables for phone characteristics. 
+  // Most are static in this example, but 'color' can be changed.
   const [brand] = useState("Samsung");
   const [model] = useState("Galaxy S20");
   const [color, setColor] = useState("black");
   const [year] = useState(2020);
 
   // Part II: Function to change color to blue
+  /**
+   * Function to update the phone's color state to 'blue'.
+   */
   const changeColor = () => {
     setColor("blue");
   };
@@ -46,8 +54,8 @@ const Phone = () => {
 
       {/* Visual representation of the phone */}
       <div className="phone-visual">
-        <div 
-          className="phone-device" 
+        <div
+          className="phone-device"
           style={{ backgroundColor: color }}
         >
           <div className="phone-screen">

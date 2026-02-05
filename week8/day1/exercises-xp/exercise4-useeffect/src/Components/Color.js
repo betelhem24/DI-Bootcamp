@@ -1,8 +1,18 @@
 import React, { useState, useEffect } from 'react';
 
+/**
+ * Exercise 4: Demonstrating the useEffect Hook and Component Lifecycle.
+ */
+/**
+ * Color component that uses the useEffect hook to monitor state changes.
+ */
 const Color = () => {
   const [favoriteColor, setFavoriteColor] = useState('red');
 
+  /**
+   * useEffect hook that triggers an alert when the favoriteColor state changes.
+   * The dependency array [favoriteColor] ensures this runs on initial render and subsequent updates to favoriteColor.
+   */
   useEffect(() => {
     alert('useEffect reached');
   }, [favoriteColor]);
@@ -18,7 +28,7 @@ const Color = () => {
       </h1>
 
       <div style={{ margin: '40px 0' }}>
-        <div 
+        <div
           style={{
             width: '200px',
             height: '200px',
@@ -30,8 +40,8 @@ const Color = () => {
         />
       </div>
 
-      <button 
-        onClick={changeColor} 
+      <button
+        onClick={changeColor}
         style={{
           padding: '15px 40px',
           fontSize: '18px',

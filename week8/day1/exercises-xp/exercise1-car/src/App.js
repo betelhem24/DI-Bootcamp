@@ -1,7 +1,14 @@
+/**
+ * Exercise 1: Demonstrating Component Composition and Props.
+ * This app renders a Car component, which in turn renders a Garage component.
+ */
 import React from 'react';
 import './App.css';
 import Car from './Components/Car';
 
+/**
+ * Static car information to be passed down as props.
+ */
 const carinfo = { name: "Ford", model: "Mustang" };
 
 function App() {

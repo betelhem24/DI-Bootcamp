@@ -1,20 +1,31 @@
 import React, { useState } from 'react';
 
+/**
+ * Functional component to demonstrate multiple React event types.
+ */
 const Events = () => {
   // Part III: useState hook for toggle
   const [isToggleOn, setIsToggleOn] = useState(true);
 
   // Part I: Arrow function that alerts
+  /**
+   * Part I: Simple click handler that triggers an alert.
+   */
   const clickMe = () => {
     alert('I was clicked');
   };
 
   // Part II: Function to handle keydown
+  /**
+   * Part II: KeyDown handler that checks for the 'Enter' key.
+   * If 'Enter' is pressed, it captures the input value and alerts it.
+   * @param {Object} event - The keyboard event object.
+   */
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
       const inputValue = event.target.value;
       alert(`You entered: ${inputValue}`);
-      event.target.value = ''; // Clear input after alert
+      event.target.value = ''; // Clear input field
     }
   };
 
