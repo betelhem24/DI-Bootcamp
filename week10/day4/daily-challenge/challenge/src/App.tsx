@@ -1,85 +1,80 @@
-import { useState } from 'react'
-import './App.css'
+import React, { useState } from 'react';
+import List from './List';
+import './App.css';
 
-type BookType = {
+// Define Book Type
+interface Book {
     id: number;
     title: string;
     author: string;
 }
 
-type RenderListProps = {
-    books: BookType[];
-};
-
-const booksInitial: BookType[] = [
-    {
-        id: 1,
-        title: "1984",
-        author: "George Orwell",
-    },
-    {
-        id: 2,
-        title: "Brave New World",
-        author: "Aldous Huxley",
-    },
-    {
-        id: 3,
-        title: "Fahrenheit 451",
-        author: "Ray Bradbury",
-    },
-    {
-        id: 4,
-        title: "The Catcher in the Rye",
-        author: "J.D. Salinger",
-    },
-    {
-        id: 5,
-        title: "To Kill a Mockingbird",
-        author: "Harper Lee",
-    },
-];
-
-
-function renderItem(book: BookType) {
-    return (
-        <li key={book.id}>
-            <p>Title: {book.title}</p>
-            <p>Author: {book.author}</p>
-        </li>
-    )
-}
-
-function RenderList({books}: RenderListProps) {
-    return (
-        <ul>
-            {books.map((book) => renderItem(book))}
-        </ul>
-    )
-}
-
 function App() {
-    const [books, setBooks] = useState<BookType[]>(booksInitial);
-    const [title, setTitle] = useState<string>('');
-    const [author, setAuthor] = useState<string>('');
+    const [books, setBooks] = useState<Book[]>([
+        { id: 1, title: 'The Great Gatsby', author: 'F. Scott Fitzgerald' },
+        { id: 2, title: '1984', author: 'George Orwell' },
+        { id: 3, title: 'To Kill a Mockingbird', author: 'Harper Lee' },
+    ]);
 
-    function addBook(title: string, author: string) {
-        const newBook: BookType = {
-            id: Date.now(),
-            title,
-            author,
-        };
-        setBooks(prevBooks => [...prevBooks, newBook]);
-    }
+    const [newBookTitle, setNewBookTitle] = useState('');
+    const [newBookAuthor, setNewBookAuthor] = useState('');
+
+    const addBook = (e: React.FormEvent) => {
+        e.preventDefault();
+        if (newBookTitle.trim() && newBookAuthor.trim()) {
+            const newBook: Book = {
+                id: Date.now(),
+                title: newBookTitle,
+                author: newBookAuthor,
+            };
+            setBooks([...books, newBook]);
+            setNewBookTitle('');
+            setNewBookAuthor('');
+        }
+    };
+
     return (
-        <>
-            <RenderList books={books} />
-            <label htmlFor="title">Title</label>
-            <input id="title" type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
-            <label htmlFor="author">Author</label>
-            <input id="author" type="text" value={author} onChange={(e) => setAuthor(e.target.value)} />
-            <button onClick={() => addBook(title, author)}>Add book </button>
-        </>
-    )
+        <div className="app-container">
+            <header className="app-header">
+                <h1>My Book List</h1>
+                <p>Built with TypeScript Generics</p>
+            </header>
+
+            <main className="book-app">
+                <form onSubmit={addBook} className="add-book-form">
+                    <input
+                        type="text"
+                        value={newBookTitle}
+                        onChange={(e) => setNewBookTitle(e.target.value)}
+                        placeholder="Book Title"
+                        className="book-input"
+                    />
+                    <input
+                        type="text"
+                        value={newBookAuthor}
+                        onChange={(e) => setNewBookAuthor(e.target.value)}
+                        placeholder="Author"
+                        className="book-input"
+                    />
+                    <button type="submit" className="btn-add">Add Book</button>
+                </form>
+
+                <div className="book-list-container">
+                    <h2>Reading List</h2>
+                    <List
+                        items={books}
+                        renderItem={(book) => (
+                            <div className="book-card">
+                                <h3>{book.title}</h3>
+                                <p>by {book.author}</p>
+                                <small>ID: {book.id}</small>
+                            </div>
+                        )}
+                    />
+                </div>
+            </main>
+        </div>
+    );
 }
 
-export default App
+export default App;
