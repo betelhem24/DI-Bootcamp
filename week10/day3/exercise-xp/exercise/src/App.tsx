@@ -1,11 +1,19 @@
-import './App.css'
-import {UserData} from "./user-data.tsx";
+import React from 'react';
+import BookList from './features/books/BookList';
+import './App.css';
 
 function App() {
-
-  return (
-    <UserData></UserData>
-  )
+    return (
+        <div className="app-container">
+            <header className="app-header">
+                <h1>Redux Bookstore</h1>
+                <p>Managed with Redux Toolkit & createSelector</p>
+            </header>
+            <main>
+                <BookList />
+            </main>
+        </div>
+    );
 }
 
-export default App
+export default App;
