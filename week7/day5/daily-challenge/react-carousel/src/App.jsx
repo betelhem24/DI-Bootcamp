@@ -1,19 +1,37 @@
+/**
+ * Week 7 Day 5 Daily Challenge - React Carousel
+ * Demonstrates the use of react-responsive-carousel package
+ * to create an interactive image carousel for travel destinations.
+ */
 import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
+/**
+ * Main App component that renders a carousel of travel destinations.
+ * Uses react-responsive-carousel for smooth transitions and navigation.
+ */
 function App() {
+  /**
+   * Carousel configuration object.
+   * Defines behavior and appearance of the carousel component.
+   */
   const carouselConfig = {
-    showArrows: true,
-    showThumbs: true,
-    showStatus: true,
-    infiniteLoop: true,
-    autoPlay: true,
-    interval: 3000,
+    showArrows: true,      // Display navigation arrows
+    showThumbs: true,      // Show thumbnail previews
+    showStatus: true,      // Display current slide status
+    infiniteLoop: true,    // Enable continuous looping
+    autoPlay: true,        // Auto-advance slides
+    interval: 3000,        // 3 seconds between slides
   };
 
+  /**
+   * Array of destination objects for the carousel.
+   * Each object contains image source, alt text, and label.
+   * Images sourced from the README requirements: Hong Kong, Macao, Japan, Las Vegas.
+   */
   const destinations = [
     {
       src: 'https://res.klook.com/image/upload/fl_lossy.progressive,q_65/c_fill,w_480,h_384/cities/jrfyzvgzvhs1iylduuhj.jpg',
